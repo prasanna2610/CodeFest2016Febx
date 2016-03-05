@@ -1,0 +1,111 @@
+/* reset */
+
+ul, ul li{margin: 0;padding: 0;}
+ul li{list-style:none;}
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+.clear{clear:both;}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #3f3e42;
+    font-style: italic;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #3f3e42;
+    opacity:  1;
+    font-style: italic;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #3f3e42;
+    opacity:  1;
+    font-style: italic;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #3f3e42;
+    font-style: italic;
+}
+
+/* Menu styles */
+section#featuredStory{
+	background:url(../images/stripe_desk.png) repeat;
+
+}
+
+.fsContainer{
+	padding-top:20px;
+	padding-bottom:40px;
+	background:url(../images/stripe1.png) repeat;
+}
+
+.feed{
+	position:relative;
+}
+
+img.feedThumb{
+	top:0px;
+	left:0px;
+	width:100%;
+}
+
+.fold{
+	background:url(../images/feedContentBck.png) right;
+	padding-top:5px;
+	height:37px;
+	padding:10px;
+}
+
+.fold > span{
+	display:block;
+	background:url(../images/icons/story.png) no-repeat;
+	margin-top:10px;
+}
+
+.fContent{
+	background-color:#fff;
+	padding:10px;
+}
+
+.feedDetail{
+	position:absolute;
+	bottom:-20px;
+	margin:0px 10px;
+	width:auto;
+	left:0px;
+	right:0px;
+	border-bottom:4px solid #17577f;
+
+}
+
+.feedDetail h1{
+	font-size:22px;
+	margin-top:0px;
+}
+
+.feedDetail p{
+	display:none;
+}
+
+.feedDetail p span.divider{
+	width:35px;
+	height:1px;
+	display:block;
+	background-color:#ff0000;
+	margin-top:5px;
+	background:url(../images/headerDivider.png) no-repeat;
+	margin-bottom:5px;
+}
+
+.feedDetail p span.date{
+	display:block;
+	font-style:italic;
+	color:#aaa;
+	font-size:14px;
+	margin-bottom:5px;
+}
+
+

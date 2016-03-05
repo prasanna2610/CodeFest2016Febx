@@ -1,0 +1,70 @@
+	/*sidebar nav*/
+	ul.vendor-list li{
+		text-align: center;
+	}
+	.add-vendor{
+		width:100px;
+		height: 100px;
+		border-radius: 100px;
+	}
+	.tab-content{
+		background-color: #f5f5f5;
+		padding: 20px;
+		padding-top: 10px;
+		-ms-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		border-radius: 0 4px 4px 4px;
+		border: 1px solid #ccc;
+	}
+	.navbar-collapse{
+		padding: 0;
+	}
+
+/*update content*/
+.my-info ul li.label  {
+    width: 150px;
+    text-align: left;
+    position: relative;
+    font-weight: normal;
+	display: table-cell;
+}
+.profile-content-list ul li {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    line-height: 16px;
+	color: #000;
+}
+.my-info ul li.label:after {
+    content: ':';
+    right: -3px;
+    position: absolute;
+}
+.my-info ul li.label-value {
+    width: 300px;
+    padding: .2em .6em .3em;
+	word-wrap: break-word;
+	display: table-cell;
+	color: #4B088A;
+	font-weight: bold;
+}
+.edit-info {
+    width: 75px;
+    height: 35px;
+    background: url('../images/edit-details.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+	vertical-align: bottom;
+	margin-left: 5px;
+}
+.profile-edit.update-info {
+    width: 40px;
+    height: 35px;
+    background: url('../images/save-details.png') no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+	vertical-align: bottom;
+	margin-left: 20px;
+	}
+/*Update ends */
