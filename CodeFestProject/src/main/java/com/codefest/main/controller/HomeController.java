@@ -44,7 +44,7 @@ public class HomeController {
 	@RequestMapping(value = "/index")
 	public String welcome() {
 		
-		List<?> records = new ArrayList<>();
+		/*List<?> records = new ArrayList<>();
 			Class<?> entityClass = null;
 			Object entityObj = null;
 			String sql = "Select * from CF_USER";
@@ -55,7 +55,7 @@ public class HomeController {
 				System.out.println("size ******" + records.size());
 			} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
-			} 
+			} */
 	    return "index";
 	}
 	
@@ -65,8 +65,9 @@ public class HomeController {
     	HomeVO homevoObject=new HomeVO();
         homevoObject.setUserName(userName1);
         homevoObject.setPassWord(passWord1);
+        System.out.println(homevoObject.getUserName()+"   User     "+homevoObject.getPassWord());
         LoginScreenValidator loginValidation= new LoginScreenValidator();
-              boolean validationStatus=loginScreenValidator.processValidation(homevoObject);
+        boolean validationStatus=loginValidation.processValidation(homevoObject);
        /* try {
         	String recipient = "+919940353033";
         	String message = " Test SMS through Mobile Success!!!";
