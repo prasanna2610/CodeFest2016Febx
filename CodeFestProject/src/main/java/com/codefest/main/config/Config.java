@@ -27,7 +27,7 @@ public class Config extends WebMvcConfigurerAdapter{
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
     	super.addResourceHandlers(registry);
     	log.info("mapping static resource");
-    	registry.addResourceHandler("/index.jsp").addResourceLocations("/WEB-INF/views/index.html");
+    	registry.addResourceHandler("/index.jsp").addResourceLocations("/WEB-INF/views/index.jsp");
         registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/css/");
         registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/images/");
         registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/js/");

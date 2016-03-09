@@ -41,7 +41,7 @@ public class HomeController {
 	@Autowired
 	public JdbcTemplate jdbcTemplate;
 	
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = {"/index","/"})
 	public String welcome() {
 		
 		/*List<?> records = new ArrayList<>();
@@ -158,7 +158,7 @@ public class HomeController {
         
         if(validationStatus==true){
         	model.addAttribute("userInfo", "Welcome "+homevoObject.getUserName());
-        	return "userHomeScreen";
+        	return "admin";
         }else{
         	System.out.println("test error");
         	model.addAttribute("errorMsg", "Incorrect Username and Password");
