@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctyle html>
 <html>
 <head>
@@ -7,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/admin.css" >
 	<script src="js/jquery.1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script src="js/bookMealHome.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
 	 <script type="text/javascript">
@@ -87,10 +89,12 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
 		 </header>
 <div class="container">
 <div class="row">
+<input type="hidden" id="vendorModelVal" name="vendorModelDet" value="${vendorInfoObj[0].transaction}">
   <div class="col-sm-3">
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
+        
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
@@ -102,10 +106,10 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
         </div>
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
          <ul class="nav nav-pills nav-stacked vendor-list">
-			<li role="presentation" class="active"><a href="#">ISS</a></li>
-			<li role="presentation"><a href="#">Viruthunagar</a></li>
-			<li role="presentation"><a href="#">Food Exo</a></li>
-			<li role="presentation"><a href="#">Anjappar</a></li>
+         	<c:forEach var="vendorDetails" items="${vendorInfoObj}">
+   				<li role="presentation"><a href="#" class="vendorListLinks" id="${vendorDetails.vendorId}">${vendorDetails.vendorName}</a></li>
+			</c:forEach>
+			<%-- <c:out value="${vendorInfoObj[0].transaction[0].menuName}"/> --%>
 			<li role="presentation"><a href="#myModal" role="button" data-toggle="modal"> <img src="images/add-user.jpg" alt="add vendor" class="add-vendor"/><span class="sr-only">Create new</span> </a></li>
 	</ul>
         </div><!--/.nav-collapse -->
@@ -116,6 +120,10 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
   <div class="col-sm-9">
     <div class="row">
     
+        <%-- <c:set var="vendorInfoObj1" value="${vendorInfoObj}"/> --%>
+     
+	<%-- ${vendorInfoObj.length()}${vendorInfoObj}${vendorInfoObj}${vendorInfoObj} --%>
+	
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist" id="sidebar-nav">
       <li class="active">
@@ -139,114 +147,27 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
       <div class="tab-pane fade active in" id="home">
           <h2>Transaction Details</h2>
           <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+          
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Transaction Id</th>
+                <th>Employee Id</th>
+                <th>Date</th>
+                <th>Menu Name</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td>$86,000</td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>22</td>
-                <td>2012/03/29</td>
-                <td>$433,060</td>
-            </tr>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-            </tr>
-            <tr>
-                <td>Herrod Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td>2012/08/06</td>
-                <td>$137,500</td>
-            </tr>
-            <tr>
-                <td>Rhona Davidson</td>
-                <td>Integration Specialist</td>
-                <td>Tokyo</td>
-                <td>55</td>
-                <td>2010/10/14</td>
-                <td>$327,900</td>
-            </tr>
-            <tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-            </tr>
-			<tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-            </tr>
-			<tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-            </tr>
-			<tr>
-                <td>Colleen Hurst</td>
-                <td>Javascript Developer</td>
-                <td>San Francisco</td>
-                <td>39</td>
-                <td>2009/09/15</td>
-                <td>$205,500</td>
-            </tr>
-          
+        <c:forEach var="transactionDetails" items="${vendorInfoObj[0].transaction}">
+   				<%-- <li role="presentation"><a href="#" id="${i.vendorId}">${i.vendorName}</a></li> --%>
+   				<tr>
+   					<td>${transactionDetails.transactionId}</td>
+   					<td>${transactionDetails.userId}</td>
+   					<td>${transactionDetails.date}</td>
+   					<td>${transactionDetails.menuName}</td>
+   					<td></td>   					
+   				</tr>
+			</c:forEach>
         </tbody>
     </table>
       </div>
@@ -255,32 +176,31 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
 		  <div class="profile-content-list my-info">
                      <h3>Current Info <a href="javascript:void(0)" class="profile-edit edit-info"></a></h3>
 					<ul>
-                        <li class="label">Vendor Name</li>
-                        <li class="label-value" contenteditable="false">ISS</li>
+                        <li class="label">Vendor Id</li>
+                        <li class="label-value" contenteditable="false">${vendorInfoObj[0].vendorId}</li>
                      </ul>
                      <ul>
-                        <li class="label">Vendor id</li>
-                        <li class="label-value" contenteditable="false">123</li>
+                        <li class="label">Vendor Name</li>
+                        <li class="label-value" contenteditable="false">${vendorInfoObj[0].vendorName}</li>
                      </ul>
                      <ul>
                         <li class="label">POC </li>
-                        <li class="label-value" contenteditable="false">abc</li>
+                        <li class="label-value" contenteditable="false">${vendorInfoObj[0].incharge}</li>
                      </ul>
                      <ul>
-                        <li class="label">Tender period </li>
-                        <li class="label-value" contenteditable="false">2012-2018</li>
+                        <li class="label">Phone Numer</li>
+                        <li class="label-value" contenteditable="false">${vendorInfoObj[0].vendorPhone}</li>
                      </ul>
                      <ul>
-                        <li class="label">Type of food </li>
-                        <li class="label-value" contenteditable="false">Veg</li>
+                        <li class="label">Email </li>
+                        <li class="label-value" contenteditable="false">${vendorInfoObj[0].vendorEmail}</li>
                      </ul>
                      <ul>
                         <li class="label">Address details</li>
                    
-                        <li class="label-value" contenteditable="false">Royapettah, Chennai</li>
-                   
-                   
+                        <li class="label-value" contenteditable="false">${vendorInfoObj[0].vendorDetail}</li>
                      </ul>
+                     
                   </div>
       </div>
       <div class="tab-pane fade" id="messages">
@@ -369,6 +289,7 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
 $(document).ready(function() {
     $('#example').DataTable();
 } );
+
 </script>
 </body>
 </html>

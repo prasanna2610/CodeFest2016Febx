@@ -17,7 +17,7 @@
 </div>
 <div class="logInSection">
 ${errorMsg}
-<form method="post" action="/home">
+<form method="get" action="/admin">
 	<ul class="userName">
 	<li></li>
 	<li class="Inputsection"><input type="text" name="userName" id="userName"/></li>

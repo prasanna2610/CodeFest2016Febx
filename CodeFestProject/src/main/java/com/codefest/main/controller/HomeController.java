@@ -158,7 +158,7 @@ public class HomeController {
         
         if(validationStatus==true){
         	model.addAttribute("userInfo", "Welcome "+homevoObject.getUserName());
-        	return "admin";
+        	return "userHomeScreen";
         }else{
         	System.out.println("test error");
         	model.addAttribute("errorMsg", "Incorrect Username and Password");
