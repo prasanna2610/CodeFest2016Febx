@@ -30,7 +30,8 @@ public class AdminController {
 	@Autowired
 	public NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET, produces="application/json")
+	@ResponseBody
 	@SuppressWarnings("all")
 	public String getAdminPage(Model model) {
 		System.out.println("Entered getAdminPage");
@@ -44,16 +45,31 @@ public class AdminController {
 		/*List<Integer> vendorIds = new ArrayList<>();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("listOfValues", vendorIds);*/
-
+		String msg=null;
 		try {
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
 			entityObj = entityClass.newInstance();
 			vendor = jdbcTemplate.query(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()));
+			ObjectMapper mapper = new ObjectMapper();
+			
+			
 			Long vendorId = vendor.get(0).getVendorId();
 			List<Transaction> transactionList = jdbcTemplate.query(sqlTransaction, new Object[] { vendorId },
 					new BeanPropertyRowMapper(Transaction.class));
 
 			vendor.get(0).setTransaction(transactionList);
+			try {
+				 msg = mapper.writeValueAsString(vendor);
+			} catch (JsonGenerationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			/*
 			 * List<Transaction> transactionList =
 			 * namedParameterJdbcTemplate.query( sqlTransaction, params,
@@ -75,8 +91,7 @@ public class AdminController {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("vendorInfoObj", vendor);
-    	return "admin";
+    	return msg;
 	}
 	
 	@RequestMapping(value = "/{vendorId}", method = RequestMethod.GET, produces="application/json")

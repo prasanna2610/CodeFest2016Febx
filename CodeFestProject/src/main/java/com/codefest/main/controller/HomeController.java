@@ -65,7 +65,6 @@ public class HomeController {
     	HomeVO homevoObject=new HomeVO();
         homevoObject.setUserName(userName1);
         homevoObject.setPassWord(passWord1);
-        System.out.println(homevoObject.getUserName()+"   User     "+homevoObject.getPassWord());
         LoginScreenValidator loginValidation= new LoginScreenValidator();
         boolean validationStatus=loginValidation.processValidation(homevoObject);
        /* try {
@@ -158,7 +157,7 @@ public class HomeController {
         
         if(validationStatus==true){
         	model.addAttribute("userInfo", "Welcome "+homevoObject.getUserName());
-        	return "userHomeScreen";
+        	return "admin";
         }else{
         	System.out.println("test error");
         	model.addAttribute("errorMsg", "Incorrect Username and Password");
@@ -167,13 +166,11 @@ public class HomeController {
     }
 
 	private String getURLPath() {
-		System.out.println("path******");
 		String twar = "http://smsc.biz/httpapi/send?username=s.sakthivel.pdm@gmail.com&password=Smsc23&sender_id=SMSIND&route=T&phonenumber=9952717373&message=Test%20sms%20from%20s.sakthivel.pdm@gmail.com.%20Thanks%20for%20choosing%20our%20service%20-%20USERNAME%20SERVICE%20-%20SMSC%20Platform";
 		return twar;
 	}
 
 	private String getURL() {
-		System.out.println("url******");
 		return "http://smsc.biz/";
 }
 
