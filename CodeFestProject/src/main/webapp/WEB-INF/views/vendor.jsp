@@ -341,27 +341,27 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
 					<div class="form-group row">
 					<label for="vendor_name" class="control-label col-xs-3"> Dish Name </label>
 					<div class="col-xs-8">
-                        <input type="text" name="vendor_name" id="vendor_name" class="form-control" >
+                        <input type="text" name="addMenuName" id="addMenuName" class="form-control" >
 					</div>
 					</div>
 					
 					<div class="form-group row">
 					<label for="vendor_id" class="control-label col-xs-3"> Description</label>
 					<div class="col-xs-8">	
-					<input type="text" name="vendor_id" id="vendor_id" class="form-control">
+					<input type="text" name="addMenuDesc" id="addMenuDesc" class="form-control">
 					</div>
 					</div>
 			
 			<div class="form-group row">
 			<label for="poc" class="control-label col-xs-3">Price</label>
 			<div class="col-xs-8">
-				<input type="text" name="Person Incharge" id="poc" class="form-control" >
+				<input type="text" name="addMenuPrice" id="addMenuPrice" class="form-control" >
 			</div>
 			</div>
 			<div class="form-group row">
 				<label for="email" class="control-label col-xs-3">Quantity</label>
 				<div class="col-xs-8">
-				<input type="email" name="email" id="email" class="form-control" >
+				<input type="text" name="addMenuQuantity" id="addMenuQuantity" class="form-control" >
 			</div>
 			</div>
 			</div>
@@ -372,12 +372,65 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
             
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary">Add Menu</button>
             </div>
         </div>
     </div>
 	</div>
 </div>
+<div id="updateMenu" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h2 class="modal-title">Update Menu details</h2>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-2 col-md-offset-2">
+		<form role="form">
+		
+			<div class="row">
+				
+					<div class="form-group row">
+					<label for="vendor_name" class="control-label col-xs-3"> Dish Name </label>
+					<div class="col-xs-8">
+                        <input type="text" name="updateMenuName" id="updateMenuName" class="form-control" >
+					</div>
+					</div>
+					
+					<div class="form-group row">
+					<label for="vendor_id" class="control-label col-xs-3"> Description</label>
+					<div class="col-xs-8">	
+					<input type="text" name="updateMenuDesc" id="updateMenuDesc" class="form-control">
+					</div>
+					</div>
+			
+			<div class="form-group row">
+			<label for="poc" class="control-label col-xs-3">Price</label>
+			<div class="col-xs-8">
+				<input type="text" name="updateMenuPrice" id="updateMenuPrice" class="form-control" >
+			</div>
+			</div>
+			<div class="form-group row">
+				<label for="email" class="control-label col-xs-3">Quantity</label>
+				<div class="col-xs-8">
+				<input type="text" name="updateMenuQuantity" id="updateMenuQuantity" class="form-control" >
+			</div>
+			</div>
+			</div>
+		</form>
+		</div>
+	</div>
+	</div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="updateMenu" href="#">Update Menu</button>
+            </div>
+        </div>
+    </div>
+	</div>
 <div id="deleteMenu" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
