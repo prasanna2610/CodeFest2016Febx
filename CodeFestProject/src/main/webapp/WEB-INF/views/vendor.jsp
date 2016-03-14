@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/admin.css" >
 	<script src="js/jquery.1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<script src="js/vendorPage.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
 	<style type="text/css">
@@ -95,7 +96,7 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
 		 </header>
 <div class="container">
 <div class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-3" id="myVendor">
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -132,7 +133,7 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
          <h2> Menu Details </h2>
 		 <a class="btn btn-success btn-lg" href="#addMenu" role="button" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Add Menu</a>
           <table id="example1" class="table table-striped" cellspacing="0" width="100%">
-        <thead>
+        <!-- <thead>
             <tr>
                 <th>Dish Name</th>
 				<th>Description</th>
@@ -187,7 +188,7 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
 					<a  href="#deleteMenu" role="button" data-toggle="modal" class="delete-menu"><img src="images/delete-menu.png" alt="Delete" /></a>
 				</td>
             </tr>
-            </tbody>
+            </tbody> -->
     </table>
                   </div>
       </div>
