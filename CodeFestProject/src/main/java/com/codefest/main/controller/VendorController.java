@@ -1,10 +1,7 @@
 package com.codefest.main.controller;
 
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.codefest.main.entity.Menu;
-import com.codefest.main.entity.Vendor;
 
 @Controller
-@RequestMapping("/vendor")
 public class VendorController {
 	
 	@Autowired
 	public JdbcTemplate jdbcTemplate;
 	
-	@RequestMapping(method = RequestMethod.GET, produces="application/json")
+	@RequestMapping(value="/vendor", method = RequestMethod.GET, produces="application/json")
+
 	@SuppressWarnings("all")
 	@ResponseBody
 	public String getMenuDetails() {
@@ -53,27 +49,54 @@ public class VendorController {
 		return msg;	
 	}
 	
-	public String updateVendor(@RequestParam(value="vendor", required=true) Vendor vendor){
-		System.out.println("Entered updateVendor");
-		Long vendorId = vendor.getVendorId();
-		String updateQuery = "UPDATE VENDOR SET VENDOR_NAME = ?, VEBDOR_EMAIL = ?, VENDOR_PHONE = ?, INCHARGE = ?, VENDOR_DETAIL = ? WHEN VENDOR_ID = ?";
-		try{
-		List<Vendor> vendorListDB = jdbcTemplate.query("SELECT * FROM VENDOR WHERE VENDOR_ID = ?", new Object[] { vendorId },
-				new BeanPropertyRowMapper(Vendor.class));
-		populateVendor(vendor,vendorListDB.get(0));
-		Object[] params = { vendor.getVendorName(), vendor.getVendorEmail(), vendor.getVendorPhone(), vendor.getIncharge(), vendor.getVendorDetail()};
-		int[] types = {Types.VARCHAR, Types.BIGINT};
+	@RequestMapping(value="/updateMenu", method = RequestMethod.GET, produces="application/json")
 
-		jdbcTemplate.update(updateQuery, params, types);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	@SuppressWarnings("all")
+	@ResponseBody
+	public String updateMenu(@RequestParam(value="menuName", required=true) String menuName, 
+			@RequestParam(value="desc", required=true) String desc,
+			@RequestParam(value="price", required=true) Integer price,
+			@RequestParam(value="quantity", required=true) Integer quantity,
+			@RequestParam(value="menuId", required=true) Long menuId 
+			){
 		
+		//Quantity, availability
+		String UPDATE_SQL = "UPDATE MENU  SET MENU_NAME=? , MENU_DESCRIPTION  =?,PRICE =? WHERE MENU_ID =? ";
+		jdbcTemplate.update(UPDATE_SQL,
+				new Object[] {menuName, desc,price,menuId
+
+		});
 		return null;
 	}
 	
-	private void populateVendor(Vendor vendor, Vendor vendorDB){
-		
-	}
+	@RequestMapping(value="/deleteMenu", method = RequestMethod.GET, produces="application/json")
 
+	@SuppressWarnings("all")
+	@ResponseBody
+	public String deleteMenu(@RequestParam(value="menuId", required=true) Long menuId ){
+		
+		System.out.println(menuId);
+		String DELETE_SQL = "DELETE FROM  MENU   WHERE MENU_ID =? ";
+		jdbcTemplate.update(DELETE_SQL,new Object[] {menuId});
+		return null;
+	}
+	
+	@RequestMapping(value="/addMenu", method = RequestMethod.GET, produces="application/json")
+
+	@SuppressWarnings("all")
+	@ResponseBody
+	public String addMenu(@RequestParam(value="menuName", required=true) String menuName, 
+			@RequestParam(value="desc", required=true) String desc,
+			@RequestParam(value="price", required=true) Integer price,
+			@RequestParam(value="quantity", required=true) Integer quantity
+			){
+		//VENDOR id VENDOR_ID 
+		String INSERT_SQL = "INSERT INTO  MENU(MENU_NAME, MENU_DESCRIPTION,PRICE,quantity,vendor_id,menu_id) VALUES (?,?,?,?,?"+ ",nextval('MENU_SEQ') )";
+		jdbcTemplate.update(INSERT_SQL,
+				new Object[] {menuName, desc,price,quantity,123
+
+		});
+		return null;
+	}
+	
 }
