@@ -14,7 +14,7 @@
 <div class="wrap">
 
          <header class="navbar landing-header hidden-xs">
-			
+			<jsp:include page="header.jsp"/>
 		 </header>
 <div class="container">
 <div class="row">

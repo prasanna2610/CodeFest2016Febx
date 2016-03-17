@@ -15,13 +15,14 @@
         <script type="text/javascript" src="js/canvasjs.min.js"></script>
 </head>
 <body>
+
 <div class="wrap">
 
          <header class="navbar landing-header hidden-xs">
-			
 		 </header>
 <div class="container">
 <div class="row">
+ <jsp:include page="header.jsp"/>
 <input type="hidden" id="vendorModelVal" name="vendorModelDet" value="${vendorInfoObj[0].transaction}">
   <div class="col-sm-3">
     <div class="sidebar-nav">

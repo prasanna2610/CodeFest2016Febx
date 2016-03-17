@@ -94,8 +94,10 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
          <header class="navbar landing-header hidden-xs">
 			<img href=""/>
 		 </header>
+		 
 <div class="container">
 <div class="row">
+ <jsp:include page="header.jsp"/>
   <div class="col-sm-3" id="myVendor">
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">

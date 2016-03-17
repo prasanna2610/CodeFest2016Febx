@@ -18,7 +18,7 @@ public class CFUser implements Serializable{
 	
 	private String lastName;
 	
-	private String userTyp;
+	private String userType;
 
 	public Long getUserId() {
 		return userId;
@@ -68,12 +68,12 @@ public class CFUser implements Serializable{
 		this.lastName = lastName;
 	}
 
-	public String getUserTyp() {
-		return userTyp;
+	public String getUserType() {
+		return userType;
 	}
 
-	public void setUserTyp(String userTyp) {
-		this.userTyp = userTyp;
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 	
 
