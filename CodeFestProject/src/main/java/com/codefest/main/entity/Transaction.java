@@ -18,6 +18,8 @@ public class Transaction implements Serializable{
 	private String menuName;
 	
 	private Long Price;
+	
+	private Long quantity;
 
 	public Long getPrice() {
 		return Price;
@@ -65,6 +67,14 @@ public class Transaction implements Serializable{
 
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
+	}
+
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
 	}
 
 }

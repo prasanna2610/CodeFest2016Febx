@@ -13,7 +13,7 @@ function getTranscationDetails() {
 	$("#menuItems").hide();
 	$("#tansactionDetails").show();
 	$.ajax({
-		  url: "/vendor",
+		  url: "/transaction",
 		  dataType: "text",
 		  type:'get',
 		  success: function(data){
@@ -28,16 +28,19 @@ function createTransactionTable(transactiondetails) {
 	if(rowCount > 0) {
 		jQuery('#example tr').remove();
 	}
-	var tableHeaderCont=jQuery('<thead> <tr><th>Transaction ID</th><th>Menu Name</th><th>quantity</th><th>Price</th><th>Delivered</th></tr></thead>');
+	var tableHeaderCont=jQuery('<thead> <tr><th>Transaction Date</th><th>Transaction Id</th><th>Employee Id</th><th>Menu Name</th><th>quantity</th><th>Price</th><th>Delivered</th></tr></thead>');
 	tabMainCont.append(tableHeaderCont);
 	var tableListCont=jQuery('<tbody>');
 	var iVal = 1; 
 	$.each(transactiondetails,function(i,obj){
 		var tableRow=$('<tr id=MmenuTableRow'+iVal+'>');
-		var tableData=$('<td>').text(obj.menuId).appendTo(tableRow);
+		var tableData=$('<td>').text(obj.date).appendTo(tableRow);
+		var tableData=$('<td>').text(obj.transactionId).appendTo(tableRow);
+		var tableData=$('<td>').text(obj.userId).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.menuName).appendTo(tableRow);
-		var tableData=$('<td>').text(obj.menuDescription).appendTo(tableRow);
+		var tableData=$('<td>').text(obj.quantity).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.price).appendTo(tableRow);
+		//TODO: Delivered flag
 		var tableData=$('<td>').text(obj.availability).appendTo(tableRow);
 		tableListCont.append(tableRow);
 		iVal++;

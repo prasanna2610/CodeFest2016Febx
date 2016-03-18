@@ -23,7 +23,6 @@ public class VendorController {
 	public JdbcTemplate jdbcTemplate;
 	
 	@RequestMapping(value="/vendor", method = RequestMethod.GET, produces="application/json")
-
 	@SuppressWarnings("all")
 	@ResponseBody
 	public String getMenuDetails() {
@@ -35,7 +34,7 @@ public class VendorController {
 			List<Menu> menu = new ArrayList<>();
 			Class<?> entityClass = null;
 			Object entityObj = null;
-			String sqlVendor = "SELECT * FROM MENU where vendor_id= ?";
+			String sqlVendor = "SELECT * FROM MENU where vendor_id= ? order by menu_id ";
 			entityClass = Class.forName("com.codefest.main.entity.Menu");
 			entityObj = entityClass.newInstance();
 			menu = jdbcTemplate.query(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()),vendorId);
@@ -105,4 +104,34 @@ public class VendorController {
 		return null;
 	}
 	
+	@RequestMapping(value="/transaction", method = RequestMethod.GET, produces="application/json")
+	@SuppressWarnings("all")
+	@ResponseBody
+	public String getTransactionDetails() {
+		String msg=null;
+		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
+		
+		try {
+			List<Menu> menu = new ArrayList<>();
+			Class<?> entityClass = null;
+			Object entityObj = null;
+			String sqlTransaction = "SELECT  t.transaction_id, t.user_id, t.date, o.quantity, m.menu_name , m.price "+
+					"FROM  transaction t, order_items o  join menu m   on o.menu_id=m.menu_id "+
+					"where t.transaction_id = o.transaction_id and m.vendor_id = ? order by t.date desc";
+			entityClass = Class.forName("com.codefest.main.entity.Transaction");
+			entityObj = entityClass.newInstance();
+			menu = jdbcTemplate.query(sqlTransaction, new BeanPropertyRowMapper(entityObj.getClass()),vendorId);
+			ObjectMapper mapper = new ObjectMapper();
+			if(menu!=null && menu.size()>0){
+			 msg = mapper.writeValueAsString(menu);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if(msg == null) {
+			msg = " ";
+		}
+		System.out.println("msg:"+msg);
+		return msg;	
+	}
 }
