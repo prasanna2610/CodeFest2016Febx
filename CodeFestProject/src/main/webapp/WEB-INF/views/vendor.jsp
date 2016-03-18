@@ -374,7 +374,7 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
             
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="newMenu" >Add Menu</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="newMenu" >Add Menu</button>
             </div>
         </div>
     </div>
@@ -428,7 +428,7 @@ $(this).parents('.profile-content-list').find('li.label-value')[0].focus();
             
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="menuUpdateBtn" href="#">Update Menu</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="menuUpdateBtn" href="#">Update Menu</button>
             </div>
         </div>
     </div>
