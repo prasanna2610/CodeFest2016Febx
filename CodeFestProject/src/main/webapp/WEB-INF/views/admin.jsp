@@ -4,11 +4,13 @@
 <head>
 	<title>Place order</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/header.css" >
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/admin.css" >
 	<script src="js/jquery.1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
 	<script src="js/adminPage.js"></script>
+	<script src="js/header.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
 	 
@@ -19,11 +21,13 @@
 <div class="wrap">
 
          <header class="navbar landing-header hidden-xs">
+         <jsp:include page="header.jsp"/>
 		 </header>
 <div class="container">
 <div class="row">
- <jsp:include page="header.jsp"/>
+
 <input type="hidden" id="vendorModelVal" name="vendorModelDet" value="${vendorInfoObj[0].transaction}">
+<input type="hidden" id="userName" name="userName" value='${userName}'>
   <div class="col-sm-3">
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
@@ -36,7 +40,9 @@
             <span class="icon-bar"></span
 			>
           </button>
+         
           <span class="visible-xs navbar-brand">Sidebar menu</span>
+          
         </div>
         <%-- <div class="navbar-collapse collapse sidebar-navbar-collapse">
          <ul class="nav nav-pills nav-stacked vendor-list">
@@ -55,6 +61,7 @@
 	    <div class="row" id="tabHolder">
 	    	<!-- Nav tabs -->
 			<ul class="nav nav-tabs" id="myTab" role="tablist" id="sidebar-nav">
+			 
 			     <li class="active">
 			          <a href="#home" role="tab" data-toggle="tab">
 							Transaction

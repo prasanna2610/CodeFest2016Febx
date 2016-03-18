@@ -3,7 +3,7 @@
 <head>
 	<title>Place order</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap.css" type="text/css"  rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/menu.css" >
 	<script src="js/jquery.1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
@@ -18,7 +18,7 @@
 		 </header>
 <div class="container">
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-9 tabContent">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist" id="sidebar-nav">
       <li class="active">
@@ -368,7 +368,6 @@
       <div class="tab-pane fade" id="profile">
          <h2> Select your Meal </h2>
 		 	 <section id="funStoryTileView">
-        <div class="container fsContainer">
             <div class="row">
                <div class="col-md-3 col-sm-3">
 								<div class="tileView">
@@ -482,7 +481,7 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                 
                     
                     <div class="col-md-3 col-sm-3">
 				<div class="tileView">
@@ -502,7 +501,7 @@
                     </div>
 					
 					</div>
-        </div>
+
     </section>
 
 		 
@@ -510,7 +509,6 @@
       <div class="tab-pane fade" id="messages">
           <h2> Select your Meal< </h2>
 		  	 <section id="funStoryTileView">
-        <div class="container fsContainer">
             <div class="row">
                 <div class="col-md-3 col-sm-3">
 				<div class="tileView">
@@ -710,15 +708,15 @@
                     </div>
 					
 					</div>
-        </div>
     </section>
 
           
       </div>
     
     </div>
+    </div>
     
-    <div class="col-xs-3">
+    <div class="col-xs-3 orderSummary">
     	<div class="selectedItems">
     		<div class="cart-summary side-bar-contents" >
     <div class="summary mbot">
@@ -735,18 +733,20 @@
                 <div class="details">
                     <span class="name">
                     
-                        <a>Plain Biriyani</a>
+                        Plain Biriyani
                     </span>
                     </div>
                  
-                    <div class="count left clear ">
-                       <div class="super_number">
-                            <a class="dec"></a>
+                    <div class="count floatL clear ">
+                       <div class="super_number floatL">
+                            <a class="dec"><img src="images/decrease.png" alt="decrease button" /></a>
                             <input type="text" value="1" disabled="">
-                            <a class="inc"></a>
+                            <a href="#" class="inc">
+          <img src="images/addIcon.png" alt="Add button" />
+        </a>
                         </div>
 
-                        <div class="quantity left">x Rs.139.00</div>
+                        <div class="quantity floatL">x Rs.139.00</div>
                    </div>
 
                        <div class="price item-price ">
@@ -771,11 +771,7 @@
 
            </ul>
        </div>
-       
-       <div class="mtop ptop0 default-section-title special-instruction-heading spl_template">Special Cooking Instructions</div>
-        <div class="special-instruction spl_template">
-            <textarea placeholder="Eg: 'No Mayo!' Please enter any additional information about your order."></textarea>
-        </div>
+ 
         
            </div>
     <div class="min-order  hidden ">
@@ -786,7 +782,7 @@
     </div>
      
     <div class="cart-actions-sticky">
-        <div class="cart-actions btn-big stickybot btn-blast btn btn--green checkout">
+        <div class="cart-actions btn-big stickybot btn-blast btn btn-primary checkout">
             Continue
         </div>
     </div>
@@ -794,9 +790,26 @@
 </div>
     	</div>
     </div>
+	
 	</div>
 	</div>
 	</div>
+<script>
+$(document).ready(function(e){
+	var $checks = $("#answer > div input:checkbox").change(function (e) {
+	    $divs.stop(true);
 
+	    var $div = $(this).parent();
+	    var $sibs = $divs.not($div)[this.checked ? 'slideUp' : 'slideDown']();
+	    $div.slideDown();
+
+	    $sibs.find('input:checkbox').prop('checked', false);
+	    $("#checkbtn").toggle($checks.filter(':checked').length > 0);
+	})
+
+	
+
+});
+</script>
 </body>
 </html>
