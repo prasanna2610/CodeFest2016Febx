@@ -6,7 +6,6 @@
 <link rel="stylesheet" type="text/css" href="css/admin.css">
 <script src="js/jquery.1.11.0.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/adminPage.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 <script
