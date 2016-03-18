@@ -34,7 +34,8 @@ function createTransactionTable(transactiondetails) {
 	var iVal = 1; 
 	$.each(transactiondetails,function(i,obj){
 		var tableRow=$('<tr id=MmenuTableRow'+iVal+'>');
-		var tableData=$('<td>').text(obj.date).appendTo(tableRow);
+		
+		var tableData=$('<td>').text(obj.dateString).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.transactionId).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.userId).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.menuName).appendTo(tableRow);
