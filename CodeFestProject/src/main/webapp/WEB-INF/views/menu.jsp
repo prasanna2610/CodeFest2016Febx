@@ -791,6 +791,12 @@
         </div>
     </div>
     
+    <div style="float:right">
+	<form method="post" action="/sendSMS" >
+			<input type="submit" value="Confirm"/>
+			</form>
+	</div>
+    
 </div>
        </div>
     </div>
