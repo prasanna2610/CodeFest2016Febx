@@ -96,9 +96,8 @@ public class VendorController {
 			@RequestParam(value="price", required=true) Integer price,
 			@RequestParam(value="quantity", required=true) Integer quantity
 			){
-		
 		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
-		String INSERT_SQL = "INSERT INTO  MENU(MENU_NAME, MENU_DESCRIPTION,PRICE,quantity,vendor_id,availability,menu_id) VALUES (?,?,?,?,?"+ ",nextval('MENU_SEQ') )";
+		String INSERT_SQL = "INSERT INTO  MENU(MENU_NAME, MENU_DESCRIPTION,PRICE,quantity,vendor_id,availability,menu_id) VALUES (?,?,?,?,?,?"+ ",nextval('MENU_SEQ') )";
 		jdbcTemplate.update(INSERT_SQL,
 				new Object[] {menuName, desc,price,quantity,vendorId,quantity
 
