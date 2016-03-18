@@ -1,34 +1,85 @@
-/*window.onload = function () {
-	chartLoad();
-}*/
+window.onload = function () {
 
-$( document ).ready(function() {
 	$("#userName").val('');
 	$("#passWord").val('');
+	var jsonVednorObj=[];
 	var responseObj;
+	console.log("1 st");
 	getVendorList();
 	jQuery(document).on('click','.vendorListLinks',function(){
 		var vendorId=$(this).attr('id');
 		getVendorDetails(vendorId);
 	});
-	$('.profile-edit').click(function(e) {
+	jQuery(document).on('click','.profile-edit',function(e){
+		var vendorDetArr={};
 		if($(this).hasClass('edit-info')) {
-	    $(this).parents('.profile-content-list').find('li.label-value').each(function(){
-		$(this).parents('.profile-content-list').find('li.label-value')[0].focus();
-	   	$(this).attr('contenteditable','true');
-	   	})
-	   	$(this).removeClass('edit-info').addClass('update-info');
+		    $('.profile-content-list').find('li.label-value').each(function(a,b){
+		    	if(a > 0){
+		    		$(b).attr('contenteditable','true');
+		    	}
+			})
+			$('.firstEdit').focus();
+		   	$(this).removeClass('edit-info').addClass('update-info');
 		}
 		else {
-		$(this).parents('.profile-content-list').find('li.label-value').each(function(){
-	    $(this).attr('contenteditable','false');
-	    });
-	    $(this).removeClass('update-info').addClass('edit-info');
+			$('.profile-content-list').find('li.label-value').each(function(){
+				$(this).attr('contenteditable','false');
+				
+				var descText=$(this).prev().text().replace(/ /g,'');
+				var valueText=$(this).text();
+				vendorDetArr[descText]=valueText;
+				
+			});
+			jsonVednorObj.push(vendorDetArr);
+			console.log(jsonVednorObj[0].VendorId);
+			$(this).removeClass('update-info').addClass('edit-info');
+			updateVendorInfo(jsonVednorObj[0],jsonVednorObj[0].VendorId);
 		}
 	});
+	 //$('#example').DataTable();
+	jQuery(document).on('click','#vendorSubmit',function(){
+		 createVendor();
+	 });
+	 
 	//chartLoad();
 	
-});
+};
+function createVendor(){
+	$.ajax({
+		  url: "admin/create",
+		  dataType: "text",
+		  type:'post',
+		  data: {
+			  vendorName:  $('#vendor_name').val(),
+			  inCharge : $('#inCharge').val(),
+			  passwordF : $('#passwordF').val(),
+			  venDetails : $('#details').val(),
+			  email : $('#email').val(),
+			  mobileNumber : $('#mob_no').val()
+		  },
+		  success: function(data){
+			  $('#myModal').modal('hide');
+			  $('#vendorListViewer').remove();
+			  getVendorList();
+		  }
+		});
+	
+	
+}
+function updateVendorInfo(jsonPostData,vendorId){
+	
+	var jsonString = JSON.stringify(jsonPostData);
+	alert("update");
+	$.ajax({
+		  url: "admin/edit/"+vendorId,
+		  dataType: "json",
+		  type:'post',
+		  contentType:'application/json; charset=utf-8',
+		  data: jsonString,
+		  success: function(data){
+		  }
+	});
+}
 function chartLoad(transactionDetails){
 	console.log(transactionDetails);
 	CanvasJS.addColorSet("greenShades",
@@ -90,7 +141,7 @@ function getVendorList(){
 			  createVendorTable(responseObj[0].transaction);
 			  createVendorUpdate(responseObj[0]);
 			  createChartData();
-			  chartLoad(responseObj[0].transaction);
+			  //chartLoad(responseObj[0].transaction);
 		  }
 		  
 		});
@@ -130,10 +181,11 @@ function createChartData(){
 	
 }
 function generateVendorList(vendorDetails){
-	var vendorListSecCont=jQuery('<div>',{class:'navbar-collapse collapse sidebar-navbar-collapse'});
+	console.log("generateVendorList");
+	var vendorListSecCont=jQuery('<div>',{class:'navbar-collapse collapse sidebar-navbar-collapse',id:'vendorListViewer'});
 	var listContainer=jQuery('<ul>',{class:'nav nav-pills nav-stacked vendor-list',id:'venListConte'});
 	$.each(vendorDetails,function(i,obj){
-		var listArr=jQuery('<li role="presentation"><a href="#" class="vendorListLinks" id="'+obj.vendorId+'">'+obj.vendorName+'</a></li>');
+		var listArr=jQuery('<li role="presentation"><a href="#" class="vendorListLinks" data-toggle="tab" id="'+obj.vendorId+'">'+obj.vendorName+'</a></li>');
 		listContainer.append(listArr);
 	});
 	var listNewImageSec=jQuery('<li role="presentation"><a href="#myModal" role="button" data-toggle="modal"> <img src="images/add-user.jpg" alt="add vendor" class="add-vendor"/><span class="sr-only">Create new</span> </a></li>');
@@ -161,7 +213,7 @@ function getVendorDetails(vendorId){
 				createVendorTable(responseObj.transaction);
 				createVendorUpdate(responseObj);
 				createChartData();
-				chartLoad(responseObj.transaction);
+				//chartLoad(responseObj.transaction);
 		  }
 		  
 		});
@@ -201,7 +253,7 @@ function createVendorUpdate(vendorDetails){
 	var listVendorId=jQuery('<li class="label">Vendor Id</li><li class="label-value" contenteditable="false">'+vendorDetails.vendorId+'</li>');
 	listContId.append(listVendorId);
 	var listContName=jQuery('<ul>');
-	var listVendorName=jQuery('<li class="label">Vendor Name</li><li class="label-value" contenteditable="false">'+vendorDetails.vendorName+'</li>');
+	var listVendorName=jQuery('<li class="label">Vendor Name</li><li class="label-value firstEdit" contenteditable="false">'+vendorDetails.vendorName+'</li>');
 	listContName.append(listVendorName);
 	var listContPOC=jQuery('<ul>');
 	var listVendorPOC=jQuery('<li class="label">Incharge</li><li class="label-value" contenteditable="false">'+vendorDetails.incharge+'</li>');

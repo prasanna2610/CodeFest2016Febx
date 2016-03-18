@@ -2,7 +2,7 @@
 <!doctyle html>
 <html>
 <head>
-	<title>Place order</title>
+	<title>Admin </title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/header.css" >
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
 <input type="hidden" id="vendorModelVal" name="vendorModelDet" value="${vendorInfoObj[0].transaction}">
 <input type="hidden" id="userName" name="userName" value='${userName}'>
-  <div class="col-sm-3">
+  <div class="col-sm-3" id=vendorListMainWrapper">
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header" id="adminNaveBar">
@@ -71,11 +71,11 @@
 			          Update
 			          </a>
 			     </li>
-			     <li>
+			     <!-- <li>
 			          <a href="#messages" role="tab" data-toggle="tab">
 			              Comparison chart
 			          </a>
-			     </li>
+			     </li> -->
 			  </ul>
 		      <!-- <div class="tab-pane fade" id="messages">
 		         
@@ -118,30 +118,36 @@
 										</div>
 										
 										<div class="form-group row">
-										<label for="vendor_id" class="control-label col-xs-3"> Vendor ID</label>
-										<div class="col-xs-8">	
-										<input type="text" name="vendor_id" id="vendor_id" class="form-control">
+										<label for="poc" class="control-label col-xs-3">Person Incharge</label>
+										<div class="col-xs-8">
+											<input type="text" name="Person Incharge" id="inCharge" class="form-control" >
 										</div>
 										</div>
-								
-								<div class="form-group row">
-								<label for="poc" class="control-label col-xs-3">Person Incharge</label>
-								<div class="col-xs-8">
-									<input type="text" name="Person Incharge" id="poc" class="form-control" >
-								</div>
-								</div>
-								<div class="form-group row">
-									<label for="email" class="control-label col-xs-3">Email Address</label>
-									<div class="col-xs-8">
-									<input type="email" name="email" id="email" class="form-control" >
-								</div>
-								</div>
-								<div class="form-group row">
-									<label for="mob_no" class="control-label col-xs-3">Mobile Number</label>
-									<div class="col-xs-8">
-									<input type="number" name="mob_no" id="mob_no" class="form-control" >
-								</div>
-								</div>
+										<div class="form-group row">
+										<label for="poc" class="control-label col-xs-3">Password</label>
+										<div class="col-xs-8">
+											<input type="text" name="Person Incharge" id="passwordF" class="form-control" >
+										</div>
+										</div>
+										<div class="form-group row">
+										<label for="poc" class="control-label col-xs-3">Details</label>
+										<div class="col-xs-8">
+											<input type="text" name="Person Incharge" id="details" class="form-control" >
+										</div>
+										</div>
+										<div class="form-group row">
+											<label for="email" class="control-label col-xs-3">Email Address</label>
+											<div class="col-xs-8">
+											<input type="email" name="email" id="email" class="form-control" >
+										</div>
+										</div>
+										<div class="form-group row">
+											<label for="mob_no" class="control-label col-xs-3">Mobile Number</label>
+											<div class="col-xs-8">
+											<input type="number" name="mob_no" id="mob_no" class="form-control" >
+										</div>
+										</div>
+										
 								
 								</div>
 							</form>
@@ -150,17 +156,12 @@
 	            </div>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	                <button type="button" class="btn btn-primary">Save changes</button>
+	                <button type="button" class="btn btn-primary" id="vendorSubmit" data-dismiss="modal">Create</button>
 	            </div>
 	        </div>
 	    </div>
 	</div>
 </div>
-<script>
-$(document).ready(function() {
-    $('#example').DataTable();
-} );
 
-</script>
 </body>
 </html>
