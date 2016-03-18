@@ -1,6 +1,7 @@
 package com.codefest.main.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Transaction implements Serializable{
@@ -18,7 +19,16 @@ public class Transaction implements Serializable{
 	private String menuName;
 	
 	private Long Price;
+	
+	private Long quantity;
 
+	private String dateString;
+	
+	public String getDateString(){
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
+		return formatter.format(this.date);
+	}
+	
 	public Long getPrice() {
 		return Price;
 	}
@@ -65,6 +75,14 @@ public class Transaction implements Serializable{
 
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
+	}
+
+	public Long getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
 	}
 
 }

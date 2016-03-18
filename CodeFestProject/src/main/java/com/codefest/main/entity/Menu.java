@@ -17,6 +17,16 @@ public class Menu implements Serializable{
 	private Long Price;
 	
 	private String availability;
+	
+	private String quantity;
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
 
 	public Long getMenuId() {
 		return menuId;
