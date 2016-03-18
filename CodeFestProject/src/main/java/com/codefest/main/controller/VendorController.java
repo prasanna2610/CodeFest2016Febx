@@ -40,7 +40,7 @@ public class VendorController {
 			entityObj = entityClass.newInstance();
 			menu = jdbcTemplate.query(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()),vendorId);
 			ObjectMapper mapper = new ObjectMapper();
-			if(menu!=null && menu.size()<0){
+			if(menu!=null && menu.size()>0){
 			Long menuID = menu.get(0).getMenuId();
 			 msg = mapper.writeValueAsString(menu);
 			}
@@ -67,9 +67,9 @@ public class VendorController {
 		
 		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
 		//Quantity, availability
-		String UPDATE_SQL = "UPDATE MENU  SET MENU_NAME=? , MENU_DESCRIPTION  =?,PRICE =? WHERE MENU_ID =? and vendor_id=?";
+		String UPDATE_SQL = "UPDATE MENU  SET MENU_NAME=? , MENU_DESCRIPTION  =?,PRICE =?,quantity=? WHERE MENU_ID =? and vendor_id=?";
 		jdbcTemplate.update(UPDATE_SQL,
-				new Object[] {menuName, desc,price,menuId,vendorId
+				new Object[] {menuName, desc,price,quantity,menuId,vendorId
 
 		});
 		return null;
@@ -98,9 +98,9 @@ public class VendorController {
 			){
 		
 		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
-		String INSERT_SQL = "INSERT INTO  MENU(MENU_NAME, MENU_DESCRIPTION,PRICE,quantity,vendor_id,menu_id) VALUES (?,?,?,?,?"+ ",nextval('MENU_SEQ') )";
+		String INSERT_SQL = "INSERT INTO  MENU(MENU_NAME, MENU_DESCRIPTION,PRICE,quantity,vendor_id,availability,menu_id) VALUES (?,?,?,?,?"+ ",nextval('MENU_SEQ') )";
 		jdbcTemplate.update(INSERT_SQL,
-				new Object[] {menuName, desc,price,quantity,vendorId
+				new Object[] {menuName, desc,price,quantity,vendorId,quantity
 
 		});
 		return null;
