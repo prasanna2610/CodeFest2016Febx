@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.codefest.main.config.HttpSessionObjectStore;
 import com.codefest.main.entity.Menu;
 
 @Controller
@@ -28,17 +29,21 @@ public class VendorController {
 	public String getMenuDetails() {
 		System.out.println("Entered getAdminPage");
 		String msg=null;
+		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
+		
 		try {
 			List<Menu> menu = new ArrayList<>();
 			Class<?> entityClass = null;
 			Object entityObj = null;
-			String sqlVendor = "SELECT * FROM MENU;";
+			String sqlVendor = "SELECT * FROM MENU where vendor_id= ?";
 			entityClass = Class.forName("com.codefest.main.entity.Menu");
 			entityObj = entityClass.newInstance();
-			menu = jdbcTemplate.query(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()));
+			menu = jdbcTemplate.query(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()),vendorId);
 			ObjectMapper mapper = new ObjectMapper();
+			if(menu!=null && menu.size()<0){
 			Long menuID = menu.get(0).getMenuId();
 			 msg = mapper.writeValueAsString(menu);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -60,10 +65,11 @@ public class VendorController {
 			@RequestParam(value="menuId", required=true) Long menuId 
 			){
 		
+		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
 		//Quantity, availability
-		String UPDATE_SQL = "UPDATE MENU  SET MENU_NAME=? , MENU_DESCRIPTION  =?,PRICE =? WHERE MENU_ID =? ";
+		String UPDATE_SQL = "UPDATE MENU  SET MENU_NAME=? , MENU_DESCRIPTION  =?,PRICE =? WHERE MENU_ID =? and vendor_id=?";
 		jdbcTemplate.update(UPDATE_SQL,
-				new Object[] {menuName, desc,price,menuId
+				new Object[] {menuName, desc,price,menuId,vendorId
 
 		});
 		return null;
@@ -74,10 +80,10 @@ public class VendorController {
 	@SuppressWarnings("all")
 	@ResponseBody
 	public String deleteMenu(@RequestParam(value="menuId", required=true) Long menuId ){
-		
+		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
 		System.out.println(menuId);
-		String DELETE_SQL = "DELETE FROM  MENU   WHERE MENU_ID =? ";
-		jdbcTemplate.update(DELETE_SQL,new Object[] {menuId});
+		String DELETE_SQL = "DELETE FROM  MENU   WHERE MENU_ID =? and vendor_id=?";
+		jdbcTemplate.update(DELETE_SQL,new Object[] {menuId,vendorId});
 		return null;
 	}
 	
@@ -90,10 +96,11 @@ public class VendorController {
 			@RequestParam(value="price", required=true) Integer price,
 			@RequestParam(value="quantity", required=true) Integer quantity
 			){
-		//VENDOR id VENDOR_ID 
+		
+		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
 		String INSERT_SQL = "INSERT INTO  MENU(MENU_NAME, MENU_DESCRIPTION,PRICE,quantity,vendor_id,menu_id) VALUES (?,?,?,?,?"+ ",nextval('MENU_SEQ') )";
 		jdbcTemplate.update(INSERT_SQL,
-				new Object[] {menuName, desc,price,quantity,123
+				new Object[] {menuName, desc,price,quantity,vendorId
 
 		});
 		return null;
