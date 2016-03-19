@@ -24,6 +24,16 @@ public class Transaction implements Serializable{
 
 	private String dateString;
 	
+	private String delivered = "N";
+	
+	public String getDelivered() {
+		return delivered;
+	}
+
+	public void setDelivered(String delivered) {
+		this.delivered = delivered;
+	}
+
 	public String getDateString(){
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd");
 		return formatter.format(this.date);

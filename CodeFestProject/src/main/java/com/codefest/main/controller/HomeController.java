@@ -1,7 +1,10 @@
 package com.codefest.main.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -44,7 +47,8 @@ public class HomeController {
 	public String hello(
 			@RequestParam(value = "userName", required = true) String userName1,
 			@RequestParam(value = "passWord", required = true) String passWord1,
-			Model model) {
+			Model model,
+			HttpServletResponse response) throws IOException {
 
 		HomeVO homevoObject = new HomeVO();
 		homevoObject.setUserName(userName1);
@@ -77,7 +81,7 @@ public class HomeController {
 			} else if (user.get(0).getUserType().equalsIgnoreCase("admin")) {
 				returnString = "admin";
 			} else if (user.get(0).getUserType().equalsIgnoreCase("user")) {
-				returnString = "menu";
+				response.sendRedirect("/order");;
 			}
 			HttpSessionObjectStore.setObject("userId", user.get(0).getUserId());
 		}

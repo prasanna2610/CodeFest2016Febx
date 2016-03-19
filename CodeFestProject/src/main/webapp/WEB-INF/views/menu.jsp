@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>>
 <!doctyle html>
 <html>
 <head>
@@ -11,1069 +12,363 @@
 
 </head>
 <body>
-<div class="wrap">
+	<div class="wrap">
 
-         <header class="navbar landing-header hidden-xs">
-			
-              </header>
-<div class="container">
-<div class="row">
-	<div class="col-md-9 tabContent">
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs" id="myTab" role="tablist" id="sidebar-nav">
-      <li class="active">
-          <a href="#home" role="tab" data-toggle="tab">
-                           ISS
-          </a>
-      </li>
-      <li><a href="#profile" role="tab" data-toggle="tab">
-          Viruthunagar
-          </a>
-      </li>
-      <li>
-          <a href="#messages" role="tab" data-toggle="tab">
-              Sai Dosa
-          </a>
-      </li>
-    </ul>
-    
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <div class="tab-pane fade active in" id="home">
-          <h2>Select your Meal</h2>
-                <div class="row">
-					 <section>
-						<div class="fsContainer">
-							<div class="row menu-row">
-                <div class="col-md-3 col-sm-3">
-				<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-										<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					</div>
-								</article>
-                            <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-				<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					</div>
-								</article>
-                            <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-				<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					</div>
-								</article>
-                            <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-					<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					</div>
-								</article>
-                            <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                           </div>
-                           <div class="row">
-                <div class="col-md-3 col-sm-3">
-				<div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-					<div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-						<img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					</div>
-                        </div>
-                    </div>
-                                  
-                                  <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                            <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-                                                              <input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="date">04/28/2014</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-                                                              <input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  </div>
-                                  <div class="row">
-                                  <div class="col-md-3 col-sm-3">
-				<div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-					<div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-						<img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					</div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                            <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-                                                              <input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                     <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="date">04/28/2014</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-                                                              <input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-								<p>
-                                  </div>
-        </div>
-    </section>
-     </div>
-       <a class="btn btn-success btn-lg" href="#proceed" role="button" data-toggle="modal">Proceed</a>
-      </div>
-      <div class="tab-pane fade" id="profile">
-         <h2> Select your Meal </h2>
-                     <section id="funStoryTileView">
-        <div class="container fsContainer">
-            <div class="row">
-               <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                   <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-                                                              <input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-                                                              <input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-                                                       <div class="tileView">
-                                                       <article class="caption">
-                                                              <img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-                                                              <div class="caption_overlay">
-                                                                     <h3 class="caption_overlay_title"> Menu Items...</h3>
-                                                                     <p class="caption_overlay_content">
-                                                                           <ul>
-                                                                           <li>Sambar Rice</li>
-                                                                           <li>Lemon Rice</li>
-                                                                           <li>Curd Rice</li>
-                                                                           <li>addaasd</li>
-                                                                           </ul>
-                                                                     </p>
-                                                              </div>
-                                                       </article>
-                                                <div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-                                                       </p>
-                                                       <p>
-                                                              <label for="select-item"> Select item </label>
-                                                              <input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <div class="col-md-3 col-sm-3">
-				<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					</div>
-								</article>
-							<div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-					<div>
-						<img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-								</article>
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					<div>
-								</article>
-							<div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-						<img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                </p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-								<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-									</div>
-								</article>
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-										<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					<div>
-								</article>
-							<div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-						<img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-					
-        </div>
-    </section>
-     </div>
-	<a class="btn btn-success btn-lg" href="#proceed" role="button" data-toggle="modal">Proceed</a>
-      </div>
-      <div class="tab-pane fade" id="profile">
-         <h2> Select your Meal </h2>
-		 	 <section id="funStoryTileView">
-            <div class="row">
-               <div class="col-md-3 col-sm-3">
-								<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-									</div>
-								</article>
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-					<div>
-								</article>
-							<div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="price">Rs. 40</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-						<img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                </p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-								<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-									</div>
-								</article>
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                    <span class="divider">&nbsp;</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3">
-								<div class="tileView">
-								<article class="caption">
-									<img src="images/lays_one.png" class="feedThumb img-responsive caption_media" alt="" />
-									<div class="caption_overlay">
-										<h3 class="caption_overlay_title"> Menu Items...</h3>
-										<p class="caption_overlay_content">
-											<ul>
-											<li>Sambar Rice</li>
-											<li>Lemon Rice</li>
-											<li>Curd Rice</li>
-											<li>addaasd</li>
-											</ul>
-										</p>
-									</div>
-								</article>
-							<div class="fContent">
-                                <h2 class="menu-name">Mini Meals</h2>
-                                <p>
-                                    <span class="date">04/28/2014</span>
-								</p>
-								<p>
-									<label for="select-item"> Select item </label>
-									<input type="checkbox" name="select" id="select-item" value="select menu">
-                                  </div>
-                    </div>
-                 
-                    
-                    </div><div class="col-md-3 col-sm-3">
-
-                                 
-      </div>
-      <div class="tab-pane fade" id="messages">
-          <h2> Select your Meal< </h2>
-                      <section id="funStoryTileView">
-            <div class="row">
-                <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                               <h2>Lays "Do Us a flavor" Finalists</h2>
-
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                   
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-                                  <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                           </div>
-                           <div class="row">
-                <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  
-                                  <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                   
-                                </p>
-                            </div>
-                        </div>
-                    </div><div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  </div>
-                                  <div class="row">
-                <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                    Lays "Do Us a flavor" Finalists <a href="#">Read More...</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  <div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                                <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                   
-                                </p>
-                            </div>
-                        </div>
-                    </div><div class="col-md-3 col-sm-3">
-                           <div class="tileView">
-                                  <div>
-                                         <img src="images/lays_one.png" class="feedThumb img-responsive" alt="" />
-                                  </div>
-
-                            <div class="fContent">
-                               <h2>Lays "Do Us a flavor" Finalists</h2>
-                                <p>
-                                    <span class="divider">&nbsp;</span>
-                                    <span class="date">04/28/2014</span>
-                                 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                                  
-                                  </div>
-    </section>
-
-          
-      </div>
-    
-    </div>
-    
-	<div id="myModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-              <div class="cart-summary side-bar-contents" >
-    <div class="summary mbot">
-        <h2>Your Order</h2>
-                
-       
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title">Enter vendor details</h2>
-                
-
-                
-                <li data-index="0">
-
-                <div class="details">
-                    <span class="name">
-                    
-                        <a>Plain Biriyani</a>
-                    </span>
-       
-                 
-            <div class="modal-body">
-                <div class="row">
-                
-		
-                
+		<header class="navbar landing-header hidden-xs"> </header>
+		<div class="container">
 			<div class="row">
-                            <input type="text" value="1" disabled="">
-					<div class="col-xs-8">
-                        <input type="text" name="vendor_name" id="vendor_name" class="form-control" >
-                    
-                        Plain Biriyani
-                    </span>
+				<div class="col-md-9 tabContent">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" id="myTab" role="tablist" id="sidebar-nav">
+						<c:forEach items="${vendorList}" var="vendor" varStatus="i">
+							<c:choose>
+								<c:when test="${i.index==0}">
+									<li class="active"><a class="menu-tab" href="#home"
+										role="tab" data-toggle="tab"> <c:out
+												value="${vendor.vendorName}" />
+									</a> <span class="vendor-id" style="display: none;"><c:out
+												value="${vendor.vendorId}" /></span></li>
+								</c:when>
+								<c:otherwise>
+									<li class=""><a class="menu-tab" href="#home" role="tab"
+										data-toggle="tab"> <c:out value="${vendor.vendorName}" />
+									</a> <span class="vendor-id" style="display: none;"><c:out
+												value="${vendor.vendorId}" /></span></li>
+								</c:otherwise>
+							</c:choose>
 
-                        <div class="quantity left">x Rs.139.00</div>
+						</c:forEach>
+					</ul>
+
+					<!-- Tab panes -->
+					<div id="main-content" class="tab-content">
+						<c:if
+							test="${(not empty vendorList) && (not empty vendorList[0].menu) }">
+							<div class="" id="menu-list">
+								<h2>Select your Meal</h2>
+
+								<div class="row">
+									<section>
+										<div class="fsContainer">
+											<c:forEach items="${vendorList[0].menu }" var="menu"
+												varStatus="i">
+												<c:set var="idVar" value="${i.index}"></c:set>
+												<div class="col-md-3 col-sm-3">
+													<div class="tileView">
+														<article class="caption">
+															<img src="images/lays_one.png"
+																class="feedThumb img-responsive caption_media" alt="" />
+															<div class="caption_overlay">
+																<h3 class="caption_overlay_title">Menu Items...</h3>
+																<p class="caption_overlay_content">
+																<ul>
+																	<li><c:out value="${menu.menuDescription}" /></li>
+																</ul>
+																</p>
+															</div>
+														</article>
+														<div class="fContent">
+															<span class="menu-id" style="display: none"><c:out
+																	value="${menu.menuId}" /></span>
+															<h2 class="menu-name">
+																<c:out value="${menu.menuName}" />
+															</h2>
+															<p>
+																<span class="price"><c:out value="${menu.price}" /></span>
+															</p>
+															<p class="checkbox">
+																<label for="select-item"> Select item </label> <input
+																	id="${idVar}" type="checkbox" name="select"
+																	class="select-item" value="select menu">
+															</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</div>
+									</section>
+								</div>
+							</div>
+				<!-- a class="btn btn-success btn-lg" href="#proceed" role="button" data-toggle="modal">Proceed</a> -->
+						</c:if>
 					</div>
-					
-					<div class="form-group row">
-					<label for="vendor_id" class="control-label col-xs-3"> Vendor ID</label>
-					<div class="col-xs-8">	
-                            <a class="dec"><img src="images/decrease.png" alt="decrease button" /></a>
-					<input type="text" name="vendor_id" id="vendor_id" class="form-control">
-                            <a href="#" class="inc">
-          <img src="images/addIcon.png" alt="Add button" />
-        </a>
-                        </div>
-                   <div class="clear"></div>
+				</div>
 
-                        <div class="quantity floatL">x Rs.139.00</div>
-                </li>
-                
-            </ul>
-            <ul class="totals clear">
+				<div class="col-xs-3 orderSummary">
+					<div class="selectedItems">
+						<div class="cart-summary side-bar-contents">
+							<div class="summary mbot">
+								<h2>Your Order</h2>
 
-			<div class="form-group row">
-			<label for="poc" class="control-label col-xs-3">Person Incharge</label>
-			<div class="col-xs-8">
-                    <div>
-                        <span class="name">Subtotal</span>
-                        <span class="price">Rs.139.00</span>
-			</div>
-                </li>
-            
 
-           </ul>
-				<label for="email" class="control-label col-xs-3">Email Address</label>
-				<div class="col-xs-8">
-				<input type="email" name="email" id="email" class="form-control" >
-            <textarea placeholder="Eg: 'No Mayo!' Please enter any additional information about your order."></textarea>
-                </li>
-            </ul>
-			<div class="form-group row">
-				<label for="mob_no" class="control-label col-xs-3">Mobile Number</label>
-				<div class="col-xs-8">
-				<input type="number" name="mob_no" id="mob_no" class="form-control" >
-        
-                    <div>
-                        <span class="name">Subtotal</span>
-        <div class="cart-actions btn-big stickybot btn-blast btn btn--green checkout">
-            Continue
+								<div id="summary-inner" class="summary-inner">
+									<ul class="order-items">
+									</ul>
+									<ul class="totals clear">
+
+										<li class="subtotal2 clear">
+
+											<div>
+												<span class="name">Subtotal</span> <span class="price"><span>Rs.</span><span
+													id="subtotal"></span></span>
+											</div>
+										</li>
+
+
+									</ul>
+								</div>
+
+
+							</div>
+							<div class="min-order  hidden ">Sorry, this restaurant does
+								not accept delivery order below Rs.99.00. Your total order
+								amounts to Rs.139.00.</div>
+
+							<div class="cart-actions-sticky">
+								<div id="checkout"
+									class="cart-actions btn-big stickybot btn-blast btn btn-primary checkout">
+									Continue</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
 			</div>
-                </li>
-            
-			
-           </ul>
+		</div>
+		<div id="Searching_Modal" class="modal fade" tabindex="-1"
+			role="dialog" data-keyboard="false" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" style="text-align: center">
+						<h3>Processing your Order</h3>
+					</div>
+					<div class="modal-body">
+						<div style="height: 200px">
+							<span id="searching_spinner_center"
+								style="position: absolute; display: block; top: 50%; left: 50%;"></span>
+						</div>
+					</div>
+					<div class="modal-footer" style="text-align: center"></div>
+				</div>
 			</div>
-    
-    <div style="float:right">
-	<form method="post" action="/sendSMS" >
-			<input type="submit" value="Confirm"/>
- 
-        
-           </div>
-    <div class="min-order  hidden ">
-        Sorry, this restaurant does not accept delivery order below Rs.99.00.
-        Your total order amounts to Rs.139.00.
-        
-    </div>
-     
-    <div class="cart-actions-sticky">
-        <div class="cart-actions btn-big stickybot btn-blast btn btn-primary checkout">
-            Continue
-            </div>
-    </div>
-    
-        </div>
-    </div>
+		</div>
 	</div>
-	
 
+	<script>
+		$(document)
+				.ready(
+						function(e) {
+							var count = 0;
+							var totalSum = 0;
+							$(".select-item").on("change", "[type=checkbox]", function(e) {
+								if ($(this).attr("checked")) {
+									if (value + 1 > 5) {
+										alert("You cannot order more than 5 items at a time.")
+									} else {
+										var i = $(this).getAttr("id").split("-")[1];
+										var html = $("#summary-inner").html();
+										html += "<li id='summary-item-"+ i + "' data-index='0'>";
+										html += "<div class='details'><span class='name'>";
+										var menuName = $(this).parentsUntil(".fContent").find(".menu-name").text();
+										var price = $(this).parentsUntil(".fContent").find(".price").text();
+										html += menuName + "</span></div>";
+										html += "<div class='count floatL clear '><div class='super_number floatL'><a class='dec'><img src='images/decrease.png' alt='decrease button' /></a>";
+										html += "<input class='quantity' type='text' value='1' disabled=''><a href='#' class='inc'><img src='images/addIcon.png' alt='Add button' /></a></div>";
+										html += "<div class='quantity floatL'>x "
+												+ price
+												+ "</div></div><div class='price item-price '>"
+												+ price
+												+ "/div>";
+										html += "<div class='clear'></div></li>";
+										$("#summary-inner")
+												.html(html);
+										totalSum += price;
+										count++;
+										$("#subtotal").text(
+												totalSum);
+									}
+								} else {
+									var j = $(this).getAttr(
+											"id").split("-")[1];
+									if ($("#summary-item-" + j)) {
+										$("#summary-item-" + j)
+												.remove();
+										count--;
+									}
+								}
+
+							});
+
+							$(".inc").click(function() {
+								var quantity = $(this).parent()
+										.find(".quantity");
+								if (quantity) {
+									var value = quantity.val();
+									if (value + 1 > 5) {
+										alert("You cannot order more than 5 at a time.")
+									} else {
+										quantity.val(value + 1);
+										var sum = $(this)
+												.parent()
+												.find(
+														".item-price")
+												.text();
+										var total = (value + 1)
+												* sum;
+										$(this).parent().find(
+												".item-price")
+												.text(total);
+										totalSum += total;
+										$("#subtotal").text(
+												totalSum);
+									}
+								}
+							});
+
+							$(".dec").click(function() {
+								var quantity = $(this).parent()
+										.find(".quantity");
+								if (quantity) {
+									var value = quantity.val();
+									if (value - 1 == 0) {
+										alert("Please unselect the item to remove.")
+									} else {
+										quantity.val(value - 1);
+										var sum = $(this)
+												.parent()
+												.find(
+														".item-price")
+												.text();
+										var total = (value - 1)
+												* sum;
+										$(this).parent().find(
+												".item-price")
+												.text(total);
+										totalSum -= total;
+										$("#subtotal").text(
+												totalSum);
+									}
+								}
+							});
+
+							$(".menu-tab").click(
+									function() {
+										var vendorId = $(this).parent().find(
+												".vendor-id").text();
+										if (vendorId) {
+											var url = "/order/menu/" + vendorId;
+											$.ajax({
+												url : url,
+												dataType : "text",
+												type : 'get',
+												success : function(data) {
+													if(data){
+														responseObj = JSON.parse(data);
+														createMenu(responseObj);
+													
+													}else{
+														$("#main-content").html("<div class='alert alert-danger'>Error fetching Menu list.</div>");
+													}
+												}
+											});
+										}
+									});
+
+							function createMenu(details) {
+								$("#main-content").html('');
+								if (details && details.menu && details.menu.length>0) {
+									var html = "<div class='' id='menu-list'><h2>Select your Meal</h2><div class='row'><section><div class='fsContainer'>";
+									var iVal = 0;
+									$.each(details.menu,function(i, obj) {
+										if(obj){
+											html += "<div class='col-md-3 col-sm-3'><div class='tileView'>";
+											html += "<article class='caption'><img src='images/lays_one.png' class='feedThumb img-responsive caption_media' alt='' />";
+											html += "<div class='caption_overlay'><h3 class='caption_overlay_title'>Menu Items...</h3><p class='caption_overlay_content'><ul><li>";
+											html += obj.menuDescription
+													+ "</ul></p></div></article>"
+											html += "<div class='fContent'><span class='menu-id' style='display:none'>"
+													+ obj.menuId
+													+ "</span>";
+											html += "<h2 class='menu-name'>"
+													+ obj.menuName
+													+ "</h2><p><span class='price'>"
+													+ obj.price
+													+ "</span></p>";
+											html += "<p class='checkbox'><label for='select-item'> Select item </label> ";
+											html += "<input id=item-'" + iVal +"' type='checkbox' name='select' class='select-item' value='select menu'></p></div></div></div>";
+											iVal++;
+										}
+									});
+									html += "</div></section></div></div>";
+									$("#main-content").html(html);
+								} else {
+									$("#main-content").html("<div class='alert alert-danger'>No menu available for this vendor.</div>");
+								}
+							}
+							$("#checkout").click(function() {
+												var menuList = [];
+												var menuItem = {};
+												$(".fContent")
+														.each(
+																function() {
+																	var menuId = $(
+																			this)
+																			.find(
+																					".menu-id");
+																	var id = $(
+																			this)
+																			.find(
+																					".select-item")
+																			.attr(
+																					"id");
+																	var quantity = $(
+																			"#summary-item-"
+																					+ id)
+																			.find(
+																					".quantity");
+																	var price = $(
+																			this)
+																			.find(
+																					".price");
+																	menuItem["menuId"] = menuId;
+																	menuItem["quantity"] = quantity;
+																	menuItem["price"] = price;
+																	menuList
+																			.push(menuItem);
+																});
+												if (menuList) {
+													$('#Searching_Modal').modal('show');
+													var url = "/create";
+													$
+															.ajax({
+																url : url,
+																dataType : "text",
+																type : 'post',
+																success : function(
+																		data) {
+																	if (data) {
+																		$("#main-content")
+																				.html('<div class="alert alert-success">Thank you for the purchase. A message has been sent to your registered mobile number. Please use the code '
+																								+ data
+																								+ ' to obtain the order or for further communications.');
+																		$('#Searching_Modal').modal('hide');
+																	}
+																},
+																error : function(
+																		xhr,
+																		textStatus,
+																		errorThrown) {
+																	$("#main-content")
+																			.html('<div class="alert alert-danger">Your transaction failed. Please try again later.');
+																	$('#Searching_Modal').modal('hide');
+																}
+															});
+												}
+
+											});
+
+						});
+	</script>
 </body>
-<script>
-$(document).ready(function(e){
-	var $checks = $("#answer > div input:checkbox").change(function (e) {
-	    $divs.stop(true);
-	    var $div = $(this).parent();
-	    var $sibs = $divs.not($div)[this.checked ? 'slideUp' : 'slideDown']();
-	    $div.slideDown();
-
-	    $sibs.find('input:checkbox').prop('checked', false);
-	    $("#checkbtn").toggle($checks.filter(':checked').length > 0);
-	})
-
-	
-
-});
-</script>
-</body></html>
 </html>
