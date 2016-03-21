@@ -56,7 +56,7 @@ header{
 	padding: 10px 20px;
 	background: #428bca;
 }
-.wrap{
+body{
 	background: url('../images/stripe1.png');
 }
 .welcomeMsg{
@@ -65,13 +65,16 @@ header{
 	font-weight: bold;
 }
 .logout{
-	margin: 10px;
+	/* margin: 10px; */
+	background: rgba(0, 0, 0, 0) url("../images/on-off.png") no-repeat scroll 0 0 !important;
+    height: 50px;
+    width: 50px;
 }
 table{
 	background: #fff !important;
 	border-radius: 10px;
 }
 h2{
-	color: #0066ff !important;
+	color: #505050 !important;
     margin-top: 0 !important;
 }
