@@ -251,6 +251,9 @@ img.feedThumb{
 .orderSummary, .container{
 	padding-right: 0;
 }
+.orderSummary{
+	display: none;
+}
 .cart-summary .order-items .count .super_number input[type=text] {
     color: #2d2d2d!important;
     opacity: 1;

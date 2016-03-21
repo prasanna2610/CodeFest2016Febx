@@ -1,9 +1,13 @@
 package com.codefest.main.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -11,7 +15,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -92,12 +95,22 @@ public class OrderMenuController {
     	return msg;
 	}
 	
-	@RequestMapping(value="/create", method = RequestMethod.POST, produces=MediaType.APPLICATION_JSON_VALUE, consumes=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/create", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
-	public String purchase(@RequestBody List<Menu> menuDetails){
+	public String purchase(@RequestBody String menuDetails){
 		
 		if(null != menuDetails && !menuDetails.isEmpty()){
+			ObjectMapper mapper = new ObjectMapper();
+			List<Menu> menuList = null;
 			Long txnId = null;
+			try {
+				menuList = (List<Menu>) mapper.readValue(menuDetails, Menu.class);
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				txnId = null;
+				return null;
+			}
+			
 			String getNextTxnId = "SELECT NEXTVAL(TRANSACTION_SEQ)";
 			String insertTransactionQuery = "INSERT INTO TRANSACTION (TRANSACTION_ID, USER_ID, DATE, DELIVERED) TRANSACTION_ID VALUES (?, ?, CURRENT_TIMESTAMP, 'N'";
 			String insertOrderItemsQuery = "INSERT INTO ORDER_ITEMS (TRANSACTION_ID, MENU_ID, QUANTITY) TRANSACTION_ID VALUES (?, ?, ?)";
@@ -118,9 +131,9 @@ public class OrderMenuController {
 			}
 			try{
 				if(null != txnId){
-					for (Menu menu : menuDetails){
+					for (Menu obj : menuList){
 						jdbcTemplate.update(insertOrderItemsQuery,
-							new Object[] {txnId, menu.getMenuId(), menu.getQuantity()});
+							new Object[] {txnId, obj.getMenuId(), obj.getQuantity()});
 					}
 				}
 				

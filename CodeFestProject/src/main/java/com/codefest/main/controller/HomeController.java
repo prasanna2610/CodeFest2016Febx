@@ -81,7 +81,7 @@ public class HomeController {
 			} else if (user.get(0).getUserType().equalsIgnoreCase("admin")) {
 				returnString = "admin";
 			} else if (user.get(0).getUserType().equalsIgnoreCase("user")) {
-				response.sendRedirect("/order");;
+				response.sendRedirect("/order");
 			}
 			HttpSessionObjectStore.setObject("userId", user.get(0).getUserId());
 		}
