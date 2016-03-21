@@ -45,7 +45,8 @@
 
 					<!-- Tab panes -->
 					<div id="main-content" class="tab-content">
-						<c:if
+						<c:choose>
+						<c:when
 							test="${(not empty vendorList) && (not empty vendorList[0].menu) }">
 							<div class="" id="menu-list">
 								<h2>Select your Meal</h2>
@@ -94,7 +95,11 @@
 								</div>
 							</div>
 				<!-- a class="btn btn-success btn-lg" href="#proceed" role="button" data-toggle="modal">Proceed</a> -->
-						</c:if>
+						</c:when>
+						<c:otherwise>
+							<div class="alert alert-danger">No menu available for this vendor.</div>
+						</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 
