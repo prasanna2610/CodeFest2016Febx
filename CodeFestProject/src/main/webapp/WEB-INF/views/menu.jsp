@@ -166,7 +166,8 @@
 						var i = $(this).attr("id");
 						var html = $(".order-items").html();
 						html += "<li id='summary-item-"+ i + "' class='summary-item' data-index='0'>";
-						html += "<div class='vendor-id-" + i +"' style='display:none'>" + $("#myTab .active .vendor-id").text() + "</div>";
+						html += "<div class='summary-vendor-id' style='display:none'>" + $("#myTab .active .vendor-id").text() + "</div>";
+						html += "<div class='summary-menu-id' style='display:none'>" + i + "</div>";
 						html += "<div class='details'><span class='name'>";
 						var menuName = $(this).parents(".fContent").find(".menu-name").text();
 						var price = $(this).parents(".fContent").find(".price").text();
@@ -264,6 +265,13 @@
 									}else{
 										$("#main-content").html("<div class='alert alert-danger'>Error fetching Menu list.</div>");
 									}
+								},
+								error : function(
+										xhr,
+										textStatus,
+										errorThrown) {
+									$("#main-content")
+											.html('<div class="alert alert-danger">Error fetching Menu list.</div>');
 								}
 							});
 						}
@@ -312,21 +320,20 @@
 			}
 			$("#checkout").click(function() {
 				var menuList = [];
-				$(".fContent")
-						.each(
-								function() {
-									var menuId = $(this).find(".menu-id").text();
-									var id = $(this).find(".select-item").attr("id");
-									if($(this).find(".select-item")  &&  $(this).find(".select-item").prop("checked")){
-										var quantity = $("#summary-item-" + id).find(".quantity").val();
-										var price = $(this).find(".price").text();
-										var menuItem = {};
-										menuItem["menuId"] = menuId;
-										menuItem["quantity"] = quantity;
-										menuItem["price"] = price;
-										menuList.push(menuItem);
-									}
-								});
+				
+				if($(".summary-item")){
+					$(".summary-item").each(function(){
+						var menuId = $(this).find(".summary-menu-id").text();
+						var quantity = $(this).find(".quantity").val();
+						var price = $(this).find(".per-item-price").text();
+						var menuItem = {};
+						menuItem["menuId"] = menuId;
+						menuItem["quantity"] = quantity;
+						menuItem["price"] = price;
+						menuList.push(menuItem);
+					});
+				}
+				
 				if (menuList) {
 					var reqData = new Object();
 					reqData.menu = menuList;
