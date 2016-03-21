@@ -27,19 +27,13 @@ public class HomeController {
 
 	@RequestMapping(value = { "/index", "/" })
 	public String welcome() {
-
-		/*
-		 * List<?> records = new ArrayList<>(); Class<?> entityClass = null;
-		 * Object entityObj = null; String sql = "Select * from CF_USER"; try {
-		 * entityClass = Class.forName("com.codefest.main.entity.CFUser");
-		 * entityObj = entityClass.newInstance(); records =
-		 * jdbcTemplate.query(sql, new
-		 * BeanPropertyRowMapper(entityObj.getClass()));
-		 * System.out.println("size ******" + records.size()); } catch
-		 * (ClassNotFoundException | InstantiationException |
-		 * IllegalAccessException e) { e.printStackTrace(); }
-		 */
 		return "index";
+	}
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String hello() throws IOException {
+		return "index";
+		
 	}
 
 	@SuppressWarnings("unchecked")
