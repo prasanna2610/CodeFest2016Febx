@@ -55,6 +55,7 @@ table th{
 header{
 	padding: 10px 20px;
 	background: #428bca;
+	border-radius: 0 !important;
 }
 body{
 	background: url('../images/stripe1.png');
@@ -78,3 +79,4 @@ h2{
 	color: #505050 !important;
     margin-top: 0 !important;
 }
+

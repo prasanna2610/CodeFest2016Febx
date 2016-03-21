@@ -202,7 +202,7 @@ img.feedThumb{
 	font-size: 24px;
 	color: #428bca;
 	font-weight: bold;	
-	margin: 3% 0;
+	margin: 3% 0 !important;
 }
 .cart-summary .summary {
     min-height: 120px;

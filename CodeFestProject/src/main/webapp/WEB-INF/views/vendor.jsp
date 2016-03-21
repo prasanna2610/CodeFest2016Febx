@@ -39,6 +39,8 @@
          <ul class="nav nav-pills nav-stacked vendor-list" id="vendorNav">
 			<li role="presentation" class="active"><a class='menuListLinks' href="#menuDetails" data-toggle="tab">Menu</a></li>
 			<li role="presentation"><a class='tranctionListLinks' href="#tansactionDetails" data-toggle="tab">Transaction Details</a></li>
+			
+			
 			<!-- <li role="presentation"><a class='menuListLinks' href="#chartContainer" data-toggle="tab">Comparison chart</a></li> -->
 			<!-- <li role="presentation">
 				<a href="#myModal" role="button" data-toggle="modal"> 
@@ -47,8 +49,10 @@
 				</a>
 			</li> -->
 	</ul>
+	 
         </div><!--/.nav-collapse -->
       </div>
+      <a class="btn btn-success btn-lg" id="addMenuBtn" href="#addMenu" role="button" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Add Menu</a>
     </div>
 	
   </div>
@@ -57,7 +61,7 @@
 
       <div class="tab-pane fade active in" id="menuDetails">
          <h2> Menu Details </h2>
-		 <a class="btn btn-success btn-lg" id="addMenuBtn" href="#addMenu" role="button" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span> Add Menu</a>
+		
           <table id="example1" class="table table-striped" cellspacing="0" width="100%"></table>
       </div>
       </div>

@@ -9,7 +9,6 @@
 	<link rel="stylesheet" type="text/css" href="css/menu.css" >
 	<script src="js/jquery.1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
-	<link rel="stylesheet" href="css/inbox-style.css">
 
 </head>
 <body>
