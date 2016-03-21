@@ -68,7 +68,7 @@
 			          </a>
 			     </li>
 			     <li><a href="#profile" role="tab" data-toggle="tab">
-			          Update
+			         Profile Update
 			          </a>
 			     </li>
 			     <!-- <li>

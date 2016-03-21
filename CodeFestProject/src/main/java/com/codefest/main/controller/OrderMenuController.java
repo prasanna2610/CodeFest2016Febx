@@ -60,7 +60,8 @@ public class OrderMenuController {
 				vendorList.get(0).setMenu(menuList);
 			}
 			modelView.addObject("vendorList", vendorList);
-			
+			String userName = (String) HttpSessionObjectStore.getObject("userInfo");
+			modelView.getModel().put("userInfo", userName);
 		} catch (Exception  e) {
 			e.printStackTrace();
 		}
