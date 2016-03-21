@@ -69,7 +69,6 @@ function createVendor(){
 function updateVendorInfo(jsonPostData,vendorId){
 	
 	var jsonString = JSON.stringify(jsonPostData);
-	alert("update");
 	$.ajax({
 		  url: "admin/edit/"+vendorId,
 		  dataType: "json",
