@@ -1,12 +1,10 @@
 package com.codefest.main.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -74,7 +72,7 @@ public class OrderMenuController {
 		Class<?> entityClass = null;
 		Object entityObj = null;
 		String queryVendor = "Select * from VENDOR where vendor_id= ?;";
-		String queryVendorMenu = "select m.* from menu m, vendor v where m.vendor_id = v.vendor_id and v.vendor_id = ?";
+		String queryVendorMenu = "select m.* from menu m, vendor v where m.vendor_id = v.vendor_id and v.vendor_id = ? and m.availability > 0";
 		String msg=null;
 		try {
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
@@ -97,23 +95,21 @@ public class OrderMenuController {
 	
 	@RequestMapping(value="/create", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
+	@ResponseBody
 	public String purchase(@RequestBody String menuDetails){
 		
 		if(null != menuDetails && !menuDetails.isEmpty()){
-			ObjectMapper mapper = new ObjectMapper();
-			List<Menu> menuList = null;
+			JSONObject jsonObj = new JSONObject(menuDetails);
+			JSONArray menuArr = (JSONArray) jsonObj.get("menu");
 			Long txnId = null;
-			try {
-				menuList = (List<Menu>) mapper.readValue(menuDetails, Menu.class);
-			} catch (Exception e1) {
-				e1.printStackTrace();
+			if(null == menuArr) {
 				txnId = null;
 				return null;
 			}
 			
-			String getNextTxnId = "SELECT NEXTVAL(TRANSACTION_SEQ)";
-			String insertTransactionQuery = "INSERT INTO TRANSACTION (TRANSACTION_ID, USER_ID, DATE, DELIVERED) TRANSACTION_ID VALUES (?, ?, CURRENT_TIMESTAMP, 'N'";
-			String insertOrderItemsQuery = "INSERT INTO ORDER_ITEMS (TRANSACTION_ID, MENU_ID, QUANTITY) TRANSACTION_ID VALUES (?, ?, ?)";
+			String getNextTxnId = "SELECT NEXTVAL('TRANSACTION_SEQ')";
+			String insertTransactionQuery = "INSERT INTO TRANSACTION (TRANSACTION_ID, USER_ID, DATE, DELIVERY) VALUES (?, ?, CURRENT_TIMESTAMP, 'N')";
+			String insertOrderItemsQuery = "INSERT INTO ORDER_ITEMS (TRANSACTION_ID, MENU_ID, QUANTITY) VALUES (?, ?, ?)";
 			try {
 				txnId = (Long)jdbcTemplate.queryForLong(getNextTxnId);
 				Long userId = (Long) HttpSessionObjectStore.getObject("userId") ;
@@ -131,9 +127,14 @@ public class OrderMenuController {
 			}
 			try{
 				if(null != txnId){
-					for (Menu obj : menuList){
-						jdbcTemplate.update(insertOrderItemsQuery,
-							new Object[] {txnId, obj.getMenuId(), obj.getQuantity()});
+					for (Object obj : menuArr){
+						JSONObject menu = (JSONObject) obj;
+						String menuId = (String) menu.get("menuId");
+						String quantity = (String) menu.get("quantity");
+						if(null != menuId && null != quantity){
+							jdbcTemplate.update(insertOrderItemsQuery,
+									new Object[] {txnId, Long.parseLong(menuId), Long.parseLong(quantity)});
+						}
 					}
 				}
 				

@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.codefest.main.config.HttpSessionObjectStore;
 import com.codefest.main.entity.Transaction;
 import com.codefest.main.entity.Vendor;
 
@@ -50,12 +49,8 @@ public class AdminController {
 		Class<?> entityClass = null;
 		Object entityObj = null;
 		String sqlVendor = "Select * from VENDOR;";
-		// String sqlTransaction = "Select * from Transaction where vendor_id in (:listOfValues)";
 		String sqlTransaction = "SELECT t.TRANSACTION_ID, t.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
 				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and t.vendor_id = ?";
-		/*List<Integer> vendorIds = new ArrayList<>();
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("listOfValues", vendorIds);*/
 		String msg=null;
 		try {
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
@@ -72,32 +67,12 @@ public class AdminController {
 			try {
 				 msg = mapper.writeValueAsString(vendor);
 			} catch (JsonGenerationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			/*
-			 * List<Transaction> transactionList =
-			 * namedParameterJdbcTemplate.query( sqlTransaction, params,
-			 * ParameterizedBeanPropertyRowMapper.newInstance(Transaction.class)
-			 * );
-			 */
-			/*List<Transaction> tl = null;
-			for (Vendor ven : vendor) {
-				tl = new ArrayList<>();
-				for (Transaction transaction : transactionList) {
-					if (ven.getVendorId().longValue() == transaction.getVendorId().longValue()) {
-						tl.add(transaction);
-						ven.setTransaction(tl);
-					}
-				}
-				// vendor.add(ven);
-			}*/
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -110,35 +85,17 @@ public class AdminController {
 	@SuppressWarnings("all")
 	public String getTransactionDetails(@PathVariable("vendorId") Long vendorId){
 		System.out.println("Entered getTransactionDetail");
-		/*List<Transaction> transactionList = new ArrayList<>();
-		Class<?> entityClass = null;
-		Object entityObj = null;
-		String sqlTransaction = "SELECT t.TRANSACTION_ID, t.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
-				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and t.vendor_id = ?";
-		try{
-			entityClass = Class.forName("com.codefest.main.entity.Transaction");
-			entityObj = entityClass.newInstance();
-			transactionList = jdbcTemplate.query(sqlTransaction, new Object[]{vendorId}, new BeanPropertyRowMapper(entityObj.getClass()));
-			
-		}catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
-		}*/
 		Vendor vendorDB = new Vendor();
 		Class<?> entityClass = null;
 		Object entityObj = null;
 		String sqlVendor = "Select * from vendor where vendor_id = ?";
-		// String sqlTransaction = "Select * from Transaction where vendor_id in (:listOfValues)";
 		String sqlTransaction = "SELECT t.TRANSACTION_ID, t.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
 				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and t.vendor_id = ?";
-		/*List<Integer> vendorIds = new ArrayList<>();
-		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("listOfValues", vendorIds);*/
 		String msg=null;
 		try {
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
 			entityObj = entityClass.newInstance();
 			vendorDB = (Vendor) jdbcTemplate.queryForObject(sqlVendor, new Object[]{vendorId}, new BeanPropertyRowMapper(entityObj.getClass()));
-			//Long vendorId = vendor.get(0).getVendorId();
 			List<Transaction> transactionList = jdbcTemplate.query(sqlTransaction, new Object[] { vendorId },
 					new BeanPropertyRowMapper(Transaction.class));
 
@@ -148,32 +105,12 @@ public class AdminController {
 			try {
 				 msg = mapper.writeValueAsString(vendorDB);
 			} catch (JsonGenerationException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			/*
-			 * List<Transaction> transactionList =
-			 * namedParameterJdbcTemplate.query( sqlTransaction, params,
-			 * ParameterizedBeanPropertyRowMapper.newInstance(Transaction.class)
-			 * );
-			 */
-			/*List<Transaction> tl = null;
-			for (Vendor ven : vendor) {
-				tl = new ArrayList<>();
-				for (Transaction transaction : transactionList) {
-					if (ven.getVendorId().longValue() == transaction.getVendorId().longValue()) {
-						tl.add(transaction);
-						ven.setTransaction(tl);
-					}
-				}
-				// vendor.add(ven);
-			}*/
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -188,11 +125,6 @@ public class AdminController {
 		System.out.println(jsonDta.get("VendorName"));
 		Long vendorId1 = null;
 		Vendor vendorvo=new Vendor();
-		/*if(vendorUI != null){
-			vendorId = vendorUI.getVendorId();
-		}else{
-			throw new Exception("vendorUI must not be null");
-		}*/
 		String sqlVendor = "Select * from vendor where vendor_id = ?";
 		Vendor vendorDB = new Vendor();
 		Class<?> entityClass = null;
@@ -200,13 +132,8 @@ public class AdminController {
 		try{
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
 			entityObj = entityClass.newInstance();
-			//vendorDB = (Vendor) jdbcTemplate.queryForObject(sqlVendor, new Object[]{vendorId}, new BeanPropertyRowMapper(entityObj.getClass()));
-			/*if(vendorDB == null){
-				throw new Exception("No valid record found for the given vendorID");
-			}*/
-			//populateVendor(vendorUI, vendorDB);
-			vendorvo.setVendorId(Long.valueOf((String) jsonDta.get("VendorId")));/*; Integer.parseInt((String) jsonDta.get("VendorId"));*/
-			vendorvo.setVendorPhone(Long.valueOf((String) jsonDta.get("ContactNumber")));/* Integer.parseInt((String)jsonDta.get("ContactNumber"));*/
+			vendorvo.setVendorId(Long.valueOf((String) jsonDta.get("VendorId")));
+			vendorvo.setVendorPhone(Long.valueOf((String) jsonDta.get("ContactNumber")));
 			System.out.println("id    "+vendorvo.getVendorId()+"    phone    "+vendorvo.getVendorPhone());
 			String sqlUpdateVendor = "UPDATE Vendor set vendor_name=?, vendor_email = ?, vendor_phone = ?, incharge = ?, vendor_detail = ? where vendor_id=?";
 			jdbcTemplate.update(sqlUpdateVendor,jsonDta.get("VendorName"), jsonDta.get("Email"), vendorvo.getVendorPhone(),
@@ -234,13 +161,11 @@ public class AdminController {
 		try{
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
 			entityObj = entityClass.newInstance();
-			/*Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;*/
 			String INSERT_VENDOR_SQL = "INSERT INTO  VENDOR(VENDOR_ID, VENDOR_NAME,PASSWORD,VENDOR_EMAIL,VENDOR_PHONE,INCHARGE,VENDOR_DETAIL) VALUES (nextval('vendor_seq'),?,?,?,?,?,? )";
 			jdbcTemplate.update(INSERT_VENDOR_SQL,
 					new Object[] {vendorName, passwordF,email,mobileNumber,inCharge,venDetails});
 			Vendor vendor=new Vendor();
 			String sqlVendor = "Select VENDOR_ID from vendor where VENDOR_PHONE=? ;";
-			//Long venforId = (Long) jdbcTemplate.queryForObject(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()),mobileNumber);
 			vendor = (Vendor) jdbcTemplate.queryForObject(sqlVendor, new Object[]{mobileNumber}, new BeanPropertyRowMapper(entityObj.getClass()));
 			System.out.println(vendor.getVendorId());
 			String INSERT_USER_SQL = "INSERT INTO  CF_USER(USER_ID, PASSWORD,EMAIL,PHONE,FIRST_NAME,LAST_NAME,USER_TYPE) VALUES (?,?,?,?,?,?,? )";
@@ -249,7 +174,6 @@ public class AdminController {
 			
 			System.out.println("sucess");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
