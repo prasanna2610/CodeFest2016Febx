@@ -34,6 +34,9 @@ public class OrderMenuController {
 	@Autowired
 	public NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
+	@Autowired
+	public SendSMSController sendSMS; 
+	
 	@RequestMapping(method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@SuppressWarnings("all")
@@ -96,6 +99,7 @@ public class OrderMenuController {
 	@RequestMapping(value="/create", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@Transactional
 	@ResponseBody
+	@SuppressWarnings("all")
 	public String purchase(@RequestBody String menuDetails){
 		
 		if(null != menuDetails && !menuDetails.isEmpty()){
@@ -110,6 +114,10 @@ public class OrderMenuController {
 			String getNextTxnId = "SELECT NEXTVAL('TRANSACTION_SEQ')";
 			String insertTransactionQuery = "INSERT INTO TRANSACTION (TRANSACTION_ID, USER_ID, DATE, DELIVERY) VALUES (?, ?, CURRENT_TIMESTAMP, 'N')";
 			String insertOrderItemsQuery = "INSERT INTO ORDER_ITEMS (TRANSACTION_ID, MENU_ID, QUANTITY) VALUES (?, ?, ?)";
+			String queryAvailability = "SELECT AVAILABILITY FROM MENU WHERE MENU_ID = ?";
+			String updateAvailability = "UPDATE MENU  SET AVAILABILITY = AVAILABILITY - ? WHERE MENU_ID =?";
+			String deleteOrderItem = "DELETE FROM ORDER_ITEMS WHERE TRANSACTION_ID = ?";
+			String deleteTransaction = "DELETE FROM TRANSACTION WHERE TRANSACTION_ID=?";
 			try {
 				txnId = (Long)jdbcTemplate.queryForLong(getNextTxnId);
 				Long userId = (Long) HttpSessionObjectStore.getObject("userId") ;
@@ -122,6 +130,10 @@ public class OrderMenuController {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
+				if(null != txnId){
+					jdbcTemplate.update(deleteOrderItem, new Object[] {txnId});
+					jdbcTemplate.update(deleteTransaction, new Object[] {txnId});
+				}
 				txnId = null;
 				return null; 
 			}
@@ -132,16 +144,40 @@ public class OrderMenuController {
 						String menuId = (String) menu.get("menuId");
 						String quantity = (String) menu.get("quantity");
 						if(null != menuId && null != quantity){
-							jdbcTemplate.update(insertOrderItemsQuery,
-									new Object[] {txnId, Long.parseLong(menuId), Long.parseLong(quantity)});
+							long menuIdLong = Long.parseLong(menuId);
+							long quantityLong = Long.parseLong(quantity);
+							List<Menu> menuObj = (List<Menu>) jdbcTemplate.query(queryAvailability, new Object[] { menuIdLong },
+									new BeanPropertyRowMapper(Menu.class));
+							if(null == menuObj || menuObj.isEmpty() || null == menuObj.get(0)){
+								throw new Exception();
+							}
+							long availability = Long.parseLong(menuObj.get(0).getAvailability());
+							availability-=quantityLong;
+							if(Long.compare(quantityLong, availability) <= 0){
+								jdbcTemplate.update(updateAvailability,
+										new Object[] {txnId, availability});
+								jdbcTemplate.update(insertOrderItemsQuery,
+										new Object[] {txnId, menuIdLong, quantityLong});
+							}else{
+								if(null != txnId){
+									throw new Exception();
+								}
+							}
 						}
 					}
 				}
 				
 			} catch (Exception  e) {
 				e.printStackTrace();
+				if(null != txnId){
+					jdbcTemplate.update(deleteOrderItem, new Object[] {txnId});
+					jdbcTemplate.update(deleteTransaction, new Object[] {txnId});
+				}
 				txnId = null;
 				return null;
+			}
+			if(null != txnId){
+				sendSMS.sendSMS(txnId);
 			}
 			return txnId.toString();
 		}

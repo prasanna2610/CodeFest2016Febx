@@ -21,46 +21,46 @@ import javax.net.ssl.X509TrustManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Component;
 
 import com.codefest.main.config.HttpSessionObjectStore;
 import com.codefest.main.entity.CFUser;
 
-@Controller
+@Component
 public class SendSMSController {
 	
 	@Autowired
 	public JdbcTemplate jdbcTemplate;
 	
-	
-	@RequestMapping(value = "/sendSMS", method = RequestMethod.POST)
-	public String sendSMS(Model model) {
+	@SuppressWarnings("all")
+	public void sendSMS(Long txnId) {
 		System.out.println("Entering sendSMS");
 		List<CFUser> user = null;
 		Long UserId = (Long)HttpSessionObjectStore.getObject("userId");
 		String userName = null;
+		Long mobileNum = null;
 		int TransactionId = 0;
-		try {
-			Class<?> entityClass = null;
-			Object entityObj = null;
-			String sqlVendor = "SELECT * FROM cf_user where user_id = ?";
-			entityClass = Class.forName("com.codefest.main.entity.CFUser");
-			entityObj = entityClass.newInstance();
-			user = (ArrayList<CFUser>) jdbcTemplate.query(sqlVendor,
-					new Object[] { UserId }, new BeanPropertyRowMapper(
-							entityObj.getClass()));
-			userName = user.get(0).getFirstName();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if(null != UserId){
+			try {
+				Class<?> entityClass = null;
+				Object entityObj = null;
+				String sqlVendor = "SELECT * FROM cf_user where user_id = ?";
+				entityClass = Class.forName("com.codefest.main.entity.CFUser");
+				entityObj = entityClass.newInstance();
+				user = (ArrayList<CFUser>) jdbcTemplate.query(sqlVendor,
+						new Object[] { UserId }, new BeanPropertyRowMapper(
+								entityObj.getClass()));
+				userName = user.get(0).getFirstName();
+				mobileNum = user.get(0).getPhone();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			sendMessage(userName, txnId, mobileNum);
 		}
-		sendMessage(userName);
-		return "/menu";
+		
 	}
 
-	private void sendMessage(String userName) {
+	private void sendMessage(String userName, Long txnId, Long mobileNum) {
 
 		try {
 
@@ -89,7 +89,7 @@ public class SendSMSController {
 					.getSocketFactory();
 			HttpsURLConnection.setDefaultSSLSocketFactory(sslContext
 					.getSocketFactory());
-			URL url = new URL(getURLPath(userName));
+			URL url = new URL(getURLPath(userName, txnId, mobileNum));
 			final HttpURLConnection conn = (HttpURLConnection) url
 					.openConnection();
 
@@ -121,11 +121,11 @@ public class SendSMSController {
 
 	}
 
-	private String getURLPath(String userName) {
+	private String getURLPath(String userName, Long txnId, Long mobileNum) {
 		String twar = getURL()
-		+"httpapi/send?username=santhia.rajendran@gmail.com&password=indian42&sender_id=PROMOTIONAL&route=P&phonenumber=9952717373&message=Hi%20" +
+		+"httpapi/send?username=santhia.rajendran@gmail.com&password=indian42&sender_id=PROMOTIONAL&route=P&phonenumber="+ mobileNum + "&message=Hi%20" +
 		userName+"," 
-		+ "Your%20Transaction%20is%20Success%20Your%20Order%20Number%20123456%20Thanks%20For%20Using%20BOOK%20YOUR%20MEAL";
+		+ "Your%20Transaction%20is%20Success%20Your%20Order%20Number%20"+ txnId + "%20Thanks%20For%20Using%20BOOK%20YOUR%20MEAL";
 		return twar;
 	}
 

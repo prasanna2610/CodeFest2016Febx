@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/menu.css" >
 	<script src="js/jquery.1.11.0.js"></script>
 	<script src="js/bootstrap.js"></script>
+	<link rel="stylesheet" href="css/inbox-style.css">
 
 </head>
 <body>
@@ -351,7 +352,7 @@
 										textStatus,
 										errorThrown) {
 									$("#main-content")
-											.html('<div class="alert alert-danger">Your transaction failed. Please try again later.');
+											.html('<div class="alert alert-danger">Your transaction failed or Item out of stock. Please refresh and try again later.');
 									$('#Searching_Modal').modal('hide');
 									$(".summary-item").remove();
 									totalSum = 0;
