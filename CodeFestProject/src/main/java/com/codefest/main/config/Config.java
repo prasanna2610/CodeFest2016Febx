@@ -87,6 +87,6 @@ public class Config extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new RequestInterceptor());
+		registry.addInterceptor(new RequestInterceptor()).excludePathPatterns("/index");
 	}
 }

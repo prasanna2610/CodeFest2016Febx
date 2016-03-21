@@ -13,7 +13,7 @@ margin:0;
 }
 
 .splitter {
-	background-image: url('images/divider.png');
+	background-image: url('/images/divider.png');
 	background-repeat: no-repeat;
 	height: 310px;
 	width: 3px;

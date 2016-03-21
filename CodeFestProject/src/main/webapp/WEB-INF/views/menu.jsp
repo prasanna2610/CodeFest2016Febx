@@ -353,6 +353,7 @@
 																+ data
 																+ ' to obtain the order or for further communications.');
 										$('#Searching_Modal').modal('hide');
+										$(".orderSummary").hide();
 										$(".summary-item").remove();
 										totalSum = 0;
 										count = 0;
@@ -367,6 +368,7 @@
 											.html('<div class="alert alert-danger">Your transaction failed or Item out of stock. Please refresh and try again later.');
 									$('#Searching_Modal').modal('hide');
 									$(".summary-item").remove();
+									$(".orderSummary").hide();
 									totalSum = 0;
 									count = 0;
 									$("#subtotal").text(totalSum);

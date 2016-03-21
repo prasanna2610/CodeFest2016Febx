@@ -21,9 +21,12 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 		ObjectStoreManager.getInstance().setSessionLevelObjectStore(
 				new HttpSessionObjectStore(httpSession));
 		HttpSessionObjectStore.setObject("sessionId", request.getSession());
-		
-		if(HttpSessionObjectStore.getObject("userId") ==null){
-			System.out.println("Not authenticated");
+		if(!request.getRequestURI().endsWith("index") && !request.getRequestURI().endsWith("home")){
+			if(HttpSessionObjectStore.getObject("userId") ==null){
+				System.out.println("Not authenticated");
+				response.sendRedirect("index");
+				return false;
+			}
 		}
 		
 		return true;
