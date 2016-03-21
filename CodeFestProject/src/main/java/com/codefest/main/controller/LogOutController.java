@@ -1,5 +1,7 @@
 package com.codefest.main.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +13,9 @@ import com.codefest.main.config.ObjectStoreManager;
 public class LogOutController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public String logOut(Model model) {
+	public String logOut(Model model, HttpSession httpSession) {
 		ObjectStoreManager.getInstance().cleanup();
+		httpSession.invalidate();
 		return "/index";
 	}
 }
