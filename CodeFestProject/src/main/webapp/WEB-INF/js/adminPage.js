@@ -231,7 +231,7 @@ function createVendorTable(transactionDet){
 		var tableRow=$('<tr>');
 		var tableData=$('<td>').text(obj.transactionId).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.userId).appendTo(tableRow);
-		var tableData=$('<td>').text(obj.date).appendTo(tableRow);
+		var tableData=$('<td>').text(obj.dateString).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.menuName).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.price).appendTo(tableRow);
 		tableListCont.append(tableRow);
