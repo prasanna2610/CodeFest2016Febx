@@ -58,7 +58,7 @@
 												<div class="col-md-3 col-sm-3">
 													<div class="tileView">
 														<article class="caption">
-															<img src="images/lays_one.png"
+															<img src="images/Meals.jpg"
 																class="feedThumb img-responsive caption_media" alt="" />
 															<div class="caption_overlay">
 																<h3 class="caption_overlay_title">Menu Items...</h3>
@@ -97,7 +97,7 @@
 					</div>
 				</div>
 
-				<div class="col-xs-3 orderSummary">
+				<div class="col-xs-3 orderSummary pull-left">
 					<div class="selectedItems">
 						<div class="cart-summary side-bar-contents">
 							<div class="summary mbot">
@@ -272,7 +272,7 @@
 					$.each(details.menu,function(i, obj) {
 						if(obj){
 							html += "<div class='col-md-3 col-sm-3'><div class='tileView'>";
-							html += "<article class='caption'><img src='images/lays_one.png' class='feedThumb img-responsive caption_media' alt='' />";
+							html += "<article class='caption'><img src='images/Meals.jpg' class='feedThumb img-responsive caption_media' alt='' />";
 							html += "<div class='caption_overlay'><h3 class='caption_overlay_title'>Menu Items...</h3><p class='caption_overlay_content'><ul><li>";
 							html += obj.menuDescription
 									+ "</ul></p></div></article>"

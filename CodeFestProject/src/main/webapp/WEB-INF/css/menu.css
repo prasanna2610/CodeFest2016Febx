@@ -143,11 +143,11 @@ img.feedThumb{
 
 .caption_overlay {
     position: absolute;
-    top: 50%;
+    top: 25%;
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 10px;
+    padding: 13px;
     color: white;
     -webkit-transform: translateY(100%);
     transform: translateY(100%);
@@ -196,6 +196,7 @@ img.feedThumb{
     background: #f0f0f0;
     border-radius: 2%;
     position: fixed;
+     width: 24%;
 }
 .summary h2, .tab-content h2{
 	font-size: 24px;
@@ -207,7 +208,7 @@ img.feedThumb{
     min-height: 120px;
 }
 .quantity{
-	padding: 2px;
+	padding: 2px 8px;
 }
 }
 .details{
