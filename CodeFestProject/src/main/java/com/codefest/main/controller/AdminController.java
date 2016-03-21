@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.codefest.main.config.HttpSessionObjectStore;
 import com.codefest.main.entity.Transaction;
 import com.codefest.main.entity.Vendor;
 
@@ -137,7 +138,7 @@ public class AdminController {
 			System.out.println("id    "+vendorvo.getVendorId()+"    phone    "+vendorvo.getVendorPhone());
 			String sqlUpdateVendor = "UPDATE Vendor set vendor_name=?, vendor_email = ?, vendor_phone = ?, incharge = ?, vendor_detail = ? where vendor_id=?";
 			jdbcTemplate.update(sqlUpdateVendor,jsonDta.get("VendorName"), jsonDta.get("Email"), vendorvo.getVendorPhone(),
-					jsonDta.get("Incharge"), jsonDta.get("Details"),vendorvo.getVendorId());
+					jsonDta.get("FirstName"), jsonDta.get("Details"),vendorvo.getVendorId());
 		}catch (ClassNotFoundException | InstantiationException | IllegalAccessException | EmptyResultDataAccessException e) {
 			e.printStackTrace();
 		}
@@ -179,6 +180,23 @@ public class AdminController {
 		
 		return null;
 	}
+	
+	@RequestMapping(value="/delete", method = RequestMethod.GET, produces="application/json")
+
+	@SuppressWarnings("all")
+	@ResponseBody
+	public String deleteVendor(@RequestParam(value="vendorId", required=true) Long vendorId ){
+		System.out.println(vendorId);
+		String sqlDeleteVendor = "Delete from vendor where vendor_id= ?";
+		jdbcTemplate.update(sqlDeleteVendor,new Object[] {vendorId});
+		String sqlDeleteTransaction = "Delete from TRANSACTION where vendor_id= ?";
+		jdbcTemplate.update(sqlDeleteTransaction,new Object[] {vendorId});
+        String sqlDeleteCFUser = "Delete from CF_USER where user_id= ?";
+        jdbcTemplate.update(sqlDeleteCFUser,new Object[] {vendorId});
+
+		return null;
+	}
+
 	
 	private void populateVendor(Vendor vendorUI,Vendor vendorDB){
 		if(vendorUI.getVendorName() != null){
