@@ -349,6 +349,7 @@
 										$('#Searching_Modal').modal('hide');
 										$(".summary-item").remove();
 										totalSum = 0;
+										count = 0;
 										$("#subtotal").text(totalSum);
 									}
 								},
@@ -361,6 +362,7 @@
 									$('#Searching_Modal').modal('hide');
 									$(".summary-item").remove();
 									totalSum = 0;
+									count = 0;
 									$("#subtotal").text(totalSum);
 								}
 							});
