@@ -191,7 +191,8 @@ function generateVendorList(vendorDetails){
 	listContainer.append(listNewImageSec);
 	vendorListSecCont.append(listContainer);
 	vendorListSecCont.insertAfter("#adminNaveBar");
-	
+	$('#venListConte li:first-child').addClass('active');
+
 }
 function getVendorDetails(vendorId){
 	/*var modelVal=$('#vendorModelVal').val();	
