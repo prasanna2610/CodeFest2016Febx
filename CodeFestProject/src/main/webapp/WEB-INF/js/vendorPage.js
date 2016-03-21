@@ -41,8 +41,8 @@ function createTransactionTable(transactiondetails) {
 		var tableData=$('<td>').text(obj.menuName).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.quantity).appendTo(tableRow);
 		var tableData=$('<td>').text(obj.price).appendTo(tableRow);
-		//TODO: Delivered flag
-		var tableData=$('<td>').text(obj.availability).appendTo(tableRow);
+		var tableData=$('<td>').text(obj.delivered).appendTo(tableRow);
+		
 		tableListCont.append(tableRow);
 		iVal++;
 	  });

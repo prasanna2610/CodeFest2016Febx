@@ -115,7 +115,7 @@ public class VendorController {
 			List<Menu> menu = new ArrayList<>();
 			Class<?> entityClass = null;
 			Object entityObj = null;
-			String sqlTransaction = "SELECT  t.transaction_id, t.user_id, t.date, o.quantity, m.menu_name , m.price, t.delivery "+
+			String sqlTransaction = "SELECT  t.transaction_id, t.user_id, t.date,t.delivery, o.quantity, m.menu_name , m.price "+
 					"FROM  transaction t, order_items o  join menu m   on o.menu_id=m.menu_id "+
 					"where t.transaction_id = o.transaction_id and m.vendor_id = ? order by t.date desc";
 			entityClass = Class.forName("com.codefest.main.entity.Transaction");
