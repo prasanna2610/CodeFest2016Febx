@@ -170,7 +170,7 @@ public class AdminController {
 			System.out.println(vendor.getVendorId());
 			String INSERT_USER_SQL = "INSERT INTO  CF_USER(USER_ID, PASSWORD,EMAIL,PHONE,FIRST_NAME,LAST_NAME,USER_TYPE) VALUES (?,?,?,?,?,?,? )";
 			jdbcTemplate.update(INSERT_USER_SQL,
-					new Object[] {vendor.getVendorId(), passwordF,email,mobileNumber,vendorName,vendorName,"Vendor"});
+					new Object[] {vendor.getVendorId(), passwordF,email,mobileNumber,inCharge,vendorName,"Vendor"});
 			
 			System.out.println("sucess");
 		} catch (ClassNotFoundException e) {

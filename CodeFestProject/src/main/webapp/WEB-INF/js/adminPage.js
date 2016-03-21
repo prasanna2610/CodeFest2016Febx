@@ -256,7 +256,7 @@ function createVendorUpdate(vendorDetails){
 	var listVendorName=jQuery('<li class="label">Vendor Name</li><li class="label-value firstEdit" contenteditable="false">'+vendorDetails.vendorName+'</li>');
 	listContName.append(listVendorName);
 	var listContPOC=jQuery('<ul>');
-	var listVendorPOC=jQuery('<li class="label">Incharge</li><li class="label-value" contenteditable="false">'+vendorDetails.incharge+'</li>');
+	var listVendorPOC=jQuery('<li class="label">First Name</li><li class="label-value" contenteditable="false">'+vendorDetails.incharge+'</li>');
 	listContPOC.append(listVendorPOC);
 	var listContContact=jQuery('<ul>');
 	var listVendorContact=jQuery('<li class="label">Contact Number</li><li class="label-value" contenteditable="false">'+vendorDetails.vendorPhone+'</li>');

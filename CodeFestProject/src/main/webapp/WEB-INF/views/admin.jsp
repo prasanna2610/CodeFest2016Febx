@@ -118,7 +118,7 @@
 										</div>
 										
 										<div class="form-group row">
-										<label for="poc" class="control-label col-xs-3">Person Incharge</label>
+										<label for="poc" class="control-label col-xs-3">First Name</label>
 										<div class="col-xs-8">
 											<input type="text" name="Person Incharge" id="inCharge" class="form-control" >
 										</div>
