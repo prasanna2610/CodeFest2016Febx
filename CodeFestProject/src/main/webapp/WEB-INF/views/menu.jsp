@@ -4,6 +4,7 @@
 <head>
 	<title>Place order</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/header.css" >
 	<link href="css/bootstrap.css" type="text/css"  rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/menu.css" >
 	<script src="js/jquery.1.11.0.js"></script>
