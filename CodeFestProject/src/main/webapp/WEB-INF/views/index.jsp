@@ -61,6 +61,7 @@
 			padding-bottom: 36px;
 			font-size: 18px;
 			font-weight: bold;
+			color: 428bca;
 		}
 		</style>
 	</head>

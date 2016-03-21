@@ -3,6 +3,7 @@
 <head>
 	<title>Place order</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/header.css" >
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/admin.css" >
 	<script src="js/jquery.1.11.0.js"></script>
@@ -10,94 +11,17 @@
 	<script src="js/vendorPage.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
-	<style type="text/css">
-		.edit-menu img{
-			width: 25px;
-		}
-		html{
-			overflow-x: hidden;
-		}
-	</style>
-	 <script type="text/javascript">
-        window.onload = function () {
-
-            CanvasJS.addColorSet("greenShades",
-                        [//colorSet Array
-                            "#2F4F4F",
-                            "#008080",
-                            "#2E8B57",
-                            "#3CB371",
-                            "#90EE90"                
-                        ]);
-            var chart = new CanvasJS.Chart("chartContainer",
-            {
-                colorSet: "greenShades",
-                title:{
-                    text: "",
-                    fontFamily: "arial black"
-                },
-                animationEnabled: true,
-                legend: {
-                    verticalAlign: "center",
-                    horizontalAlign: "right",
-                    fontSize:18
-                },
-                theme: "theme1",
-                data: [
-                {        
-                    type: "pie",
-                    indexLabelFontFamily: "Arial",       
-                    indexLabelFontSize: 20,
-                    indexLabelFontWeight: "bold",
-                    startAngle:0,
-                    indexLabelFontColor: "white",       
-                    indexLabelLineColor: "darkgrey", 
-                    indexLabelPlacement: "inside", 
-                    toolTipContent: "{name}: {y}%",
-                    showInLegend: true,
-                    indexLabel: "#percent%", 
-                    dataPoints: [
-                        {  y: 35, name: "Payment History", legendMarkerType: "square"},
-                        {  y: 30, name: "Amount you owe", legendMarkerType: "square"},
-                        {  y: 15, name: "Length of Credit history", legendMarkerType: "square"},
-                        {  y: 10, name: "New Credit opened", legendMarkerType: "square"},
-                        {  y: 10, name: "Types of credit you have", legendMarkerType: "square"}
-                    ]
-                }
-                ]
-            });
-            chart.render();
- }
- $(document).ready(function (e) {
-  $('.profile-edit').click(function(e) {
-if($(this).hasClass('edit-info')) {
-	   $(this).parents('.profile-content-list').find('li.label-value').each(function(){
-$(this).parents('.profile-content-list').find('li.label-value')[0].focus();
-	   $(this).attr('contenteditable','true');
-	   })
-	   	   $(this).removeClass('edit-info').addClass('update-info');
-		   }
-		   else {
-		   	   $(this).parents('.profile-content-list').find('li.label-value').each(function(){
-	   $(this).attr('contenteditable','false');
-	   });
-	    $(this).removeClass('update-info').addClass('edit-info');
-		   }
-	});
-});
-        </script>
-        <script type="text/javascript" src="js/canvasjs.min.js"></script>
+    <script type="text/javascript" src="js/canvasjs.min.js"></script>
 </head>
 <body>
 <div class="wrap">
 
          <header class="navbar landing-header hidden-xs">
-			<img href=""/>
+			 <jsp:include page="header.jsp"/>
 		 </header>
 		 
 <div class="container">
 <div class="row">
- <jsp:include page="header.jsp"/>
   <div class="col-sm-3" id="myVendor">
     <div class="sidebar-nav">
       <div class="navbar navbar-default" role="navigation">
