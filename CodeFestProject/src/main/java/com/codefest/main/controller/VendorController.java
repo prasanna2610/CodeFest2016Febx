@@ -22,6 +22,11 @@ public class VendorController {
 	@Autowired
 	public JdbcTemplate jdbcTemplate;
 	
+	@RequestMapping(value = "/vendorHome", method = RequestMethod.GET)
+	public String showAdminHome(){
+		return "vendor";
+	}
+	
 	@RequestMapping(value="/vendor", method = RequestMethod.GET, produces="application/json")
 	@SuppressWarnings("all")
 	@ResponseBody

@@ -1,7 +1,6 @@
 package com.codefest.main.controller;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.codefest.main.config.HttpSessionObjectStore;
 import com.codefest.main.entity.Transaction;
 import com.codefest.main.entity.Vendor;
 
@@ -38,10 +36,11 @@ public class AdminController {
 	@Autowired
 	public NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
-	/*@Autowired
-	public JSONObject jsonbObj;*/
-	
-	@RequestMapping(method = RequestMethod.GET, produces="application/json")
+	@RequestMapping(method = RequestMethod.GET)
+	public String showAdminHome(){
+		return "admin";
+	}
+	@RequestMapping(value = "/transaction", method = RequestMethod.GET, produces="application/json")
 	@ResponseBody
 	@SuppressWarnings("all")
 	public String getAdminPage(Model model) {
@@ -50,8 +49,8 @@ public class AdminController {
 		Class<?> entityClass = null;
 		Object entityObj = null;
 		String sqlVendor = "Select * from VENDOR;";
-		String sqlTransaction = "SELECT t.TRANSACTION_ID, t.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
-				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and t.vendor_id = ?";
+		String sqlTransaction = "SELECT t.TRANSACTION_ID, m.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
+				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and m.vendor_id = ?";
 		String msg=null;
 		try {
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
@@ -90,8 +89,8 @@ public class AdminController {
 		Class<?> entityClass = null;
 		Object entityObj = null;
 		String sqlVendor = "Select * from vendor where vendor_id = ?";
-		String sqlTransaction = "SELECT t.TRANSACTION_ID, t.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
-				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and t.vendor_id = ?";
+		String sqlTransaction = "SELECT t.TRANSACTION_ID, m.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
+				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and m.vendor_id = ?";
 		String msg=null;
 		try {
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");

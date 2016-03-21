@@ -4,7 +4,6 @@ window.onload = function() {
 	$("#passWord").val('');
 	var jsonVednorObj = [];
 	var responseObj;
-	console.log("1 st");
 	getVendorList();
 	jQuery(document).on('click', '.vendorListLinks', function() {
 		var vendorId = $(this).attr('id');
@@ -36,7 +35,6 @@ window.onload = function() {
 
 							});
 					jsonVednorObj.push(vendorDetArr);
-					console.log(jsonVednorObj[0]);
 					$(this).removeClass('update-info').addClass('edit-info');
 					updateVendorInfo(jsonVednorObj[0],
 							jsonVednorObj[0].VendorId);
@@ -54,7 +52,7 @@ window.onload = function() {
 };
 function createVendor() {
 	$.ajax({
-		url : "admin/create",
+		url : "/admin/create",
 		dataType : "text",
 		type : 'post',
 		data : {
@@ -90,7 +88,7 @@ function updateVendorInfo(jsonPostData, vendorId) {
 
 	var jsonString = JSON.stringify(jsonPostData);
 	$.ajax({
-		url : "admin/edit/" + vendorId,
+		url : "/admin/edit/" + vendorId,
 		dataType : "json",
 		type : 'post',
 		contentType : 'application/json; charset=utf-8',
@@ -100,7 +98,6 @@ function updateVendorInfo(jsonPostData, vendorId) {
 	});
 }
 function chartLoad(transactionDetails) {
-	console.log(transactionDetails);
 	CanvasJS.addColorSet("greenShades", [// colorSet Array
 	"#2F4F4F", "#008080", "#2E8B57", "#3CB371", "#90EE90" ]);
 	var chart = new CanvasJS.Chart("chartContainer", {
@@ -147,20 +144,17 @@ function chartLoad(transactionDetails) {
 }
 function getVendorList() {
 	$.ajax({
-		url : "/admin",
+		url : "/admin/transaction",
 		dataType : "text",
 		type : 'get',
 		success : function(data) {
-			responseObj = JSON.parse(data);
-			generateVendorList(responseObj);
-			/*
-			 * $.each(responseObj,function(i,obj){ console.log(obj.transaction);
-			 * });
-			 */
-			createVendorTable(responseObj[0].transaction);
-			createVendorUpdate(responseObj[0]);
-			createChartData();
-			// chartLoad(responseObj[0].transaction);
+			if(data && $.trim(data)){
+				responseObj = JSON.parse(data);
+				generateVendorList(responseObj);
+				createVendorTable(responseObj[0].transaction);
+				createVendorUpdate(responseObj[0]);
+				createChartData();
+			}
 		}
 
 	});
@@ -200,7 +194,6 @@ function createChartData() {
 
 }
 function generateVendorList(vendorDetails) {
-	console.log("generateVendorList");
 	var vendorListSecCont = jQuery('<div>', {
 		class : 'navbar-collapse collapse sidebar-navbar-collapse',
 		id : 'vendorListViewer'
@@ -228,25 +221,17 @@ function generateVendorList(vendorDetails) {
 
 }
 function getVendorDetails(vendorId) {
-	/*
-	 * var modelVal=$('#vendorModelVal').val();
-	 * console.log(Object.keys(modelVal).length); console.log(modelVal); for(var
-	 * i=0;i<modelVal.size;i++){ console.log(modelVal[i].menuName); }
-	 */
 	$.ajax({
 		url : "/admin/" + vendorId,
 		dataType : "text",
 		type : 'get',
 		success : function(data) {
-			responseObj = JSON.parse(data);
-			/*
-			 * $.each(responseObj,function(i,obj){ console.log(obj.transaction);
-			 * });
-			 */
-			createVendorTable(responseObj.transaction);
-			createVendorUpdate(responseObj);
-			createChartData();
-			// chartLoad(responseObj.transaction);
+			if(data && $.trim(data)){
+				responseObj = JSON.parse(data);
+				createVendorTable(responseObj.transaction);
+				createVendorUpdate(responseObj);
+				createChartData();
+			}
 		}
 
 	});

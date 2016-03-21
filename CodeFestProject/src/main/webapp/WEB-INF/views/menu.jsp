@@ -258,7 +258,7 @@
 								dataType : "text",
 								type : 'get',
 								success : function(data) {
-									if(data){
+									if(data && $.trim(data)){
 										responseObj = JSON.parse(data);
 										createMenu(responseObj);
 									
@@ -347,7 +347,7 @@
 								contentType : "application/json",
 								data: JSON.stringify(reqData),
 								success : function(data) {
-									if (data) {
+									if (data && $.trim(data)) {
 										$("#main-content")
 												.html('<div class="alert alert-success">Thank you for the purchase. A message has been sent to your registered mobile number. Please use the code '
 																+ data

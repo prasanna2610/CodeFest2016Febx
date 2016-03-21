@@ -17,8 +17,10 @@ function getTranscationDetails() {
 		  dataType: "text",
 		  type:'get',
 		  success: function(data){
-			  responseObj=JSON.parse(data);
-			  createTransactionTable(responseObj);
+			  if(data && $.trim(data)){
+				  responseObj=JSON.parse(data);
+				  createTransactionTable(responseObj);
+			  }
 		  }
 		});
 }
@@ -62,8 +64,10 @@ function getMenuDetails(){
 		  dataType: "text",
 		  type:'get',
 		  success: function(data){
-			  responseObj=JSON.parse(data);
-			  createMenuTable(responseObj);
+			  if(data && $.trim(data)){
+				  responseObj=JSON.parse(data);
+				  createMenuTable(responseObj);
+			  }
 		  }
 		});
 }

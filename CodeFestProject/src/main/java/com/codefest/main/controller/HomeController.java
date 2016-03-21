@@ -27,16 +27,16 @@ public class HomeController {
 	@Autowired
 	public JdbcTemplate jdbcTemplate;
 
-	@RequestMapping(value = { "/index", "/" })
+	@RequestMapping(value = { "/index", "/", "home" }, method = RequestMethod.GET)
 	public String welcome() {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String hello() throws IOException {
 		return "index";
 		
-	}
+	}*/
 	
 	@RequestMapping(value = "/validate", method = RequestMethod.GET)
 	@ResponseBody
@@ -84,9 +84,11 @@ public class HomeController {
 			model.addAttribute("userInfo",
 					"Welcome " + homevoObject.getUserName());
 			if (user.get(0).getUserType().equalsIgnoreCase("vendor")) {
-				returnString = "vendor";
+				//returnString = "vendor";
+				response.sendRedirect("/vendorHome");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("admin")) {
-				returnString = "admin";
+				//returnString = "admin";
+				response.sendRedirect("/admin");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("user")) {
 				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
 				response.sendRedirect("/order");
