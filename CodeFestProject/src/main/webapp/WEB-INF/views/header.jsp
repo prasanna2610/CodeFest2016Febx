@@ -7,7 +7,7 @@
 	
 		<div class="pull-right">
 		<form method="post" action="/logout" >
-				<!-- <input type="submit" value="Log out" class="btn logout"/> -->
-				<a href="#" role="button"><img src="images/on-off.png" alt="logout" width="40px" class="logout"/>  </a>
+				<input type="submit" value="" class="btn logout"/> 
+				<!-- <a href="#" role="button"><img src="images/on-off.png" alt="logout" width="40px" class="logout"/>  </a>-->
 		</form>
 		</div>
