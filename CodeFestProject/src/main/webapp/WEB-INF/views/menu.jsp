@@ -15,7 +15,7 @@
 	<div class="wrap">
 
 		<header class="navbar landing-header hidden-xs"> 
-		<jsp:include page="header.jsp"/>
+			<jsp:include page="header.jsp"/>
 		</header>
 		<div class="container">
 			<div class="row">
@@ -80,8 +80,8 @@
 																<span class="price"><c:out value="${menu.price}" /></span>
 															</p>
 															<p class="checkbox">
-																<label for="select-item"> Select item </label> <input
-																	id="${idVar}" type="checkbox" name="select"
+																<label for="${menu.menuId}"> Select item </label> <input
+																	id="${menu.menuId}" type="checkbox" name="select"
 																	class="select-item" value="select menu">
 															</p>
 														</div>
@@ -161,6 +161,7 @@
 						var i = $(this).attr("id");
 						var html = $(".order-items").html();
 						html += "<li id='summary-item-"+ i + "' class='summary-item' data-index='0'>";
+						html += "<div class='vendor-id-" + i +"' style='display:none'>" + $("#myTab .active .vendor-id").text() + "</div>";
 						html += "<div class='details'><span class='name'>";
 						var menuName = $(this).parents(".fContent").find(".menu-name").text();
 						var price = $(this).parents(".fContent").find(".price").text();
@@ -283,13 +284,22 @@
 									+ "</h2><p><span>Price: Rs.</span><span class='price'>"
 									+ obj.price
 									+ "</span></p>";
-							html += "<p class='checkbox'><label for='select-item'> Select item </label> ";
-							html += "<input id='item-" + iVal +"' type='checkbox' name='select' class='select-item' value='select menu'></p></div></div></div>";
+							html += "<p class='checkbox'><label for='" + obj.menuId +"'> Select item </label> ";
+							html += "<input id='" + obj.menuId +"' type='checkbox' name='select' class='select-item' value='select menu'></p></div></div></div>";
 							iVal++;
 						}
 					});
+					
 					html += "</div></section></div></div>";
 					$("#main-content").html(html);
+					if($(".summary-item")){
+						$(".summary-item").each(function(){
+							var id = $(this).attr("id").split("-")[2];
+							if(id && $("#" + id)){
+								$("#" + id).prop("checked", true);
+							}
+						});
+					}
 					$("input[type='checkbox']").change(selectItem);
 				} else {
 					$("#main-content").html("<div class='alert alert-danger'>No menu available for this vendor.</div>");
@@ -297,21 +307,24 @@
 			}
 			$("#checkout").click(function() {
 				var menuList = [];
-				var menuItem = {};
 				$(".fContent")
 						.each(
 								function() {
 									var menuId = $(this).find(".menu-id").text();
 									var id = $(this).find(".select-item").attr("id");
-									var quantity = $("#summary-item-" + id).find(".quantity").val();
-									var price = $(this).find(".price").text();
-									menuItem["menuId"] = menuId;
-									menuItem["quantity"] = quantity;
-									menuItem["price"] = price;
-									menuList
-											.push(menuItem);
+									if($(this).find(".select-item")  &&  $(this).find(".select-item").prop("checked")){
+										var quantity = $("#summary-item-" + id).find(".quantity").val();
+										var price = $(this).find(".price").text();
+										var menuItem = {};
+										menuItem["menuId"] = menuId;
+										menuItem["quantity"] = quantity;
+										menuItem["price"] = price;
+										menuList.push(menuItem);
+									}
 								});
 				if (menuList) {
+					var reqData = new Object();
+					reqData.menu = menuList;
 					$('#Searching_Modal').modal('show');
 					var url = "/order/create";
 					$
@@ -319,7 +332,8 @@
 								url : url,
 								dataType : "json",
 								type : 'post',
-								data: JSON.stringify(menuList),
+								contentType : "application/json",
+								data: JSON.stringify(reqData),
 								success : function(data) {
 									if (data) {
 										$("#main-content")
@@ -327,6 +341,9 @@
 																+ data
 																+ ' to obtain the order or for further communications.');
 										$('#Searching_Modal').modal('hide');
+										$(".summary-item").remove();
+										totalSum = 0;
+										$("#subtotal").text(totalSum);
 									}
 								},
 								error : function(
@@ -336,6 +353,9 @@
 									$("#main-content")
 											.html('<div class="alert alert-danger">Your transaction failed. Please try again later.');
 									$('#Searching_Modal').modal('hide');
+									$(".summary-item").remove();
+									totalSum = 0;
+									$("#subtotal").text(totalSum);
 								}
 							});
 				}
