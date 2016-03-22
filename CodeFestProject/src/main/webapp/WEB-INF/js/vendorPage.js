@@ -81,7 +81,7 @@ $(document)
 									.appendTo(tableRow);
 							var tableData = $('<td>').text(obj.quantity)
 									.appendTo(tableRow);
-							var tableData = $('<td>').text(obj.price).appendTo(
+							var tableData = $('<td>').text((obj.quantity*obj.price)).appendTo(
 									tableRow);
 							var tableData = $('<td>').text(obj.delivered)
 									.appendTo(tableRow);
