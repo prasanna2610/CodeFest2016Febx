@@ -194,6 +194,28 @@ public class AdminController {
 
 		return null;
 	}
+	
+	@RequestMapping(value="/updatePassword/{userId}", method = RequestMethod.PUT, produces="application/json")
+	@SuppressWarnings("all")
+	@ResponseBody
+	public String updatePassword(@PathVariable("userId") Long userId, 
+			@RequestParam(value = "password", required = true) String password) {
+		Class<?> entityClass = null;
+		Object entityObj = null;
+		try {
+			entityClass = Class.forName("com.codefest.main.entity.Vendor");
+			entityObj = entityClass.newInstance();
+			String UPDATE_VENDOR_SQL = "UPDATE Vendor set password=? where vendor_id=?";
+			jdbcTemplate.update(UPDATE_VENDOR_SQL, new Object[] { password, userId });
+			
+			String updateCFUser = "UPDATE cf_user set password=? where user_id=?";
+			jdbcTemplate.update(updateCFUser, new Object[] { password, userId });
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+				| EmptyResultDataAccessException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	
 	private void populateVendor(Vendor vendorUI,Vendor vendorDB){
