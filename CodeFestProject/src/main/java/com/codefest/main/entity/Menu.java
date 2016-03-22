@@ -10,6 +10,8 @@ public class Menu implements Serializable{
 	
 	private Long vendorId;
 	
+	private String vendorName;
+	
 	private String menuName;
 	
 	private String menuDescription;
@@ -75,4 +77,13 @@ public class Menu implements Serializable{
 	public void setAvailability(String availability) {
 		this.availability = availability;
 	}
+
+	public String getVendorName() {
+		return vendorName;
+	}
+
+	public void setVendorName(String vendorName) {
+		this.vendorName = vendorName;
+	}
+	
 }

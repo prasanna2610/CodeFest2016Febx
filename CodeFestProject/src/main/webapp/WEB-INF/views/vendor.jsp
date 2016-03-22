@@ -61,7 +61,7 @@
 
       <div class="tab-pane fade active in" id="menuDetails">
          <h2> Menu Details </h2>
-		
+		<h3 id="vendor-name">Vendor Name : </h3>
           <table id="example1" class="table table-striped" cellspacing="0" width="100%"></table>
       </div>
       </div>

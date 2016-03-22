@@ -92,8 +92,10 @@ $(document)
 							dataType : "text",
 							type : 'get',
 							success : function(data) {
+								if(data && $.trim(data)){
 									responseObj = JSON.parse(data);
 									createMenuTable(responseObj);
+								}
 							}
 						});
 					}
@@ -104,7 +106,7 @@ $(document)
 						if (rowCount > 0) {
 							jQuery('#example1 tr').remove();
 						}
-
+						var vendorName = '';
 						var tableHeaderCont = jQuery('<thead> <tr><th>Menu ID</th><th>Dish Name</th><th>Description</th> <th>Price</th><th>Quantity</th><th>Availability</th><th>Actions</th></tr></thead>');
 						tabMainCont.append(tableHeaderCont);
 						var tableListCont = jQuery('<tbody>');
@@ -113,6 +115,7 @@ $(document)
 								.each(
 										menuDetails,
 										function(i, obj) {
+											vendorName = obj.vendorName;
 											var tableRow = $('<tr id=MmenuTableRow'
 													+ iVal + '>');
 											var tableData = $('<td>').text(
@@ -142,6 +145,9 @@ $(document)
 											iVal++;
 										});
 						tabMainCont.append(tableListCont);
+						if(vendorName){
+							jQuery("#vendor-name").html("Vendor Name : " + vendorName);
+						}
 						jQuery('.edit-menu').on('click', editMenuDetails);
 						jQuery('.delete-menu').bind('click', menuDelete);
 					}

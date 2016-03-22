@@ -39,7 +39,7 @@ public class VendorController {
 			List<Menu> menu = new ArrayList<>();
 			Class<?> entityClass = null;
 			Object entityObj = null;
-			String sqlVendor = "SELECT * FROM MENU where vendor_id= ? order by menu_id ";
+			String sqlVendor = "SELECT m.*, v.vendor_name FROM MENU m, vendor v where m.vendor_id = v.vendor_id and m.vendor_id= ? order by m.menu_id ";
 			entityClass = Class.forName("com.codefest.main.entity.Menu");
 			entityObj = entityClass.newInstance();
 			menu = jdbcTemplate.query(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()),vendorId);
@@ -106,8 +106,6 @@ public class VendorController {
 				new Object[] {menuName, desc,price,quantity,vendorId,quantity
 
 		});
-		System.out.println("INSERT_SQL:"+INSERT_SQL);
-		System.out.println("insert:"+menuName+desc+price+quantity+vendorId+quantity);
 		return null;
 	}
 	
