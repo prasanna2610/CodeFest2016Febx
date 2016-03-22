@@ -57,22 +57,18 @@ public class AdminController {
 			entityObj = entityClass.newInstance();
 			vendor = jdbcTemplate.query(sqlVendor, new BeanPropertyRowMapper(entityObj.getClass()));
 			ObjectMapper mapper = new ObjectMapper();
-			
-			
-			Long vendorId = vendor.get(0).getVendorId();
-			List<Transaction> transactionList = jdbcTemplate.query(sqlTransaction, new Object[] { vendorId },
-					new BeanPropertyRowMapper(Transaction.class));
-
-			vendor.get(0).setTransaction(transactionList);
-			try {
-				 msg = mapper.writeValueAsString(vendor);
-			} catch (JsonGenerationException e) {
-				e.printStackTrace();
-			} catch (JsonMappingException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
+			if(null != vendor  && !vendor.isEmpty()){
+				Long vendorId = vendor.get(0).getVendorId();
+				List<Transaction> transactionList = jdbcTemplate.query(sqlTransaction, new Object[] { vendorId },
+						new BeanPropertyRowMapper(Transaction.class));
+				vendor.get(0).setTransaction(transactionList);
+				try {
+					msg = mapper.writeValueAsString(vendor);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+			
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
@@ -138,6 +134,9 @@ public class AdminController {
 			String sqlUpdateVendor = "UPDATE Vendor set vendor_name=?, vendor_email = ?, vendor_phone = ?, incharge = ?, vendor_detail = ? where vendor_id=?";
 			jdbcTemplate.update(sqlUpdateVendor,jsonDta.get("VendorName"), jsonDta.get("Email"), vendorvo.getVendorPhone(),
 					jsonDta.get("FirstName"), jsonDta.get("Details"),vendorvo.getVendorId());
+			String updateCFUser = "UPDATE CF_USER SET FIRST_NAME =?, PHONE = ?, EMAIL = ? WHERE USER_ID = ?";
+			jdbcTemplate.update(updateCFUser,
+					new Object[] {jsonDta.get("FirstName"), vendorvo.getVendorPhone(),jsonDta.get("Email"), vendorvo.getVendorId()});
 		}catch (ClassNotFoundException | InstantiationException | IllegalAccessException | EmptyResultDataAccessException e) {
 			e.printStackTrace();
 		}

@@ -22,10 +22,19 @@ $(document)
 								quantity : $('#addMenuQuantity').val()
 							},
 							success : function(data) {
-							}
+								$('#addMenuName').val('');
+								$('#addMenuDesc').val('');
+								$('#addMenuPrice').val('');
+								$('#addMenuQuantity').val('');
+								getMenuDetails();
+							},
+							failure : function(xhr,
+									textStatus,
+									errorThrown){
+								getMenuDetails();
+							} 
 						});
 						$('#addMenu').modal('hide');
-						getMenuDetails();
 					});
 					function getTranscationDetails() {
 						$("#menuItems").hide();
@@ -94,8 +103,13 @@ $(document)
 							success : function(data) {
 								if(data && $.trim(data)){
 									responseObj = JSON.parse(data);
-									createMenuTable(responseObj);
 								}
+								createMenuTable(responseObj);
+							},
+							failure : function(xhr,
+									textStatus,
+									errorThrown){
+								createMenuTable(responseObj);
 							}
 						});
 					}
@@ -183,10 +197,16 @@ $(document)
 								quantity : $('#updateMenuQuantity').val()
 							},
 							success : function(data) {
+								getMenuDetails();
+							},
+							failure : function(xhr,
+									textStatus,
+									errorThrown){
+								getMenuDetails();
 							}
 						});
 						$('#updateMenu').hide();
-						getMenuDetails();
+						
 					}
 
 					function menuDelete(event) {
@@ -203,10 +223,17 @@ $(document)
 									menuId : menuID,
 								},
 								success : function(data) {
+									responseObj = '';
+									getMenuDetails();
+								},
+								failure : function(xhr,
+										textStatus,
+										errorThrown){
+									responseObj = '';
+									getMenuDetails();
 								}
 							});
 							$('#deleteMenu').modal('hide');
-							getMenuDetails();
 						});
 					}
 				});

@@ -67,6 +67,12 @@ function createVendor() {
 			$('#myModal').modal('hide');
 			$('#vendorListViewer').remove();
 			getVendorList();
+			$('#vendor_name').val('');
+			$('#inCharge').val('');
+			$('#passwordF').val('');
+			$('#details').val('');
+			$('#email').val('');
+			$('#mob_no').val('');
 		}
 	});
 
@@ -83,6 +89,7 @@ function deleteVendorInfo(vendorId) {
 		}
 	});
 	$('#vendorListViewer').remove();
+	$("#tabContainer").remove();
 	getVendorList();
 }
 function updateVendorInfo(jsonPostData, vendorId) {
@@ -149,12 +156,15 @@ function getVendorList() {
 		dataType : "text",
 		type : 'get',
 		success : function(data) {
+			var responseObj ='';
 			if(data && $.trim(data)){
 				responseObj = JSON.parse(data);
 				generateVendorList(responseObj);
 				createVendorTable(responseObj[0].transaction);
 				createVendorUpdate(responseObj[0]);
 				createChartData();
+			}else{
+				generateVendorList(responseObj);
 			}
 		}
 
@@ -203,22 +213,25 @@ function generateVendorList(vendorDetails) {
 		class : 'nav nav-pills nav-stacked vendor-list',
 		id : 'venListConte'
 	});
-	$
-			.each(
-					vendorDetails,
-					function(i, obj) {
-						var listArr = jQuery('<li role="presentation"><a href="#" class="vendorListLinks" data-toggle="tab" id="'
-								+ obj.vendorId
-								+ '">'
-								+ obj.vendorName
-								+ '</a></li>');
-						listContainer.append(listArr);
-					});
+	if(vendorDetails){
+		$
+		.each(
+				vendorDetails,
+				function(i, obj) {
+					var listArr = jQuery('<li role="presentation"><a href="#" class="vendorListLinks" data-toggle="tab" id="'
+							+ obj.vendorId
+							+ '">'
+							+ obj.vendorName
+							+ '</a></li>');
+					listContainer.append(listArr);
+				});
+	}
 	var listNewImageSec = jQuery('<li role="presentation"><a href="#myModal" role="button" data-toggle="modal"> <img src="images/add-user.jpg" alt="add vendor" class="add-vendor"/><span class="sr-only">Create new</span> </a></li>');
 	listContainer.append(listNewImageSec);
 	vendorListSecCont.append(listContainer);
 	vendorListSecCont.insertAfter("#adminNaveBar");
 	$('#venListConte li:first-child').addClass('active');
+	$('#myTab li:first-child').addClass('active');
 
 }
 function getVendorDetails(vendorId) {
@@ -270,6 +283,9 @@ function createVendorTable(transactionDet) {
 	tabMainCont.append(transSecCont);
 	tabMainCont.append(transSecCont);
 	(tabMainCont).insertAfter("#myTab");
+	$("#myTab li").removeClass('active');
+	$('#myTab li:first-child').addClass('active');
+	
 
 }
 function createVendorUpdate(vendorDetails) {

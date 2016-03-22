@@ -52,7 +52,7 @@ public class VendorController {
 			e.printStackTrace();
 		}
 		if(msg == null) {
-			msg = " ";
+			msg = "";
 		}
 		System.out.println("msg:"+msg);
 		return msg;	
@@ -71,12 +71,12 @@ public class VendorController {
 		
 		Long vendorId = (Long) HttpSessionObjectStore.getObject("userId") ;
 		//Quantity, availability
-		String UPDATE_SQL = "UPDATE MENU  SET MENU_NAME=? , MENU_DESCRIPTION  =?,PRICE =?,quantity=? WHERE MENU_ID =? and vendor_id=?";
+		String UPDATE_SQL = "UPDATE MENU  SET MENU_NAME=? , MENU_DESCRIPTION  =?,PRICE =?,quantity=?, availability=? WHERE MENU_ID =? and vendor_id=?";
 		jdbcTemplate.update(UPDATE_SQL,
-				new Object[] {menuName, desc,price,quantity,menuId,vendorId
+				new Object[] {menuName, desc,price,quantity, quantity,menuId,vendorId
 
 		});
-		return null;
+		return "";
 	}
 	
 	@RequestMapping(value="/deleteMenu", method = RequestMethod.GET, produces="application/json")
@@ -88,7 +88,7 @@ public class VendorController {
 		System.out.println(menuId);
 		String DELETE_SQL = "DELETE FROM  MENU   WHERE MENU_ID =? and vendor_id=?";
 		jdbcTemplate.update(DELETE_SQL,new Object[] {menuId,vendorId});
-		return null;
+		return "";
 	}
 	
 	@RequestMapping(value="/addMenu", method = RequestMethod.GET, produces="application/json")
@@ -106,7 +106,7 @@ public class VendorController {
 				new Object[] {menuName, desc,price,quantity,vendorId,quantity
 
 		});
-		return null;
+		return "";
 	}
 	
 	@RequestMapping(value="/transaction", method = RequestMethod.GET, produces="application/json")
