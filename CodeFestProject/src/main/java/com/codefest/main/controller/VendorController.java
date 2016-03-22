@@ -106,6 +106,8 @@ public class VendorController {
 				new Object[] {menuName, desc,price,quantity,vendorId,quantity
 
 		});
+		System.out.println("INSERT_SQL:"+INSERT_SQL);
+		System.out.println("insert:"+menuName+desc+price+quantity+vendorId+quantity);
 		return null;
 	}
 	
