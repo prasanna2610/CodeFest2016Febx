@@ -84,9 +84,11 @@ public class HomeController {
 			model.addAttribute("userInfo",
 					"Welcome " + homevoObject.getUserName());
 			if (user.get(0).getUserType().equalsIgnoreCase("vendor")) {
+				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
 				//returnString = "vendor";
 				response.sendRedirect("/vendorHome");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("admin")) {
+				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
 				//returnString = "admin";
 				response.sendRedirect("/admin");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("user")) {
