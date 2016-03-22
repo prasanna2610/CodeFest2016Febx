@@ -62,6 +62,7 @@
       <div class="tab-pane fade active in" id="menuDetails">
          <h2> Menu Details </h2>
 		<h3 id="vendor-name"></h3>
+		<div class="" id="response-status" style = "display:none;"></div>
           <table id="example1" class="table table-striped" cellspacing="0" width="100%"></table>
       </div>
       </div>

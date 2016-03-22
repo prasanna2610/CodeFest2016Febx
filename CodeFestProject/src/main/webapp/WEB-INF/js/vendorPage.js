@@ -11,6 +11,7 @@ $(document)
 						getMenuDetails();
 					});
 					jQuery('#newMenu').click(function() {
+						$("#response-status").hide();
 						$.ajax({
 							url : "/addMenu",
 							dataType : "text",
@@ -27,10 +28,14 @@ $(document)
 								$('#addMenuPrice').val('');
 								$('#addMenuQuantity').val('');
 								getMenuDetails();
+								$("#response-status").addClass("alert alert-success").html("Menu created successfully.");
+								$("#response-status").show();
 							},
 							failure : function(xhr,
 									textStatus,
 									errorThrown){
+								$("#response-status").addClass("alert alert-danger").html("Error creating Menu. Please verify.");
+								$("#response-status").show();
 								getMenuDetails();
 							} 
 						});
@@ -38,6 +43,7 @@ $(document)
 					});
 					function getTranscationDetails() {
 						$("#menuItems").hide();
+						$("#response-status").hide();
 						$("#tansactionDetails").show();
 						$.ajax({
 							url : "/transaction",
@@ -167,6 +173,7 @@ $(document)
 					}
 
 					function editMenuDetails(event) {
+						$("#response-status").hide();
 						var strVal = $(this).closest("tr").attr('id');
 						$('#' + strVal).each(
 								function() {
@@ -184,7 +191,7 @@ $(document)
 								updateMenuDetails);
 					}
 					function updateMenuDetails(event) {
-
+						$("#response-status").hide();
 						$.ajax({
 							url : "/updateMenu",
 							dataType : "text",
@@ -198,11 +205,15 @@ $(document)
 							},
 							success : function(data) {
 								getMenuDetails();
+								$("#response-status").addClass("alert alert-success").html("Menu updated succesfully.");
+								$("#response-status").show();
 							},
 							failure : function(xhr,
 									textStatus,
 									errorThrown){
 								getMenuDetails();
+								$("#response-status").addClass("alert alert-danger").html("Error updating Menu. Please verify.");
+								$("#response-status").show();
 							}
 						});
 						$('#updateMenu').hide();
@@ -211,6 +222,7 @@ $(document)
 
 					function menuDelete(event) {
 						var strVal = $(this).closest("tr").attr('id');
+						$("#response-status").hide();
 						$('#' + strVal).each(function() {
 							menuID = $(this).find("td").eq(0).html();
 						});
@@ -225,12 +237,16 @@ $(document)
 								success : function(data) {
 									responseObj = '';
 									getMenuDetails();
+									$("#response-status").addClass("alert alert-success").html("Menu deleted successfully.");
+									$("#response-status").show();
 								},
 								failure : function(xhr,
 										textStatus,
 										errorThrown){
 									responseObj = '';
 									getMenuDetails();
+									$("#response-status").addClass("alert alert-danger").html("Error deleting Menu. Please verify.");
+									$("#response-status").show();
 								}
 							});
 							$('#deleteMenu').modal('hide');
