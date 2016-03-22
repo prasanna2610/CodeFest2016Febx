@@ -82,6 +82,7 @@ function deleteVendorInfo(vendorId) {
 		success : function(data) {
 		}
 	});
+	$('#vendorListViewer').remove();
 	getVendorList();
 }
 function updateVendorInfo(jsonPostData, vendorId) {

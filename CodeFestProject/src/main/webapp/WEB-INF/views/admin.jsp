@@ -125,7 +125,7 @@
 										<div class="form-group row">
 										<label for="poc" class="control-label col-xs-3">Password</label>
 										<div class="col-xs-8">
-											<input type="text" name="Person Incharge" id="passwordF" class="form-control" >
+											<input type="password" name="Person Incharge" id="passwordF" class="form-control" >
 										</div>
 										</div>
 										<div class="form-group row">
