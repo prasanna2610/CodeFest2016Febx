@@ -265,7 +265,7 @@ function createVendorTable(transactionDet) {
 		class : 'table table-striped table-bordered',
 		id : 'example'
 	});
-	var tableHeaderCont = jQuery('<thead> <tr><th>Transaction Id</th><th>Employee Id</th> <th>Date</th><th>Menu Name</th><th>Price</th></tr></thead>');
+	var tableHeaderCont = jQuery('<thead> <tr><th>Transaction Id</th><th>Employee Id</th> <th>Date</th><th>Menu Name</th><th>Quantity</th><th>Price</th></tr></thead>');
 	tableSecCont.append(tableHeaderCont);
 	var tableListCont = jQuery('<tbody>');
 	$.each(transactionDet, function(i, obj) {
@@ -274,7 +274,8 @@ function createVendorTable(transactionDet) {
 		var tableData = $('<td>').text(obj.userId).appendTo(tableRow);
 		var tableData = $('<td>').text(obj.dateString).appendTo(tableRow);
 		var tableData = $('<td>').text(obj.menuName).appendTo(tableRow);
-		var tableData = $('<td>').text(obj.price).appendTo(tableRow);
+		var tableData = $('<td>').text(obj.quantity).appendTo(tableRow);
+		var tableData = $('<td>').text((obj.quantity*obj.price)).appendTo(tableRow);
 		tableListCont.append(tableRow);
 	});
 	tableSecCont.append(tableListCont);

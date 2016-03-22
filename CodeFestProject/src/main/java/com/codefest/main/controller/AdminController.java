@@ -49,7 +49,7 @@ public class AdminController {
 		Class<?> entityClass = null;
 		Object entityObj = null;
 		String sqlVendor = "Select * from VENDOR;";
-		String sqlTransaction = "SELECT t.TRANSACTION_ID, m.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
+		String sqlTransaction = "SELECT t.TRANSACTION_ID, m.VENDOR_ID, m.MENU_NAME, m.PRICE, o.quantity, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
 				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and m.vendor_id = ?";
 		String msg=null;
 		try {
@@ -85,7 +85,7 @@ public class AdminController {
 		Class<?> entityClass = null;
 		Object entityObj = null;
 		String sqlVendor = "Select * from vendor where vendor_id = ?";
-		String sqlTransaction = "SELECT t.TRANSACTION_ID, m.VENDOR_ID, m.MENU_NAME, m.PRICE, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
+		String sqlTransaction = "SELECT t.TRANSACTION_ID, m.VENDOR_ID, m.MENU_NAME, m.PRICE, o.quantity, t.USER_ID, t.DATE FROM TRANSACTION t, ORDER_ITEMS o, "
 				+ "MENU m where t.transaction_id = o.transaction_id and o.menu_id = m.menu_id and m.vendor_id = ?";
 		String msg=null;
 		try {
