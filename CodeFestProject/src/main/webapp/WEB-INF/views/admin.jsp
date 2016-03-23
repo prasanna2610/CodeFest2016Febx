@@ -147,6 +147,26 @@
 	    </div>
 	</div>
 </div>
+<div id="deleteVendorProfile" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+         
+            <div class="modal-body">
+                <div class="row">
+					<p> Are you sure you want to delete? </p>
+				</div>
+			</div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="deleteVendorBtn" >ok</button>
+            </div>
+        </div>
+    </div>
+	</div>
 
+</div>
+</div>
+</div>
 </body>
 </html>

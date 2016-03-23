@@ -10,7 +10,8 @@ $(document)
 					$('.menuListLinks').click(function(e) {
 						getMenuDetails();
 					});
-					jQuery('#newMenu').click(function() {
+					jQuery('#menuProfileForm').submit(function(e) {
+						e.preventDefault();
 						$("#response-status").hide();
 						$.ajax({
 							url : "/addMenu",
@@ -40,6 +41,7 @@ $(document)
 							} 
 						});
 						$('#addMenu').modal('hide');
+						return false;
 					});
 					function getTranscationDetails() {
 						$("#menuItems").hide();
@@ -171,7 +173,11 @@ $(document)
 						jQuery('.edit-menu').on('click', editMenuDetails);
 						jQuery('.delete-menu').bind('click', menuDelete);
 					}
-
+					
+					jQuery("#addMenuBtn").click(function(){
+						$("#response-status").hide();
+					});	
+					
 					function editMenuDetails(event) {
 						$("#response-status").hide();
 						var strVal = $(this).closest("tr").attr('id');
@@ -187,10 +193,9 @@ $(document)
 									$('#updateMenuQuantity').val(
 											$(this).find("td").eq(4).html());
 								});
-						jQuery('#menuUpdateBtn').bind('click',
-								updateMenuDetails);
 					}
-					function updateMenuDetails(event) {
+					jQuery("#menuUpdateForm").submit(function(e){
+						e.preventDefault();
 						$("#response-status").hide();
 						$.ajax({
 							url : "/updateMenu",
@@ -216,9 +221,12 @@ $(document)
 								$("#response-status").show();
 							}
 						});
-						$('#updateMenu').hide();
+						$('#updateMenu').modal('hide');
+						return false;
+					});
+					
 						
-					}
+					
 
 					function menuDelete(event) {
 						var strVal = $(this).closest("tr").attr('id');

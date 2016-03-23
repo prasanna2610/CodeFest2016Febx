@@ -58,9 +58,7 @@ $(document).ready(function(){
 				return false;
 			});
 						
-					
-				
-		jQuery(document).on('click', '.profile-delete', function(e) {
+		jQuery(document).on('click', '#deleteVendorBtn', function(e) {
 			deleteVendorInfo($('#vendorID').text());
 		});
 		jQuery('#vendorCreateForm').submit(function(e) {
@@ -124,6 +122,9 @@ $(document).ready(function(){
 			success : function(data) {
 				$("#response-status").html('<div class="alert alert-success">Vendor deleted successfully.</div>');
 				$("#response-status").show();
+				$('#vendorListViewer').remove();
+				$("#tabContainer").remove();
+				getVendorList();
 			},
 			error : function(
 					xhr,
@@ -131,11 +132,12 @@ $(document).ready(function(){
 					errorThrown) {
 				$("#response-status").html('<div class="alert alert-danger">Error deleting vendor. Please check.</div>');
 				$("#response-status").show();
+				$('#vendorListViewer').remove();
+				$("#tabContainer").remove();
+				getVendorList();
 			}
 		});
-		$('#vendorListViewer').remove();
-		$("#tabContainer").remove();
-		getVendorList();
+		
 	}
 	
 function chartLoad(transactionDetails) {
@@ -334,7 +336,7 @@ function createVendorUpdate(vendorDetails) {
 		id : 'example'
 	});
 		var headerAction = jQuery('<h3>Current Info <input type="submit" id="submit-image" class="edit-info" value=""/>'
-				+ '<a href="javascript:void(0)" class="profile-delete delete-info"></a> </h3>');
+				+ '<a href="#deleteVendorProfile" role="button" data-toggle="modal" class="profile-delete delete-info"></a> </h3>');
 		var listContId = jQuery('<ul>');
 		var listVendorId = jQuery('<li class="label" >Vendor Id</li><li class="label-value" id="vendorID" contenteditable="false"> <span class="paddingL10">'
 				+ vendorDetails.vendorId + '</span><input type="hidden" name="VendorId" value = "'+ vendorDetails.vendorId + '"/></li>');

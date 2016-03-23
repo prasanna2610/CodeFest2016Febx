@@ -92,7 +92,7 @@
 	<div id="addMenu" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-			<form role="form">
+			<form id="menuProfileForm" role="form">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-hidden="true">&times;</button>
@@ -145,8 +145,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default"
 						data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary"
-						data-dismiss="modal" id="newMenu">Add Menu</button>
+					<button type="submit" class="btn btn-primary" id="newMenu">Add Menu</button>
 				</div>
 			</form>
         </div>
@@ -156,6 +155,7 @@
 <div id="updateMenu" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
+			<form id="menuUpdateForm" role="form">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h2 class="modal-title">Update Menu details</h2>
@@ -163,46 +163,45 @@
             <div class="modal-body">
                 <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-2 col-md-offset-2">
-		<form role="form">
 		
 			<div class="row">
 				
 					<div class="form-group row">
-					<label for="vendor_name" class="control-label col-xs-3"> Dish Name </label>
+					<label for="updateMenuName" class="control-label col-xs-3"> Dish Name </label>
 					<div class="col-xs-8">
-                        <input type="text" name="updateMenuName" id="updateMenuName" class="form-control" >
+                        <input type="text" required name="updateMenuName" id="updateMenuName" class="form-control" >
 					</div>
 					</div>
 					
 					<div class="form-group row">
-					<label for="vendor_id" class="control-label col-xs-3"> Description</label>
+					<label for="updateMenuDesc" class="control-label col-xs-3"> Description</label>
 					<div class="col-xs-8">	
-					<input type="text" name="updateMenuDesc" id="updateMenuDesc" class="form-control">
+					<input type="text" required name="updateMenuDesc" id="updateMenuDesc" class="form-control">
 					</div>
 					</div>
 			
 			<div class="form-group row">
-			<label for="poc" class="control-label col-xs-3">Price</label>
+			<label for="updateMenuPrice" class="control-label col-xs-3">Price</label>
 			<div class="col-xs-8">
-				<input type="text" name="updateMenuPrice" id="updateMenuPrice" class="form-control" >
+				<input type="number" required name="updateMenuPrice" id="updateMenuPrice" class="form-control" >
 			</div>
 			</div>
 			<div class="form-group row">
-				<label for="email" class="control-label col-xs-3">Quantity</label>
+				<label for="updateMenuQuantity" class="control-label col-xs-3">Quantity</label>
 				<div class="col-xs-8">
-				<input type="text" name="updateMenuQuantity" id="updateMenuQuantity" class="form-control" >
+				<input type="number" required name="updateMenuQuantity" id="updateMenuQuantity" class="form-control" >
 			</div>
 			</div>
 			</div>
-		</form>
 		</div>
 	</div>
 	</div>
             
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="menuUpdateBtn" data-dismiss="modal" href="#">Update Menu</button>
+                <button type="submit" class="btn btn-primary" id="menuUpdateBtn" href="#">Update Menu</button>
             </div>
+		</form>
         </div>
     </div>
 	</div>
@@ -217,8 +216,8 @@
 			</div>
             
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" id="deleteMenuBtn" >ok</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="deleteMenuBtn" >Ok</button>
             </div>
         </div>
     </div>
