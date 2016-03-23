@@ -2,7 +2,7 @@
 <!doctyle html>
 <html>
 <head>
-	<title>Admin </title>
+	<title>B Y M :: Admin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/header.css" >
 	<link href="css/bootstrap.css" rel="stylesheet">
@@ -27,32 +27,40 @@
 
 <input type="hidden" id="vendorModelVal" name="vendorModelDet" value="${vendorInfoObj[0].transaction}">
 <input type="hidden" id="userName" name="userName" value='${userName}'>
-  <div class="col-sm-3" id=vendorListMainWrapper">
+  <div class="col-sm-3" id="vendorListMainWrapper">
     <div class="sidebar-nav">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="navbar-header" id="adminNaveBar">
-        
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span
-			>
-          </button>
-         
-          <span class="visible-xs navbar-brand">Sidebar menu</span>
-          
-        </div>
-        <%-- <div class="navbar-collapse collapse sidebar-navbar-collapse">
-         <ul class="nav nav-pills nav-stacked vendor-list">
-         	<c:forEach var="vendorDetails" items="${vendorInfoObj}">
-   				<li role="presentation"><a href="#" class="vendorListLinks" id="${vendorDetails.vendorId}">${vendorDetails.vendorName}</a></li>
-			</c:forEach>
-			<c:out value="${vendorInfoObj[0].transaction[0].menuName}"/>
-			<li role="presentation"><a href="#myModal" role="button" data-toggle="modal"> <img src="images/add-user.jpg" alt="add vendor" class="add-vendor"/><span class="sr-only">Create new</span> </a></li>
-	</ul>
-        </div> --%><!--/.nav-collapse -->
-      </div>
+	    <div class="addVendor">
+	    	<div class="pull-left">Add Vendor(s)</div>
+	    	<div class="pull-right">
+	    		<a data-toggle="modal" title="Click here to Add New Vendor" role="button" href="#myModal">
+					<img class="add-vendor" alt="add vendor" src="images/addVendor.png" height="36" width="36" />
+					<span class="sr-only">Create new</span>
+				</a>
+	    	</div>
+	    </div>
+	      <div class="navbar navbar-default" role="navigation">
+	        <div class="navbar-header" id="adminNaveBar">        
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span
+				>
+	          </button>
+	         
+	          <span class="visible-xs navbar-brand">Sidebar menu</span>
+	          
+	        </div>
+	        <%-- <div class="navbar-collapse collapse sidebar-navbar-collapse">
+	         <ul class="nav nav-pills nav-stacked vendor-list">
+	         	<c:forEach var="vendorDetails" items="${vendorInfoObj}">
+	   				<li role="presentation"><a href="#" class="vendorListLinks" id="${vendorDetails.vendorId}">${vendorDetails.vendorName}</a></li>
+				</c:forEach>
+				<c:out value="${vendorInfoObj[0].transaction[0].menuName}"/>
+				<li role="presentation"><a href="#myModal" role="button" data-toggle="modal"> <img src="images/add-user.jpg" alt="add vendor" class="add-vendor"/><span class="sr-only">Create new</span> </a></li>
+		</ul>
+	        </div> --%><!--/.nav-collapse -->
+	      </div>
     </div>
 	
   </div>

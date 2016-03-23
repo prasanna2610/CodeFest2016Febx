@@ -226,8 +226,8 @@ function generateVendorList(vendorDetails) {
 					listContainer.append(listArr);
 				});
 	}
-	var listNewImageSec = jQuery('<li role="presentation"><a href="#myModal" role="button" data-toggle="modal"> <img src="images/add-user.jpg" alt="add vendor" class="add-vendor"/><span class="sr-only">Create new</span> </a></li>');
-	listContainer.append(listNewImageSec);
+	/*var listNewImageSec = jQuery('<li role="presentation"><a href="#myModal" role="button" data-toggle="modal"> <img src="images/add-user.jpg" alt="add vendor" class="add-vendor"/><span class="sr-only">Create new</span> </a></li>');
+	listContainer.append(listNewImageSec);*/
 	vendorListSecCont.append(listContainer);
 	vendorListSecCont.insertAfter("#adminNaveBar");
 	$('#venListConte li:first-child').addClass('active');

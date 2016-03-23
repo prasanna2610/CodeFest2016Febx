@@ -1,16 +1,25 @@
-
-	<div class="CtsLogo pull-left">
-		<img src="images/ctslogo.png" alt="Cognizant-Book your meals" width="60" />
+<div class="row">
+	<div class="col-md-4">
+		<div class="CtsLogo pull-left">
+			<img src="images/BookUrMealLogo.png" alt="Book your meals" width="68" height="78"/>
+		</div>
 	</div>
-	<div class="welcomeMsg pull-left"> ${userInfo}<span class="userName">  </span><img src="images/person.svg" alt="" width="30px"/></div>
-	${errorMsg}
-	
+	<div class="col-md-4 text-center hdrMidCnt">
+		<div class="welcomeIcon pull-left">&nbsp;</div>
+		<div class="welcomeMsg pull-left"><span class="userName">${userInfo}</span></div>
+	</div>
+	<div class="col-md-4">
 		<div class="pull-right">
 		<form method="post" action="/logout" >
-				<input type="submit" value="" class="btn logout"/> 
-				<!-- <a href="#" role="button"><img src="images/on-off.png" alt="logout" width="40px" class="logout"/>  </a>-->
+				<input type="submit" value="" title="LogOut" class="btn logout"/> 
 		</form>
 		</div>
+	</div>
+</div>
+	
+	${errorMsg}
+	
+		
 		<script type="text/javascript">
 		$(document).ready(function(){
 			var path = $(location).attr("pathname");
