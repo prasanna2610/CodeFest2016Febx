@@ -60,16 +60,31 @@ header{
 body{
 	background: url('../images/stripe1.png');
 }
+.hdrMidCnt{
+	padding-left: 55px;
+    padding-top: 20px;
+}
 .welcomeMsg{
-	margin: 1% 2% 0 3%;
 	color: #fff;
-	font-weight: bold;
+    font-size: 25px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-top: 3px;
+}
+.welcomeIcon{
+	background: url("../images/username_icon.png");
+	background-repeat: no-repeat;
+    height: 26px;
+    width: 27px;
+    display:inline-block;
+    margin-top:5px;
 }
 .logout{
 	/* margin: 10px; */
-	background: rgba(0, 0, 0, 0) url("../images/on-off.png") no-repeat scroll 0 0 !important;
-    height: 50px;
-    width: 50px;
+	background: rgba(0, 0, 0, 0) url("../images/logoutBUM.png") no-repeat scroll 0 0 !important;
+    height: 32px;
+    width: 32px;
+    margin-top: 20px;
 }
 .errorText{
 	color: red;

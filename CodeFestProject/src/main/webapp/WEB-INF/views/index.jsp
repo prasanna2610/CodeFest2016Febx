@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<title> Book Ur Meal :: Login</title>
+		<title>Book Your Meal :: Login</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
 				<div class="col-sm-5">					
 					<!-- Input fields -->
 					<div class="inputFldSec flip side-2">
-						<div class="txtTitle">Sign in to Book Ur Meal</div>
+						<div class="txtTitle">Sign in to Book Your Meal!!</div>
 						<span class="errorText">${errorMsg} </span>
 						<form method="post" action="/home">
 							<div>

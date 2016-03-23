@@ -1,7 +1,7 @@
 <!doctyle html>
 <html>
 <head>
-	<title>Place order</title>
+	<title>B Y M :: Vendor</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/header.css" >
 	<link href="css/bootstrap.css" rel="stylesheet">

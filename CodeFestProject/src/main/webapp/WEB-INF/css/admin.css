@@ -104,3 +104,25 @@ html{
   border: 1px solid #ddd;
   border-bottom-color: transparent;
 }
+.addVendor{
+	height:41px;
+	background-color:#F5F5F5;
+	border:solid 1px #DDDDDD;
+	border-radius:4px 4px 0;
+}
+.addVendor .pull-left{
+	color:#428BCA;
+	font-weight:bold;
+	font-size:16px;
+	padding-left: 10px;
+    padding-top: 10px;
+}
+.addVendor .pull-right{
+	padding-right:10px;
+	padding-top:2px;
+}
+.addVendor .pull-right .add-vendor{
+	width:36px;
+	height:36px;
+	border-radius:none;
+}
