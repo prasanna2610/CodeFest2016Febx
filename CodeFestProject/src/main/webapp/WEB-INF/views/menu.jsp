@@ -520,7 +520,7 @@
 								success : function(data) {
 									if (data && $.trim(data)) {
 										$("#main-content")
-												.html('<div class="alert alert-success">Thank you for the purchase. A message has been sent to your registered mobile number. Please use the code '
+												.html('<div class="alert alert-success">Thank you for the purchase. A message has been sent to the specified mobile number. Please use the code '
 																+ data
 																+ ' to obtain the order or for further communications.');
 										$('#Searching_Modal').modal('hide');

@@ -43,6 +43,7 @@ $(document).ready(function(){
 						success : function(data) {
 							$("#response-status").html('<div class="alert alert-success">Vendor updated successfully</div>');
 							$("#response-status").show();
+							$("#vendorPassword").val('');
 						},
 						error : function(
 								xhr,
@@ -50,6 +51,7 @@ $(document).ready(function(){
 								errorThrown) {
 							$("#response-status").html('<div class="alert alert-danger">Error updating vendor. Please check.</div>');
 							$("#response-status").show();
+							$("#vendorPassword").val('');
 						}
 					});
 					$("#vendorProfileForm input").addClass("no-border").attr("readonly", "readonly");
@@ -349,6 +351,10 @@ function createVendorUpdate(vendorDetails) {
 		var listVendorPOC = jQuery('<li class="label">First Name</li><li class="label-value" contenteditable="false">'
 				+ '<input readonly="readonly" name = "FirstName" type = "text" class="form-control no-border" required value = "' + vendorDetails.incharge + '" </input></li>');
 		listContPOC.append(listVendorPOC);
+		var listPasswordPOC = jQuery('<ul>');
+		var listpwdPoc = jQuery('<li class="label">Password</li><li class="label-value" contenteditable="false">'
+				+ '<input readonly="readonly" id="vendorPassword" name = "Password" type = "password" class="form-control no-border" value = "" </input></li>');
+		listPasswordPOC.append(listpwdPoc);
 		var listContContact = jQuery('<ul>');
 		var listVendorContact = jQuery('<li class="label">Contact Number</li><li class="label-value" contenteditable="false">'
 				+ '<input readonly="readonly" name = "ContactNumber"  type = "text" pattern = "\\d*" maxlength="10" class="form-control no-border" required value = "' + vendorDetails.vendorPhone + '" </input></li>');
@@ -361,7 +367,7 @@ function createVendorUpdate(vendorDetails) {
 		var listVendorDet = jQuery('<li class="label">Details</li><li class="label-value" contenteditable="false">'
 				+ '<input readonly="readonly" name = "Details" type = "text" class="form-control no-border" required value = "' + vendorDetails.vendorDetail + '" </input></li>');
 		listContDet.append(listVendorDet);
-		updateSecCont.append(listContId).append(listContName).append(listContPOC)
+		updateSecCont.append(listContId).append(listContName).append(listContPOC).append(listPasswordPOC)
 				.append(listContContact).append(listContEmail).append(listContDet);
 		transSecCont.append(headerTxt);
 	transSecCont.append(headerAction);

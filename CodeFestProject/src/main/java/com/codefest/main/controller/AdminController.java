@@ -121,6 +121,7 @@ public class AdminController {
 		System.out.println(jsonDta.get("VendorName"));
 		Long vendorId1 = null;
 		Vendor vendorvo=new Vendor();
+		String password = null;
 		String sqlVendor = "Select * from vendor where vendor_id = ?";
 		Vendor vendorDB = new Vendor();
 		Class<?> entityClass = null;
@@ -128,15 +129,33 @@ public class AdminController {
 		try{
 			entityClass = Class.forName("com.codefest.main.entity.Vendor");
 			entityObj = entityClass.newInstance();
+			password = (String)jsonDta.get("Password");
 			vendorvo.setVendorId(Long.valueOf((String) jsonDta.get("VendorId")));
 			vendorvo.setVendorPhone(Long.valueOf((String) jsonDta.get("ContactNumber")));
 			System.out.println("id    "+vendorvo.getVendorId()+"    phone    "+vendorvo.getVendorPhone());
-			String sqlUpdateVendor = "UPDATE Vendor set vendor_name=?, vendor_email = ?, vendor_phone = ?, incharge = ?, vendor_detail = ? where vendor_id=?";
-			jdbcTemplate.update(sqlUpdateVendor,jsonDta.get("VendorName"), jsonDta.get("Email"), vendorvo.getVendorPhone(),
-					jsonDta.get("FirstName"), jsonDta.get("Details"),vendorvo.getVendorId());
-			String updateCFUser = "UPDATE CF_USER SET FIRST_NAME =?, PHONE = ?, EMAIL = ? WHERE USER_ID = ?";
-			jdbcTemplate.update(updateCFUser,
-					new Object[] {jsonDta.get("FirstName"), vendorvo.getVendorPhone(),jsonDta.get("Email"), vendorvo.getVendorId()});
+			String sqlUpdateVendor = null;
+			if(null != password && !password.isEmpty()){
+				sqlUpdateVendor = "UPDATE Vendor set vendor_name=?, vendor_email = ?, vendor_phone = ?, incharge = ?, vendor_detail = ?, password=? where vendor_id=?";
+				jdbcTemplate.update(sqlUpdateVendor,jsonDta.get("VendorName"), jsonDta.get("Email"), vendorvo.getVendorPhone(),
+						jsonDta.get("FirstName"), jsonDta.get("Details"), password, vendorvo.getVendorId());
+
+			}else{
+				sqlUpdateVendor = "UPDATE Vendor set vendor_name=?, vendor_email = ?, vendor_phone = ?, incharge = ?, vendor_detail = ? where vendor_id=?";
+				jdbcTemplate.update(sqlUpdateVendor,jsonDta.get("VendorName"), jsonDta.get("Email"), vendorvo.getVendorPhone(),
+						jsonDta.get("FirstName"), jsonDta.get("Details"),vendorvo.getVendorId());
+			}
+			String updateCFUser = null;
+			if(null != password && !password.isEmpty()){
+				updateCFUser = "UPDATE CF_USER SET FIRST_NAME =?, PHONE = ?, EMAIL = ?, PASSWORD = ? WHERE USER_ID = ?";
+				jdbcTemplate.update(updateCFUser,
+						new Object[] {jsonDta.get("FirstName"), vendorvo.getVendorPhone(),jsonDta.get("Email"), password, vendorvo.getVendorId()});
+
+			}else{
+				updateCFUser = "UPDATE CF_USER SET FIRST_NAME =?, PHONE = ?, EMAIL = ? WHERE USER_ID = ?";
+				jdbcTemplate.update(updateCFUser,
+						new Object[] {jsonDta.get("FirstName"), vendorvo.getVendorPhone(),jsonDta.get("Email"), vendorvo.getVendorId()});
+			}
+			
 		}catch (ClassNotFoundException | InstantiationException | IllegalAccessException | EmptyResultDataAccessException e) {
 			e.printStackTrace();
 		}
