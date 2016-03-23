@@ -71,6 +71,12 @@ body{
     height: 50px;
     width: 50px;
 }
+.errorText{
+	color: red;
+	font-weight: bold;
+	display:inline-block;
+	margin: 2% 0;
+}
 table{
 	background: #fff !important;
 	border-radius: 10px;

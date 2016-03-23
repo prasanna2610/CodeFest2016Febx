@@ -22,7 +22,7 @@
 					<!-- Input fields -->
 					<div class="inputFldSec flip side-2">
 						<div class="txtTitle">Sign in to Book Ur Meal</div>
-						${errorMsg}
+						<span class="errorText">${errorMsg} </span>
 						<form method="post" action="/home">
 							<div>
 								<input type="text" name="userName" id="userName"/>

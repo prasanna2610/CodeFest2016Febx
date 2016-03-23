@@ -122,21 +122,33 @@
 							</div>
 							
 							<div>
-								<div id="editPhone">
-								Want to change Your Phone Number?
-								<input type="text" value="${phone}" id="userPhone"/> </div>
+							<div class="min-order ">Once you click on continue button you will receive an SMS on your Registered mobile number
+								<span class="regMob">${phone} </span>
+								<a href="#editPhone" id="editMob">
+									<span class="sr-only">Edit number</span>
+									<img src="images/edit.png" alt="edit number" />
+								</a>
+								
 							</div>
-							<div class="min-order  hidden ">Sorry, this restaurant does
-								not accept delivery order below Rs.99.00. Your total order
-								amounts to Rs.139.00.</div>
-
-							<div class="cart-actions-sticky">
+								<div id="editPhone">
+								Enter your Phone number
+								<form>
+								<input type="number" maxlength="10" value="${phone}" id="userPhone" required aria-label="Enter Phone number"/>
+								<button class="btn confirmNumber"><span class="Confirm sr-only">confirm</span>
+								<img src="images/tick.png" alt="confirm"/>
+								</button>
+								</form>
+								 </div>
+								
+							</div>
+							</div>
+							 <div class="cart-actions-sticky">
 								<div id="checkout"
 									class="cart-actions btn-big stickybot btn-blast btn btn-primary checkout">
 									Continue</div>
 							</div>
-
-						</div>
+			
+						
 					</div>
 				</div>
 
@@ -162,6 +174,16 @@
 
 	<script>
 		$(document).ready(function(e) {
+			$('#editPhone').hide();
+			$('#editMob').click(function(){
+				$('#editPhone').show();
+			});
+			$('.confirmNumber').click(function(){
+				var enteredNumber = $('#userPhone').val()
+				$('#editPhone').hide();
+				console.log(enteredNumber);
+				$('.regMob').text(enteredNumber);
+			});
 			var count = 0;
 			var totalSum = 0;
 			var selectItem = function(){
@@ -282,7 +304,7 @@
 							});
 						}
 					});
-
+	
 			function createMenu(details) {
 				$("#main-content").html('');
 				if (details && details.menu && details.menu.length>0) {

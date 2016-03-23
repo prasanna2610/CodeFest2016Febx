@@ -58,9 +58,9 @@ html{
 	font-weight: bold;
 }
 .edit-info {
-    width: 75px;
+    width: 60px;
     height: 35px;
-    background: url('../images/edit-details.png') no-repeat;
+    background: url('../images/edit-icon.png') no-repeat;
     background-size: 100% 100%;
     display: inline-block;
 	vertical-align: bottom;
@@ -69,7 +69,7 @@ html{
 .delete-info {
     width: 45px;
     height: 35px;
-    background: url('../images/delete-menu.png') no-repeat;
+    background: url('../images/delete.png') no-repeat;
     background-size: 100% 100%;
     display: inline-block;
 	vertical-align: bottom;
@@ -93,7 +93,7 @@ html{
 }
 #addMenuBtn{
 	display: inline-block;
-	margin-bottom: 2% 25%;
+	margin: 2% 25%;
 }
 #tabHolder .nav-tabs > li.active > a,
 #tabHolder .nav-tabs > li.active > a:hover,
