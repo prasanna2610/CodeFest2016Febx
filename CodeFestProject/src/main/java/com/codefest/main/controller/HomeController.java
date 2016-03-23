@@ -85,17 +85,16 @@ public class HomeController {
 					"Welcome " + homevoObject.getUserName());
 			if (user.get(0).getUserType().equalsIgnoreCase("vendor")) {
 				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
-				//returnString = "vendor";
 				response.sendRedirect("/vendorHome");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("admin")) {
 				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
-				//returnString = "admin";
 				response.sendRedirect("/admin");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("user")) {
 				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
 				response.sendRedirect("/order");
 			}
 			HttpSessionObjectStore.setObject("userId", user.get(0).getUserId());
+			HttpSessionObjectStore.setObject("phone", user.get(0).getPhone());
 		}
 		return returnString;
 

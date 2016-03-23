@@ -120,6 +120,12 @@
 									</ul>
 								</div>
 							</div>
+							
+							<div>
+								<div id="editPhone">
+								Want to change Your Phone Number?
+								<input type="text" value="${phone}" id="userPhone"/> </div>
+							</div>
 							<div class="min-order  hidden ">Sorry, this restaurant does
 								not accept delivery order below Rs.99.00. Your total order
 								amounts to Rs.139.00.</div>
@@ -320,7 +326,7 @@
 			}
 			$("#checkout").click(function() {
 				var menuList = [];
-				
+				var phone = $("#userPhone").val();
 				if($(".summary-item")){
 					$(".summary-item").each(function(){
 						var menuId = $(this).find(".summary-menu-id").text();
@@ -337,6 +343,7 @@
 				if (menuList) {
 					var reqData = new Object();
 					reqData.menu = menuList;
+					reqData.phone = phone;
 					$('#Searching_Modal').modal('show');
 					var url = "/order/create";
 					$

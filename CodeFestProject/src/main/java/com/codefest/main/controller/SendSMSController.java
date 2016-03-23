@@ -33,7 +33,7 @@ public class SendSMSController {
 	public JdbcTemplate jdbcTemplate;
 	
 	@SuppressWarnings("all")
-	public void sendSMS(Long txnId) {
+	public void sendSMS(String userPhone, Long txnId) {
 		System.out.println("Entering sendSMS");
 		List<CFUser> user = null;
 		Long UserId = (Long)HttpSessionObjectStore.getObject("userId");
@@ -51,7 +51,12 @@ public class SendSMSController {
 						new Object[] { UserId }, new BeanPropertyRowMapper(
 								entityObj.getClass()));
 				userName = user.get(0).getFirstName();
-				mobileNum = user.get(0).getPhone();
+				if( userPhone != null){
+					mobileNum = Long.parseLong(userPhone);
+				}else{
+					mobileNum = user.get(0).getPhone();
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -106,12 +106,12 @@ public class OrderMenuController {
 		if(null != menuDetails && !menuDetails.isEmpty()){
 			JSONObject jsonObj = new JSONObject(menuDetails);
 			JSONArray menuArr = (JSONArray) jsonObj.get("menu");
+			String phone = (String) jsonObj.get("phone");
 			Long txnId = null;
 			if(null == menuArr) {
 				txnId = null;
 				return null;
 			}
-			
 			String getNextTxnId = "SELECT NEXTVAL('TRANSACTION_SEQ')";
 			String insertTransactionQuery = "INSERT INTO TRANSACTION (TRANSACTION_ID, USER_ID, DATE, DELIVERY) VALUES (?, ?, CURRENT_TIMESTAMP, 'N')";
 			String insertOrderItemsQuery = "INSERT INTO ORDER_ITEMS (TRANSACTION_ID, MENU_ID, QUANTITY) VALUES (?, ?, ?)";
@@ -178,7 +178,7 @@ public class OrderMenuController {
 				return null;
 			}
 			if(null != txnId){
-				sendSMS.sendSMS(txnId);
+				sendSMS.sendSMS(phone,txnId);
 			}
 			return txnId.toString();
 		}
