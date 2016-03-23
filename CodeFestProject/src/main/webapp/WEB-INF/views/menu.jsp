@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!doctyle html>
 <html>
 <head>
@@ -58,9 +59,109 @@
 												<c:set var="idVar" value="${i.index}"></c:set>
 												<div class="col-md-3 col-sm-3">
 													<div class="tileView">
-														<article class="caption">
-															<img src="images/Meals.jpg"
-																class="feedThumb img-responsive caption_media" alt="" />
+														<c:set var="menuName" scope="session" value="${menu.menuName}" ></c:set>
+														<c:choose>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Idly')}">
+																<article class="caption">
+																<img src="images/Idly.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Uthapam')}">
+																<article class="caption">
+																<img src="images/Uthapam.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Briyani')}">
+																<article class="caption">
+																<img src="images/Biryani-Egg.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Briyani')}">
+																<article class="caption">
+																<img src="images/Biryani-Egg.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Prawn')}">
+																<article class="caption">
+																<img src="images/prawn.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Finger')}">
+																<article class="caption">
+																<img src="images/FingerChips.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Burger')}">
+																<article class="caption">
+																<img src="images/Burger.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Chicken65')}">
+																<article class="caption">
+																<img src="images/Chicken65.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Fish Fry')}">
+																<article class="caption">
+																<img src="images/Fish-Fry1.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Gravy')}">
+																<article class="caption">
+																<img src="images/Gravy.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Dosa')}">
+																<article class="caption">
+																<img src="images/Kal-Dosa.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Meals')}">
+																<article class="caption">
+																<img src="images/Meals.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Paneer')}">
+																<article class="caption">
+																<img src="images/Paneer.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Parotta')}">
+																<article class="caption">
+																<img src="images/Parotta.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Pav')}">
+																<article class="caption">
+																<img src="images/Pav-Bhaji.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Poori')}">
+																<article class="caption">
+																<img src="images/Poori.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Chappathi')}">
+																<article class="caption">
+																<img src="images/Roti.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'Chicken')}">
+																<article class="caption">
+																<img src="images/Tandoori-Chicken.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:when test="${fn:containsIgnoreCase(menuName, 'fish')}">
+																<article class="caption">
+																<img src="images/Fish-Fry1.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:when>
+															<c:otherwise>
+																<article class="caption">
+																<img src="images/Meals.jpg"
+																	class="feedThumb img-responsive caption_media" alt="" />
+															</c:otherwise>
+														</c:choose>
 															<div class="caption_overlay">
 																<h3 class="caption_overlay_title">Menu Items...</h3>
 																<p class="caption_overlay_content">
@@ -306,6 +407,45 @@
 						}
 					});
 	
+			function getImages(menuName) {
+				if(menuName.toLowerCase().contains('idly')) {
+					menuImage = "images/Idly.jpg";					
+				} else if(menuName.toLowerCase().contains('idly')) {
+					menuImage = "images/Meals.jpg";
+				} else if(menuName.toLowerCase().contains('uthapam')) {
+					menuImage = "images/Uthapam.jpg";
+				} else if(menuName.toLowerCase().contains('briyani') || menuName.toLowerCase().contains('biriyani') ) {
+					menuImage = "images/Biryani-Egg.jpg";
+				} else if(menuName.toLowerCase().contains('prawn')) {
+					menuImage = "images/prawn.jpg";
+				} else if(menuName.toLowerCase().contains('finger')) {
+					menuImage = "images/FingerChips.jpg";
+				} else if(menuName.toLowerCase().contains('chicken65')) {
+					menuImage = "images/Chicken65.jpg";
+				} else if(menuName.toLowerCase().contains('fish fry')) {
+					menuImage = "images/Fish-Fry1.jpg";
+				} else if(menuName.toLowerCase().contains('gravy')) {
+					menuImage = "images/Gravy.jpg";
+				} else if(menuName.toLowerCase().contains('dosa')) {
+					menuImage = "images/Kal-Dosa.jpg";
+				} else if(menuName.toLowerCase().contains('meals')) {
+					menuImage = "images/Meals.jpg";
+				} else if(menuName.toLowerCase().contains('paneer')) {
+					menuImage = "images/Paneer.jpg";
+				} else if(menuName.toLowerCase().contains('parotta')) {
+					menuImage = "images/Parotta.jpg";
+				} else if(menuName.toLowerCase().contains('pav')) {
+					menuImage = "images/Pav-Bhaji.jpg";
+				} else if(menuName.toLowerCase().contains('poori')) {
+					menuImage = "images/Poori.jpg";
+				} else if(menuName.toLowerCase().contains('chappathi')) {
+					menuImage = "images/Roti.jpg";
+				} else if(menuName.toLowerCase().contains('chicken')) {
+					menuImage = "images/Tandoori-Chicken.jpg";
+				} else if(menuName.toLowerCase().contains('fish')) {
+					menuImage = "images/Fish-Fry1.jpg";
+				}
+			}
 			function createMenu(details) {
 				$("#main-content").html('');
 				if (details && details.menu && details.menu.length>0) {
@@ -313,9 +453,10 @@
 					var iVal = 0;
 					$.each(details.menu,function(i, obj) {
 						if(obj){
-							html += "<div class='col-md-3 col-sm-3'><div class='tileView'>";
-							html += "<article class='caption'><img src='images/Meals.jpg' class='feedThumb img-responsive caption_media' alt='' />";
-							html += "<div class='caption_overlay'><h3 class='caption_overlay_title'>Menu Items...</h3><p class='caption_overlay_content'><ul><li>";
+							getImages(obj.menuName);
+							html += "<div class='col-md-3 col-sm-3' style='margin-top:20px'><div class='tileView'>";
+							html += "<article class='caption'><img src='"+menuImage+"' class='feedThumb img-responsive caption_media' alt='' />";
+							html += "<div class='caption_overlay'><p class='caption_overlay_content'><ul><li>";
 							html += obj.menuDescription
 									+ "</ul></p></div></article>"
 							html += "<div class='fContent'><span class='menu-id' style='display:none'>"
