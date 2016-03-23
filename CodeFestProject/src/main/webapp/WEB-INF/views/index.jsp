@@ -25,10 +25,10 @@
 						<span class="errorText">${errorMsg} </span>
 						<form method="post" action="/home">
 							<div>
-								<input type="text" name="userName" id="userName"/>
+								<input type="text" required name="userName" id="userName"/>
 							</div>
 							<div >
-								<input type="password" name="passWord" id="passWord"/>
+								<input type="password" required name="passWord" id="passWord"/>
 							</div>
 							<div class="btnSect">
 								<button class="btn btn-primary">Login</button>								

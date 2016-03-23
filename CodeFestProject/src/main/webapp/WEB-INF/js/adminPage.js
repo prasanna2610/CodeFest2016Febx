@@ -1,110 +1,143 @@
-window.onload = function() {
-
-	$("#userName").val('');
-	$("#passWord").val('');
-	var jsonVednorObj = [];
-	var responseObj;
-	getVendorList();
-	jQuery(document).on('click', '.vendorListLinks', function() {
-		var vendorId = $(this).attr('id');
-		getVendorDetails(vendorId);
-	});
-	jQuery(document).on(
-			'click',
-			'.profile-edit',
-			function(e) {
-				var vendorDetArr = {};
-				if ($(this).hasClass('edit-info')) {
-					$('.profile-content-list').find('li.label-value').each(
-							function(a, b) {
-								if (a > 0) {
-									$(b).attr('contenteditable', 'true');
-								}
-							})
-					$('.firstEdit').focus();
-					$(this).removeClass('edit-info').addClass('update-info');
+$(document).ready(function(){
+	window.onload = function() {
+	
+		$("#userName").val('');
+		$("#passWord").val('');
+		var jsonVednorObj = [];
+		var responseObj;
+		getVendorList();
+		jQuery(document).on('click', '.vendorListLinks', function() {
+			var vendorId = $(this).attr('id');
+			getVendorDetails(vendorId);
+		});
+		jQuery(document).on('submit', '#vendorProfileForm', function(e) {
+			e.preventDefault();	
+			$("#response-status").hide();
+			var vendorDetArr = {};
+				if ($("#submit-image").hasClass('edit-info')) {
+					$("#submit-image").removeClass('edit-info').addClass('update-info');
+					$("#vendorProfileForm input").removeClass("no-border").removeAttr("readonly");
 				} else {
-					$('.profile-content-list').find('li.label-value').each(
+					$('.profile-content-list').find('li.label-value input').each(
 							function() {
-								$(this).attr('contenteditable', 'false');
+								/*								$(this).attr('contenteditable', 'false');
 
-								var descText = $(this).prev().text().replace(
-										/ /g, '');
-								var valueText = $(this).text();
+						var descText = $(this).prev().text().replace(
+								/ /g, '');
+						var valueText = $(this).text();*/
+								var descText = $(this).attr('name');
+								var valueText = $(this).val();
 								vendorDetArr[descText] = valueText;
-
+								
 							});
 					jsonVednorObj.push(vendorDetArr);
-					$(this).removeClass('update-info').addClass('edit-info');
-					updateVendorInfo(jsonVednorObj[0],
-							jsonVednorObj[0].VendorId);
+				 
+					var data = jsonVednorObj[0];
+					var vendorId = data.VendorId;
+					var jsonString = JSON.stringify(data);
+					$.ajax({
+						url : "/admin/edit/" + vendorId,
+						type : "post",
+						contentType : "application/json; charset=utf-8",
+						data : jsonString,
+						success : function(data) {
+							$("#response-status").html('<div class="alert alert-success">Vendor updated successfully</div>');
+							$("#response-status").show();
+						},
+						error : function(
+								xhr,
+								textStatus,
+								errorThrown) {
+							$("#response-status").html('<div class="alert alert-danger">Error updating vendor. Please check.</div>');
+							$("#response-status").show();
+						}
+					});
+					$("#vendorProfileForm input").addClass("no-border").attr("readonly", "readonly");
+					$("#submit-image").removeClass("no-border").removeAttr("readonly").removeClass('update-info').addClass('edit-info');
+				}
+				return false;
+			});
+						
+					
+				
+		jQuery(document).on('click', '.profile-delete', function(e) {
+			deleteVendorInfo($('#vendorID').text());
+		});
+		jQuery('#vendorCreateForm').submit(function(e) {
+			e.preventDefault();
+			$('#myModal').modal('hide');
+			$("#response-status").hide();
+			$.ajax({
+				url : "/admin/create",
+				dataType : "text",
+				type : 'post',
+				data : {
+					vendorName : $('#vendor_name').val(),
+					inCharge : $('#inCharge').val(),
+					passwordF : $('#passwordF').val(),
+					venDetails : $('#details').val(),
+					email : $('#email').val(),
+					mobileNumber : $('#mob_no').val()
+				},
+				success : function(data) {
+					$('#myModal').modal('hide');
+					$('#vendorListViewer').remove();
+					getVendorList();
+					$('#vendor_name').val('');
+					$('#inCharge').val('');
+					$('#passwordF').val('');
+					$('#details').val('');
+					$('#email').val('');
+					$('#mob_no').val('');
+					$("#response-status").html('<div class="alert alert-success">Vendor created successfully</div>');
+					$("#response-status").show();
+				},
+				error : function(
+						xhr,
+						textStatus,
+						errorThrown) {
+					$("#response-status").html('<div class="alert alert-danger">Error creating vendor. Please check.</div>');
+					$("#response-status").show();
 				}
 			});
-	jQuery(document).on('click', '.profile-delete', function(e) {
-		deleteVendorInfo($('#vendorID').text());
-	});
-	jQuery(document).on('click', '#vendorSubmit', function() {
-		createVendor();
-	});
-
-	// chartLoad();
-
-};
-function createVendor() {
-	$.ajax({
-		url : "/admin/create",
-		dataType : "text",
-		type : 'post',
-		data : {
-			vendorName : $('#vendor_name').val(),
-			inCharge : $('#inCharge').val(),
-			passwordF : $('#passwordF').val(),
-			venDetails : $('#details').val(),
-			email : $('#email').val(),
-			mobileNumber : $('#mob_no').val()
-		},
-		success : function(data) {
-			$('#myModal').modal('hide');
-			$('#vendorListViewer').remove();
-			getVendorList();
-			$('#vendor_name').val('');
-			$('#inCharge').val('');
-			$('#passwordF').val('');
-			$('#details').val('');
-			$('#email').val('');
-			$('#mob_no').val('');
-		}
-	});
-
-}
-function deleteVendorInfo(vendorId) {
-	$.ajax({
-		url : "/admin/delete",
-		dataType : "text",
-		type : 'get',
-		data : {
-			vendorId : vendorId,
-		},
-		success : function(data) {
-		}
-	});
-	$('#vendorListViewer').remove();
-	$("#tabContainer").remove();
-	getVendorList();
-}
-function updateVendorInfo(jsonPostData, vendorId) {
-
-	var jsonString = JSON.stringify(jsonPostData);
-	$.ajax({
-		url : "/admin/edit/" + vendorId,
-		dataType : "json",
-		type : 'post',
-		contentType : 'application/json; charset=utf-8',
-		data : jsonString,
-		success : function(data) {
-		}
-	});
-}
+			return false;
+		});
+	
+		// chartLoad();
+		$("#myTab li").click(function(){
+			$("#response-status").hide();
+		});
+		jQuery(document).on('click', '.add-vendor', function(e) {
+			$("#response-status").hide();
+		});
+	}
+	
+	function deleteVendorInfo(vendorId) {
+		$("#response-status").hide();
+		$.ajax({
+			url : "/admin/delete",
+			dataType : "text",
+			type : 'get',
+			data : {
+				vendorId : vendorId,
+			},
+			success : function(data) {
+				$("#response-status").html('<div class="alert alert-success">Vendor deleted successfully.</div>');
+				$("#response-status").show();
+			},
+			error : function(
+					xhr,
+					textStatus,
+					errorThrown) {
+				$("#response-status").html('<div class="alert alert-danger">Error deleting vendor. Please check.</div>');
+				$("#response-status").show();
+			}
+		});
+		$('#vendorListViewer').remove();
+		$("#tabContainer").remove();
+		getVendorList();
+	}
+	
 function chartLoad(transactionDetails) {
 	CanvasJS.addColorSet("greenShades", [// colorSet Array
 	"#2F4F4F", "#008080", "#2E8B57", "#3CB371", "#90EE90" ]);
@@ -235,6 +268,7 @@ function generateVendorList(vendorDetails) {
 
 }
 function getVendorDetails(vendorId) {
+	$("#response-status").hide();
 	$.ajax({
 		url : "/admin/" + vendorId,
 		dataType : "text",
@@ -299,37 +333,38 @@ function createVendorUpdate(vendorDetails) {
 		class : 'profile-content-list my-info',
 		id : 'example'
 	});
-	var headerAction = jQuery('<h3>Current Info <a href="javascript:void(0)" class="profile-edit edit-info"></a>'
-			+ '<a href="javascript:void(0)" class="profile-delete delete-info"></a> </h3>');
-	var listContId = jQuery('<ul>');
-	var listVendorId = jQuery('<li class="label" >Vendor Id</li><li class="label-value" id="vendorID" contenteditable="false">'
-			+ vendorDetails.vendorId + '</li>');
-	listContId.append(listVendorId);
-	var listContName = jQuery('<ul>');
-	var listVendorName = jQuery('<li class="label">Vendor Name</li><li class="label-value firstEdit" contenteditable="false">'
-			+ vendorDetails.vendorName + '</li>');
-	listContName.append(listVendorName);
-	var listContPOC = jQuery('<ul>');
-	var listVendorPOC = jQuery('<li class="label">First Name</li><li class="label-value" contenteditable="false">'
-			+ vendorDetails.incharge + '</li>');
-	listContPOC.append(listVendorPOC);
-	var listContContact = jQuery('<ul>');
-	var listVendorContact = jQuery('<li class="label">Contact Number</li><li class="label-value" contenteditable="false">'
-			+ vendorDetails.vendorPhone + '</li>');
-	listContContact.append(listVendorContact);
-	var listContEmail = jQuery('<ul>');
-	var listVendorEmail = jQuery('<li class="label">Email</li><li class="label-value" contenteditable="false">'
-			+ vendorDetails.vendorEmail + '</li>');
-	listContEmail.append(listVendorEmail);
-	var listContDet = jQuery('<ul>');
-	var listVendorDet = jQuery('<li class="label">Details</li><li class="label-value" contenteditable="false">'
-			+ vendorDetails.vendorDetail + '</li>');
-	listContDet.append(listVendorDet);
-	updateSecCont.append(listContId).append(listContName).append(listContPOC)
-			.append(listContContact).append(listContEmail).append(listContDet);
-	transSecCont.append(headerTxt);
+		var headerAction = jQuery('<h3>Current Info <input type="submit" id="submit-image" class="edit-info" value=""/>'
+				+ '<a href="javascript:void(0)" class="profile-delete delete-info"></a> </h3>');
+		var listContId = jQuery('<ul>');
+		var listVendorId = jQuery('<li class="label" >Vendor Id</li><li class="label-value" id="vendorID" contenteditable="false"> <span class="paddingL10">'
+				+ vendorDetails.vendorId + '</span><input type="hidden" name="VendorId" value = "'+ vendorDetails.vendorId + '"/></li>');
+		listContId.append(listVendorId);
+		var listContName = jQuery('<ul>');
+		var listVendorName = jQuery('<li class="label">Vendor Name</li><li class="label-value firstEdit" contenteditable="false">'
+				+ '<input readonly="readonly" name = "VendorName" class="form-control no-border" type = "text" required value = "' +  vendorDetails.vendorName + '" </input></li>');
+		listContName.append(listVendorName);
+		var listContPOC = jQuery('<ul>');
+		var listVendorPOC = jQuery('<li class="label">First Name</li><li class="label-value" contenteditable="false">'
+				+ '<input readonly="readonly" name = "FirstName" type = "text" class="form-control no-border" required value = "' + vendorDetails.incharge + '" </input></li>');
+		listContPOC.append(listVendorPOC);
+		var listContContact = jQuery('<ul>');
+		var listVendorContact = jQuery('<li class="label">Contact Number</li><li class="label-value" contenteditable="false">'
+				+ '<input readonly="readonly" name = "ContactNumber"  type = "text" pattern = "\\d*" maxlength="10" class="form-control no-border" required value = "' + vendorDetails.vendorPhone + '" </input></li>');
+		listContContact.append(listVendorContact);
+		var listContEmail = jQuery('<ul>');
+		var listVendorEmail = jQuery('<li class="label">Email</li><li class="label-value" contenteditable="false">'
+				+ '<input readonly="readonly" name = "Email" type = "email" class="form-control no-border" required value = "' + vendorDetails.vendorEmail + '" </input></li>');
+		listContEmail.append(listVendorEmail);
+		var listContDet = jQuery('<ul>');
+		var listVendorDet = jQuery('<li class="label">Details</li><li class="label-value" contenteditable="false">'
+				+ '<input readonly="readonly" name = "Details" type = "text" class="form-control no-border" required value = "' + vendorDetails.vendorDetail + '" </input></li>');
+		listContDet.append(listVendorDet);
+		updateSecCont.append(listContId).append(listContName).append(listContPOC)
+				.append(listContContact).append(listContEmail).append(listContDet);
+		transSecCont.append(headerTxt);
 	transSecCont.append(headerAction);
 	transSecCont.append(updateSecCont);
 	$('#tabContainer').append(transSecCont);
 
 }
+});

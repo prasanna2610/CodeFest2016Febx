@@ -28,7 +28,24 @@ public class HomeController {
 	public JdbcTemplate jdbcTemplate;
 
 	@RequestMapping(value = { "/index", "/", "home" }, method = RequestMethod.GET)
-	public String welcome() {
+	public String welcome(HttpServletResponse response) {
+		String userType = (String) HttpSessionObjectStore.getObject("userType");
+		if(null != userType){
+			try{
+				
+				if(("Vendor").equalsIgnoreCase(userType)){
+					response.sendRedirect("/vendorHome");
+				}
+				else if(("Admin").equalsIgnoreCase(userType)){
+					response.sendRedirect("/admin");
+				}
+				else if(("User").equalsIgnoreCase(userType)){
+					response.sendRedirect("/order");
+				}
+			}catch(Exception e){
+				System.out.println("Error in session redirect. Redirecting to login.");
+			}
+		}
 		return "index";
 	}
 	
@@ -85,12 +102,17 @@ public class HomeController {
 					"Welcome " + homevoObject.getUserName());
 			if (user.get(0).getUserType().equalsIgnoreCase("vendor")) {
 				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
+				HttpSessionObjectStore.setObject("userType", "Vendor");
+				//returnString = "vendor";
 				response.sendRedirect("/vendorHome");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("admin")) {
 				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
+				HttpSessionObjectStore.setObject("userType", "Admin");
+				//returnString = "admin";
 				response.sendRedirect("/admin");
 			} else if (user.get(0).getUserType().equalsIgnoreCase("user")) {
 				HttpSessionObjectStore.setObject("userInfo", "Welcome " + homevoObject.getUserName());
+				HttpSessionObjectStore.setObject("userType", "User");
 				response.sendRedirect("/order");
 			}
 			HttpSessionObjectStore.setObject("userId", user.get(0).getUserId());

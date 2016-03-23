@@ -92,53 +92,63 @@
 	<div id="addMenu" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title">Enter Menu details</h2>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-2 col-md-offset-2">
-		<form role="form">
-		
-			<div class="row">
-				
-					<div class="form-group row">
-					<label for="vendor_name" class="control-label col-xs-3"> Dish Name </label>
-					<div class="col-xs-8">
-                        <input type="text" name="addMenuName" id="addMenuName" class="form-control" >
+			<form role="form">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h2 class="modal-title">Enter Menu details</h2>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div
+							class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-2 col-md-offset-2">
+
+							<div class="row">
+
+								<div class="form-group row">
+									<label for="addMenuName" class="control-label col-xs-3">
+										Dish Name </label>
+									<div class="col-xs-8">
+										<input type="text" required name="addMenuName"
+											id="addMenuName" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="addMenuDesc" class="control-label col-xs-3">
+										Description</label>
+									<div class="col-xs-8">
+										<input type="text" required name="addMenuDesc"
+											id="addMenuDesc" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="addMenuPrice" class="control-label col-xs-3">Price</label>
+									<div class="col-xs-8">
+										<input type="number" required name="addMenuPrice"
+											id="addMenuPrice" class="form-control">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="addMenuQuantity" class="control-label col-xs-3">Quantity</label>
+									<div class="col-xs-8">
+										<input type="number" required name="addMenuQuantity"
+											id="addMenuQuantity" class="form-control">
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					</div>
-					
-					<div class="form-group row">
-					<label for="vendor_id" class="control-label col-xs-3"> Description</label>
-					<div class="col-xs-8">	
-					<input type="text" name="addMenuDesc" id="addMenuDesc" class="form-control">
-					</div>
-					</div>
-			
-			<div class="form-group row">
-			<label for="poc" class="control-label col-xs-3">Price</label>
-			<div class="col-xs-8">
-				<input type="text" name="addMenuPrice" id="addMenuPrice" class="form-control" >
-			</div>
-			</div>
-			<div class="form-group row">
-				<label for="email" class="control-label col-xs-3">Quantity</label>
-				<div class="col-xs-8">
-				<input type="text" name="addMenuQuantity" id="addMenuQuantity" class="form-control" >
-			</div>
-			</div>
-			</div>
-		</form>
-		</div>
-	</div>
-	</div>
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary"  data-dismiss="modal" id="newMenu" >Add Menu</button>
-            </div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary"
+						data-dismiss="modal" id="newMenu">Add Menu</button>
+				</div>
+			</form>
         </div>
     </div>
 	</div>

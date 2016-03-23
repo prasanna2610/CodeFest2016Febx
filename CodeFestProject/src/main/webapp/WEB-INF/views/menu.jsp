@@ -189,7 +189,8 @@
 			var selectItem = function(){
 				if ($(this).prop("checked")) {
 					if (count + 1 > 5) {
-						alert("You cannot order more than 5 items at a time.")
+						alert("You cannot order more than 5 items at a time.");
+						$(this).prop("checked", false);
 					} else {
 						var i = $(this).attr("id");
 						var html = $(".order-items").html();
@@ -242,7 +243,7 @@
 				if (quantity) {
 					var value = eval(quantity.val());
 					if (value + 1 > 5) {
-						alert("You cannot order more than 5 at a time.")
+						alert("You cannot order more than 5 at a time.");
 					} else {
 						quantity.val(value + 1);
 						var sum = $(this).parents(".summary-item").find(".per-item-price").text();
@@ -261,7 +262,7 @@
 				if (quantity) {
 					var value = eval(quantity.val());
 					if (value - 1 == 0) {
-						alert("Please unselect the item to remove.")
+						alert("Please unselect the item to remove.");
 					} else {
 						quantity.val(value - 1);
 						var sum = $(this).parents(".summary-item").find(".per-item-price").text();
